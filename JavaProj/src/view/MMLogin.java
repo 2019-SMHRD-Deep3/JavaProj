@@ -13,6 +13,8 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MMLogin {
 
@@ -95,6 +97,12 @@ public class MMLogin {
 		panel.add(btnNewButton);
 		
 		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		btnSignUp.setBackground(SystemColor.controlHighlight);
 		btnSignUp.setBounds(184, 154, 97, 23);
 		panel.add(btnSignUp);
