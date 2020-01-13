@@ -104,7 +104,7 @@ public class BookDAO {
 			    	String returnDate = rs.getString("returnDate");
 			    	 
 			    	
-			        loginUser = new Book (title,book_id,author, publisher,loanDate,r);			    	
+			        b = new Book (title,book_id,author, publisher,loanDate,r);			    	
 			    	
 				}
 				//// 정보를 입력받아서 실행시키는 방법 // 상기 문장 대체 //하단 psmt문 활용
