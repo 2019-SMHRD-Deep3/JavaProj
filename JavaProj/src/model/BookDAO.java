@@ -104,7 +104,7 @@ public class BookDAO {
 			    	String returnDate = rs.getString("returnDate");
 			    	 
 			    	
-			        b = new Book (title,book_id,author, publisher,loanDate);			    	
+			        b = new Book (title,book_id,author, publisher);			    	
 			    	
 				}
 				//// 정보를 입력받아서 실행시키는 방법 // 상기 문장 대체 //하단 psmt문 활용
@@ -152,7 +152,7 @@ public class BookDAO {
 
 		conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
 		/// connection - overloading
-		// String sql = "insert into book values(?,?,?,?,?,?,?)" ;
+		// String sql = "insert into book values(?,?,?,?,?,?)" ;
 		String sql = "SELECT * FROM MEMBER "+ 
 		             "WHERE TITLE != ? ";
 	    psmt = conn.prepareStatement(sql);
