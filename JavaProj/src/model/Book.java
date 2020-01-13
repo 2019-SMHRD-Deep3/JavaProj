@@ -16,6 +16,11 @@ public class Book {
 		this.publisher = publisher;
 	}
 
+	public Book(String title2, String book_id2, String author2, String publisher2, String loanDate2,
+			String returnDate2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getTitle() {
 		return title;
 	}
