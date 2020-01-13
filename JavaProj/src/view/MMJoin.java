@@ -21,7 +21,7 @@ import model.Member;
 
 public class MMJoin {
 	MemberManagementService service = new MemberManagementService();
-	
+
 	private JFrame frame;
 	private JTextField id;
 	private JPasswordField pw;
@@ -154,7 +154,6 @@ public class MMJoin {
 				boolean result = service.memberJoin(m);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "회원 가입 성공");
-
 					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(frame, "회원 가입 실패");
@@ -178,7 +177,7 @@ public class MMJoin {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 			}
 		});
 		btnCancel.setBackground(SystemColor.controlHighlight);

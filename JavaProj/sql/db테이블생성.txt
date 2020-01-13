@@ -1,0 +1,2 @@
+SP2-0734: "10* CONSTRAINT member_member_phone_uk unique(member_phone))..."(으)로 시작되는 알 수 없는 명령 - 나머지 행은 무시됩니다.
+커밋 완료.
