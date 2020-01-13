@@ -28,7 +28,7 @@ public class BookDAO {
 				conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
 				/// connection - overloading
 				// String sql = "insert into member values('kkb2','김김김',25,1)" ;
-				String sql = "insert into Book values(?,?,?,?,?,?,?)";
+				String sql = "insert into Book values(?,?,?,?,?,?)";
 				//// 정보를 입력받아서 실행시키는 방법 // 상기 문장 대체 //하단 psmt문 활용
 
 				psmt = conn.prepareStatement(sql); // 지역변수 생성
@@ -38,7 +38,7 @@ public class BookDAO {
 				psmt.setString(3, b.getAuthor());
 				psmt.setString(4, b.getPublisher());
 				psmt.setString(5, b.getLoanDate());
-				psmt.setString(5, b.getReturnDate());
+				psmt.setString(6, b.getReturnDate());
 				
 				
 
