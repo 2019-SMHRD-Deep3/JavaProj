@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 
 import controller.MemberManagementService;
 import model.Member;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MMJoin {
 	MemberManagementService service = new MemberManagementService();
@@ -112,6 +114,13 @@ public class MMJoin {
 		name.setColumns(10);
 
 		pwConfirm = new JPasswordField();
+		pwConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(pw.getText().equals(pwConfirm.getText())) {
+					System.out.println("비밀번호가 다릅니다.");
+				}
+			}
+		});
 		pwConfirm.setBounds(120, 156, 220, 21);
 		panel.add(pwConfirm);
 
