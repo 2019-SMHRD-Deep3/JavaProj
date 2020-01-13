@@ -19,7 +19,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO member VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO member VALUES (?, ?, ?, ?, ?, ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getId());
 			psmt.setString(2, m.getPw());
