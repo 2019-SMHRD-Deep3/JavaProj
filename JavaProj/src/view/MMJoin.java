@@ -145,7 +145,7 @@ public class MMJoin {
 		JLabel lblNewLabel_6 = new JLabel("New label");
 		lblNewLabel_6.setIcon(new ImageIcon("C:\\Users\\SM011\\git\\Java\\JavaProj\\JavaProj\\img\\0004.jpg"));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(0, 0, 1018, 691);
+		lblNewLabel_6.setBounds(0, 0, 1024, 720);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
 

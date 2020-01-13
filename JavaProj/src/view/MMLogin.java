@@ -107,7 +107,7 @@ public class MMLogin {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\SM011\\git\\Java\\JavaProj\\JavaProj\\img\\0004.jpg"));
-		lblNewLabel_3.setBounds(0, 0, 1018, 720);
+		lblNewLabel_3.setBounds(0, 0, 1024, 720);
 		panel_1.add(lblNewLabel_3);
 	}
 }
