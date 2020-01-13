@@ -47,12 +47,8 @@ public class MMLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-<<<<<<< HEAD
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1024, 720);
-=======
-		frame.setBounds(100, 100, 513, 360);
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
