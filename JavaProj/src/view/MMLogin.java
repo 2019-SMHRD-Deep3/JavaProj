@@ -1,21 +1,25 @@
 package view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.JButton;
-import java.awt.Font;
-import javax.swing.ImageIcon;
+
+import controller.MemberManagementService;
 
 public class MMLogin {
-
+	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -95,6 +99,13 @@ public class MMLogin {
 		panel.add(btnNewButton);
 		
 		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				MMJoin join = new MMJoin();
+				
+			}
+		});
 		btnSignUp.setBackground(SystemColor.controlHighlight);
 		btnSignUp.setBounds(184, 154, 97, 23);
 		panel.add(btnSignUp);
