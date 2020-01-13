@@ -103,6 +103,7 @@ public class MMLogin {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				MMJoin join = new MMJoin();
+				
 			}
 		});
 		btnSignUp.setBackground(SystemColor.controlHighlight);
