@@ -118,7 +118,9 @@ public class MMLogin {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBackground(SystemColor.controlHighlight);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\SM011\\git\\Java\\JavaProj\\JavaProj\\img\\0004.jpg"));
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
+		System.out.println(imgPath);
+		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_3.setBounds(0, 0, 1024, 720);
 		panel_1.add(lblNewLabel_3);
 	}
