@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -17,12 +18,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import controller.MemberManagementService;
+import model.Member;
 
 public class MMLogin {
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
-	private JTextField textField;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -76,16 +76,16 @@ public class MMLogin {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(119, 87, 175, 21);
-		textField.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
-		panel.add(textField);
-		textField.setColumns(10);
+		JTextField id = new JTextField();
+		id.setBounds(119, 87, 175, 21);
+		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		panel.add(id);
+		id.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(119, 112, 175, 21);
-		passwordField.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
-		panel.add(passwordField);
+		JPasswordField pw = new JPasswordField();
+		pw.setBounds(119, 112, 175, 21);
+		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		panel.add(pw);
 		
 		JLabel lblNewLabel_2 = new JLabel("Login");
 		lblNewLabel_2.setBounds(50, 30, 244, 29);
@@ -94,6 +94,26 @@ public class MMLogin {
 		panel.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String infoId = id.getText();
+				String infoPw = pw.getText();
+				// Member °´Ã¼»ý¼º
+				Member m = new Member(infoId, infoPw);
+				// ·Î±×ÀÎ
+				Member loginUser = service.memberLogin(m);
+				if(loginUser==null) {
+					JOptionPane.showMessageDialog(frame,
+						    "·Î±×ÀÎ ½ÇÆÐ");
+				}else {
+					JOptionPane.showMessageDialog(frame,
+						    "·Î±×ÀÎ ¼º°ø");
+//					MMMain main = new MMMain(loginUser);
+					frame.dispose();
+				}
+			}
+		});
 		btnNewButton.setBackground(SystemColor.controlHighlight);
 		btnNewButton.setBounds(77, 154, 97, 23);
 		panel.add(btnNewButton);

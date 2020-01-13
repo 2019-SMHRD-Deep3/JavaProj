@@ -1,27 +1,35 @@
 package view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import controller.MemberManagementService;
+import model.Member;
 
 public class MMJoin {
-
+	MemberManagementService service = new MemberManagementService();
+	
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JPasswordField passwordField;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JPasswordField passwordField_1;
+	private JTextField id;
+	private JPasswordField pw;
+	private JPasswordField pwConfirm;
+	private JTextField name;
+	private JTextField socialNumber;
+	private JTextField phone;
+	private JTextField address;
 
 	/**
 	 * Launch the application.
@@ -54,7 +62,7 @@ public class MMJoin {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1024, 720);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -81,57 +89,85 @@ public class MMJoin {
 
 		JLabel lblNewLabel_3 = new JLabel("NAME");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(24, 190, 84, 15);
+		lblNewLabel_3.setBounds(24, 185, 84, 15);
 		panel.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Social Number");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(24, 215, 84, 15);
+		lblNewLabel_4.setBounds(24, 210, 84, 15);
 		panel.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Phone");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(24, 240, 84, 15);
+		lblNewLabel_5.setBounds(24, 262, 84, 15);
 		panel.add(lblNewLabel_5);
 
-		textField = new JTextField();
-		textField.setBounds(120, 100, 116, 21);
-		panel.add(textField);
-		textField.setColumns(10);
+		id = new JTextField();
+		id.setBounds(120, 100, 116, 21);
+		panel.add(id);
+		id.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(120, 187, 220, 21);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		name = new JTextField();
+		name.setBounds(120, 182, 220, 21);
+		panel.add(name);
+		name.setColumns(10);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(120, 156, 220, 21);
-		panel.add(passwordField);
+		pwConfirm = new JPasswordField();
+		pwConfirm.setBounds(120, 156, 220, 21);
+		panel.add(pwConfirm);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(120, 212, 220, 21);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		socialNumber = new JTextField();
+		socialNumber.setBounds(120, 207, 220, 21);
+		panel.add(socialNumber);
+		socialNumber.setColumns(10);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(120, 237, 220, 21);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		phone = new JTextField();
+		phone.setBounds(120, 234, 220, 21);
+		panel.add(phone);
+		phone.setColumns(10);
 
 		JButton btnNewButton = new JButton("ID Check");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				나중에 만들기
+			}
+		});
 		btnNewButton.setBackground(SystemColor.controlHighlight);
 		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 10));
 		btnNewButton.setBounds(250, 99, 90, 23);
 		panel.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Confirm");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String infoId = id.getText();
+				String infoPw = pw.getText();
+				String infoName = name.getText();
+				String infoSocialNumber = socialNumber.getText();
+				String infoAddress = address.getText();
+				String infoPhone = phone.getText();
+
+				Member m = new Member(infoId, infoPw, infoName, infoSocialNumber, infoAddress, infoPhone);
+
+				boolean result = service.memberJoin(m);
+				if (result) {
+					JOptionPane.showMessageDialog(frame, "회원 가입 성공");
+
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(frame, "회원 가입 실패");
+				}
+			}
+		});
 		btnNewButton_1.setBackground(SystemColor.controlHighlight);
 		btnNewButton_1.setBounds(92, 325, 97, 23);
 		panel.add(btnNewButton_1);
 
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(120, 131, 220, 21);
-		panel.add(passwordField_1);
+		pw = new JPasswordField();
+		pw.setBounds(120, 131, 220, 21);
+		panel.add(pw);
 
 		JLabel lblConfirmPw = new JLabel("Confirm PW");
 		lblConfirmPw.setHorizontalAlignment(SwingConstants.CENTER);
@@ -139,9 +175,25 @@ public class MMJoin {
 		panel.add(lblConfirmPw);
 
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		btnCancel.setBackground(SystemColor.controlHighlight);
 		btnCancel.setBounds(211, 325, 97, 23);
 		panel.add(btnCancel);
+
+		JLabel lblNewLabel_7 = new JLabel("Address");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setBounds(24, 235, 84, 15);
+		panel.add(lblNewLabel_7);
+
+		address = new JTextField();
+		address.setBounds(120, 259, 220, 21);
+		panel.add(address);
+		address.setColumns(10);
 
 		JLabel lblNewLabel_6 = new JLabel("New label");
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";

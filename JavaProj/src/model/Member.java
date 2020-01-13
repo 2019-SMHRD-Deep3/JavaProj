@@ -18,6 +18,11 @@ public class Member {
 		this.phone = phone;
 	}
 
+	public Member(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
+
 	public String getId() {
 		return id;
 	}
