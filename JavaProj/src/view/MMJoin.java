@@ -41,6 +41,7 @@ public class MMJoin {
 
 	/**
 	 * Create the application.
+	 * 
 	 */
 	public MMJoin() {
 		initialize();

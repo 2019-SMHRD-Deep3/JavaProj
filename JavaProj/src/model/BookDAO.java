@@ -39,6 +39,7 @@ public class BookDAO {
 				psmt.setString(4, b.getPublisher());
 				psmt.setString(5, b.getLoanDate());
 				psmt.setString(6, b.getReturnDate());
+	
 				
 				
 
