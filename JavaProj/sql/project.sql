@@ -2,7 +2,7 @@
     (member_id varchar2(30) not null,
     member_pw varchar2(20) not null,
     member_name varchar2(20) not null,
-    member_socialNumber NUMBER(7) not null,
+    member_socialNumber VARCHAR(10) not null,
     member_address VARCHAR2(30) not null,
     member_phone varchar2(20) not null,
     CONSTRAINT member_member_id_pk primary key(member_id),
