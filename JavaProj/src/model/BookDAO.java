@@ -34,7 +34,7 @@ public class BookDAO {
 				psmt = conn.prepareStatement(sql); // 지역변수 생성
 
 				psmt.setString(1, b.getTitle());
-				psmt.setString(2, b.getBook_id());
+				psmt.setString(2, b.getIsbn());
 				psmt.setString(3, b.getAuthor());
 				psmt.setString(4, b.getPublisher());
 				psmt.setString(5, b.getLoanDate());
@@ -90,21 +90,21 @@ public class BookDAO {
 				String sql = "SELECT * FROM Book "+ 
 				             "WHERE BOOK_ID = ? TITLE=?";
 			    psmt = conn.prepareStatement(sql);
-			    psmt.setString(1,b.getBook_id());
+			    psmt.setString(1,b.getIsbn());
 			    psmt.setString(2,b.getTitle());
 			    rs = psmt.executeQuery();
 			  
 			    if(rs.next()) {   //다음 줄 유무를 true, false로 전달
 					// 해당 ID와 PW를 가진 사람이 존재     //하단 데이터베이스에 있는 컬럼명
 			    	String title = rs.getString("title");
-			    	String book_id = rs.getString("book_id");
+			    	String isbn = rs.getString("isbn");
 			    	String author = rs.getString("author");
 			    	String publisher = rs.getString("publisher");
 			    	String loanDate = rs.getString("loanDate");
 			    	String returnDate = rs.getString("returnDate");
 			    	 
 			    	
-			        b = new Book (title,book_id,author, publisher);			    	
+			        b = new Book (title,isbn,author, publisher);			    	
 			    	
 				}
 				//// 정보를 입력받아서 실행시키는 방법 // 상기 문장 대체 //하단 psmt문 활용
@@ -165,12 +165,12 @@ public class BookDAO {
 			
 	    	String title2 = rs.getString("title");
 	    	
-	    	String book_id = rs.getString("book_id");
+	    	String isbn = rs.getString("isbn");
 	    	String publisher = rs.getString("publisher");
 	    	String author = rs.getString("author");
 	    	
 	    	
-	         list.add(new Book(title2,book_id,author,publisher));			    	
+	         list.add(new Book(title2,isbn,author,publisher));			    	
 	    	
 		}
 		//// 정보를 입력받아서 실행시키는 방법 // 상기 문장 대체 //하단 psmt문 활용
@@ -206,12 +206,6 @@ public class BookDAO {
 	}return list;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+		
 
 }
