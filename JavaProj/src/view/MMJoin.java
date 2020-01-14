@@ -186,7 +186,7 @@ public class MMJoin {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				System.exit(0);
 			}
 		});
 		btnCancel.setBackground(SystemColor.controlHighlight);
