@@ -8,8 +8,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class B extends JPanel {	// 도서명부
 	private JTextField textField;
@@ -34,17 +32,19 @@ public class B extends JPanel {	// 도서명부
 		button.setBounds(57, 57, 97, 23);
 		add(button);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.addMouseListener(new MouseAdapter() {
-			@Override
-			
-			public void mouseClicked(MouseEvent arg0) {
-			}
-		});
-		
-		
+		String CBmenu_1[]= {"제목","번호","작가","출판사"};
+		// 콤보박스 (메뉴)
+		JComboBox comboBox = new JComboBox(CBmenu_1);
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
+		
+		
+		 
+	
+		
+
+
+
 		
 		textField = new JTextField();
 		textField.setColumns(10);
