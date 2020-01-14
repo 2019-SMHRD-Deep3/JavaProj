@@ -53,14 +53,14 @@ public class MMLogin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1024, 720);
+		frame.setBounds(100, 100, 1280, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
-		panel.setBounds(354, 411, 350, 200);
+		panel.setBounds(472, 609, 350, 200);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -134,18 +134,12 @@ public class MMLogin {
 		lblNewLabel_6.setBounds(77, 140, 95, 49);
 		panel.add(lblNewLabel_6);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 1018, 691);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
-		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBackground(SystemColor.controlHighlight);
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
 		System.out.println(imgPath);
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
-		lblNewLabel_3.setBounds(0, 0, 1280, 720);
-		panel_1.add(lblNewLabel_3);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(0, 0, 1280, 871);
+		frame.getContentPane().add(lblNewLabel_3);
 	}
 }

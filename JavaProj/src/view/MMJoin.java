@@ -20,12 +20,13 @@ import controller.MemberManagementService;
 import model.Member;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.DropMode;
 
 public class MMJoin {
 	MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
 	private JPasswordField pw;
-	private JPasswordField pwConfirm;
 	private JTextField name;
 	private JTextField socialNumber;
 	private JTextField phone;
@@ -64,13 +65,13 @@ public class MMJoin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1024, 720);
+		frame.setBounds(100, 100, 1280, 900);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.control);
-		panel.setBounds(314, 164, 396, 402);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(452, 420, 396, 402);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -82,7 +83,7 @@ public class MMJoin {
 
 		JLabel lblNewLabel_1 = new JLabel("ID");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(24, 103, 84, 15);
+		lblNewLabel_1.setBounds(24, 109, 84, 15);
 		panel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("PW");
@@ -92,48 +93,38 @@ public class MMJoin {
 
 		JLabel lblNewLabel_3 = new JLabel("NAME");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(24, 185, 84, 15);
+		lblNewLabel_3.setBounds(24, 159, 84, 15);
 		panel.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Social Number");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(24, 210, 84, 15);
+		lblNewLabel_4.setBounds(24, 184, 84, 15);
 		panel.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Phone");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(24, 262, 84, 15);
+		lblNewLabel_5.setBounds(24, 234, 84, 15);
 		panel.add(lblNewLabel_5);
 
 		id = new JTextField();
-		id.setBounds(120, 100, 116, 21);
+		id.setBounds(120, 106, 220, 21);
 		panel.add(id);
 		id.setColumns(10);
 
 		name = new JTextField();
-		name.setBounds(120, 182, 220, 21);
+		name.setBounds(120, 156, 220, 21);
 		panel.add(name);
 		name.setColumns(10);
 
-		pwConfirm = new JPasswordField();
-		pwConfirm.setBounds(120, 156, 220, 21);
-		panel.add(pwConfirm);
-
 		socialNumber = new JTextField();
-		socialNumber.setBounds(120, 207, 220, 21);
+		socialNumber.setBounds(120, 181, 220, 21);
 		panel.add(socialNumber);
 		socialNumber.setColumns(10);
 
 		phone = new JTextField();
-		phone.setBounds(120, 259, 220, 21);
+		phone.setBounds(120, 231, 220, 21);
 		panel.add(phone);
 		phone.setColumns(10);
-
-		JButton checkId = new JButton("ID Check");
-		checkId.setBackground(SystemColor.controlHighlight);
-		checkId.setFont(new Font("±¼¸²", Font.PLAIN, 10));
-		checkId.setBounds(250, 99, 90, 23);
-		panel.add(checkId);
 
 		JButton btnNewButton_1 = new JButton("Confirm");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
@@ -165,11 +156,6 @@ public class MMJoin {
 		pw.setBounds(120, 131, 220, 21);
 		panel.add(pw);
 
-		JLabel lblConfirmPw = new JLabel("Confirm PW");
-		lblConfirmPw.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfirmPw.setBounds(24, 159, 84, 15);
-		panel.add(lblConfirmPw);
-
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -183,11 +169,11 @@ public class MMJoin {
 
 		JLabel lblNewLabel_7 = new JLabel("Address");
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setBounds(24, 235, 84, 15);
+		lblNewLabel_7.setBounds(24, 209, 84, 15);
 		panel.add(lblNewLabel_7);
 
 		address = new JTextField();
-		address.setBounds(120, 232, 220, 21);
+		address.setBounds(120, 206, 220, 21);
 		panel.add(address);
 		address.setColumns(10);
 
@@ -196,7 +182,7 @@ public class MMJoin {
 		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(0, 0, 1280, 720);
+		lblNewLabel_6.setBounds(0, 0, 1280, 871);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
 
