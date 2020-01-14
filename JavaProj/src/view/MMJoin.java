@@ -24,29 +24,13 @@ import java.awt.event.ActionEvent;
 public class MMJoin {
 	MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
-	private JTextField id;
 	private JPasswordField pw;
 	private JPasswordField pwConfirm;
 	private JTextField name;
 	private JTextField socialNumber;
 	private JTextField phone;
 	private JTextField address;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MMJoin window = new MMJoin();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JTextField id;
 
 	/**
 	 * Create the application.
@@ -114,13 +98,6 @@ public class MMJoin {
 		name.setColumns(10);
 
 		pwConfirm = new JPasswordField();
-		pwConfirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(pw.getText().equals(pwConfirm.getText())) {
-					System.out.println("비밀번호가 다릅니다.");
-				}
-			}
-		});
 		pwConfirm.setBounds(120, 156, 220, 21);
 		panel.add(pwConfirm);
 
@@ -134,17 +111,11 @@ public class MMJoin {
 		panel.add(phone);
 		phone.setColumns(10);
 
-		JButton btnNewButton = new JButton("ID Check");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-//				나중에 만들기
-			}
-		});
-		btnNewButton.setBackground(SystemColor.controlHighlight);
-		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 10));
-		btnNewButton.setBounds(250, 99, 90, 23);
-		panel.add(btnNewButton);
+		JButton checkId = new JButton("ID Check");
+		checkId.setBackground(SystemColor.controlHighlight);
+		checkId.setFont(new Font("굴림", Font.PLAIN, 10));
+		checkId.setBounds(250, 99, 90, 23);
+		panel.add(checkId);
 
 		JButton btnNewButton_1 = new JButton("Confirm");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
@@ -162,7 +133,6 @@ public class MMJoin {
 				boolean result = service.memberJoin(m);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "회원 가입 성공");
-
 					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(frame, "회원 가입 실패");

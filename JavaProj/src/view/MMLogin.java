@@ -101,7 +101,7 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
 		System.out.println(imgPath);
 		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_4.setBounds(184, 140, 117, 49);
@@ -113,9 +113,7 @@ public class MMLogin {
 			public void mouseClicked(MouseEvent e) {
 				String infoId = id.getText();
 				String infoPw = pw.getText();
-				// Member 객체생성
 				Member m = new Member(infoId, infoPw);
-				// 로그인
 				Member loginUser = service.memberLogin(m);
 				if(loginUser==null) {
 					JOptionPane.showMessageDialog(frame,
@@ -123,14 +121,14 @@ public class MMLogin {
 				}else {
 					JOptionPane.showMessageDialog(frame,
 						    "로그인 성공");
-//					MMMain main = new MMMain(loginUser);
+					MMMain main = new MMMain(loginUser);
 					frame.dispose();
 				}
 				
 			}
 		});
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
 		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setBounds(77, 140, 95, 49);

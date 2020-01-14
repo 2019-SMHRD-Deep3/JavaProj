@@ -61,7 +61,6 @@ public class MemberDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("MEMBER_ID");
 				String pw = rs.getString("MEMBER_PW");
 				String name = rs.getString("MEMBER_NAME");
@@ -90,5 +89,6 @@ public class MemberDAO {
 		}
 		return loginUser;
 	}
+	
 
 }

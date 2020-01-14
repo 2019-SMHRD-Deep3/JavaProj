@@ -1,7 +1,12 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
 import model.Member;
 import model.MemberDAO;
+import view.MMJoin;
 
 public class MemberManagementService {
 	// 데이터 베이스에 직접 접근: DAO
@@ -20,4 +25,6 @@ public class MemberManagementService {
 		Member loginUser = dao.selectOne(m);
 		return loginUser;
 	}
+
+
 }
