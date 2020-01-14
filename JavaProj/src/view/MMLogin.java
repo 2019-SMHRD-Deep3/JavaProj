@@ -101,7 +101,9 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\SM011\\git\\Java\\JavaProj\\JavaProj\\img\\btn002.png"));
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
+		System.out.println(imgPath);
+		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_4.setBounds(184, 140, 117, 49);
 		panel.add(lblNewLabel_4);
 		
@@ -128,13 +130,11 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setIcon(new ImageIcon("C:\\Users\\SM011\\git\\Java\\JavaProj\\JavaProj\\img\\btn001.png"));
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";
+		System.out.println(imgPath);
+		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setBounds(77, 140, 95, 49);
 		panel.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		lblNewLabel_7.setBounds(281, 10, 57, 15);
-		panel.add(lblNewLabel_7);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 0, 1018, 691);
@@ -144,7 +144,7 @@ public class MMLogin {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBackground(SystemColor.controlHighlight);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
 		System.out.println(imgPath);
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_3.setBounds(0, 0, 1024, 720);
