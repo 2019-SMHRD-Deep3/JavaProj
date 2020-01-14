@@ -13,7 +13,7 @@ public class MemberDAO {
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
-	
+
 	public int insert(Member m) {
 		int rows = 0;
 		try {
@@ -47,7 +47,7 @@ public class MemberDAO {
 		}
 		return rows;
 	}
-	
+
 	public Member selectOne(Member m) {
 		Member loginUser = null;
 
@@ -90,5 +90,5 @@ public class MemberDAO {
 		}
 		return loginUser;
 	}
-	
+
 }

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -17,12 +18,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import controller.MemberManagementService;
+import model.Member;
 
 public class MMLogin {
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
-	private JTextField textField;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -76,16 +76,16 @@ public class MMLogin {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(119, 87, 175, 21);
-		textField.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
-		panel.add(textField);
-		textField.setColumns(10);
+		JTextField id = new JTextField();
+		id.setBounds(119, 87, 175, 21);
+		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		panel.add(id);
+		id.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(119, 112, 175, 21);
-		passwordField.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
-		panel.add(passwordField);
+		JPasswordField pw = new JPasswordField();
+		pw.setBounds(119, 112, 175, 21);
+		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		panel.add(pw);
 		
 		JLabel lblNewLabel_2 = new JLabel("Login");
 		lblNewLabel_2.setBounds(50, 30, 244, 29);
@@ -93,22 +93,48 @@ public class MMLogin {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_2);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setBackground(SystemColor.controlHighlight);
-		btnNewButton.setBounds(77, 154, 97, 23);
-		panel.add(btnNewButton);
-		
-		JButton btnSignUp = new JButton("Sign Up");
-		btnSignUp.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				MMJoin join = new MMJoin();
+			}
+		});
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
+		System.out.println(imgPath);
+		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
+		lblNewLabel_4.setBounds(184, 140, 117, 49);
+		panel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String infoId = id.getText();
+				String infoPw = pw.getText();
+				// Member °´Ã¼»ý¼º
+				Member m = new Member(infoId, infoPw);
+				// ·Î±×ÀÎ
+				Member loginUser = service.memberLogin(m);
+				if(loginUser==null) {
+					JOptionPane.showMessageDialog(frame,
+						    "·Î±×ÀÎ ½ÇÆÐ");
+				}else {
+					JOptionPane.showMessageDialog(frame,
+						    "·Î±×ÀÎ ¼º°ø");
+//					MMMain main = new MMMain(loginUser);
+					frame.dispose();
+				}
 				
 			}
 		});
-		btnSignUp.setBackground(SystemColor.controlHighlight);
-		btnSignUp.setBounds(184, 154, 97, 23);
-		panel.add(btnSignUp);
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";
+		System.out.println(imgPath);
+		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
+		lblNewLabel_6.setBounds(77, 140, 95, 49);
+		panel.add(lblNewLabel_6);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 0, 1018, 691);
@@ -118,7 +144,7 @@ public class MMLogin {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBackground(SystemColor.controlHighlight);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
 		System.out.println(imgPath);
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_3.setBounds(0, 0, 1024, 720);

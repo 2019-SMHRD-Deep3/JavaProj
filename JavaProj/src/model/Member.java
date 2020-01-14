@@ -7,7 +7,7 @@ public class Member {
 	private String socialNumber;
 	private String address;
 	private String phone;
-	
+
 	public Member(String id, String pw, String name, String socialNumber, String address, String phone) {
 		super();
 		this.id = id;
@@ -16,6 +16,11 @@ public class Member {
 		this.socialNumber = socialNumber;
 		this.address = address;
 		this.phone = phone;
+	}
+
+	public Member(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
 	}
 
 	public String getId() {
@@ -41,9 +46,5 @@ public class Member {
 	public String getPhone() {
 		return phone;
 	}
-	
-	
-	
-	
-	
+
 }
