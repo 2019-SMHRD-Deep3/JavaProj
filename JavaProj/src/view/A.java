@@ -43,19 +43,6 @@ public class A extends JPanel {	// 회원정보
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
-		
-		JLabel lblNewLabel = new JLabel("\uC774\uBCF4\uB78C");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(36, 32, 57, 15);
-		add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
-		lblNewLabel_1.setBounds(91, 32, 90, 15);
-		add(lblNewLabel_1);
-		
-		JButton btnNewButton_4 = new JButton("\uB85C\uADF8\uC544\uC6C3");
-		btnNewButton_4.setBounds(57, 57, 97, 23);
-		add(btnNewButton_4);
 
 	}
 }
