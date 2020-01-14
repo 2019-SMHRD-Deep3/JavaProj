@@ -64,23 +64,20 @@ public class MMLogin {
 		panel.setBackground(new Color(229, 222, 211));
 		panel.setBounds(469, 536, 350, 200);
 		frame.getContentPane().add(panel);
-		SpringLayout sl_panel = new SpringLayout();
-		panel.setLayout(sl_panel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -104, SpringLayout.SOUTH, panel);
+		lblNewLabel.setBounds(10, 67, 90, 30);
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
 		System.out.println(imgPath);
+		panel.setLayout(null);
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
 		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 4, SpringLayout.SOUTH, lblNewLabel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblNewLabel);
+		lblNewLabel_1.setBounds(10, 100, 90, 30);
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
 		System.out.println(imgPath);
@@ -90,43 +87,24 @@ public class MMLogin {
 		panel.add(lblNewLabel_1);
 		
 		JTextField id = new JTextField();
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, id);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, -12, SpringLayout.WEST, id);
-		sl_panel.putConstraint(SpringLayout.WEST, id, 119, SpringLayout.WEST, panel);
+		id.setBounds(119, 70, 207, 23);
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		panel.add(id);
 		id.setColumns(10);
 		
 		JPasswordField pw = new JPasswordField();
-		sl_panel.putConstraint(SpringLayout.SOUTH, id, -17, SpringLayout.NORTH, pw);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -12, SpringLayout.WEST, pw);
-		sl_panel.putConstraint(SpringLayout.WEST, pw, 119, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, id, 0, SpringLayout.EAST, pw);
-		sl_panel.putConstraint(SpringLayout.EAST, pw, -24, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, pw, 107, SpringLayout.NORTH, panel);
+		pw.setBounds(119, 103, 207, 23);
 		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		panel.add(pw);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
-		sl_panel.putConstraint(SpringLayout.NORTH, id, 12, SpringLayout.SOUTH, lblNewLabel_2);
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 10, SpringLayout.NORTH, panel);
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn011.png";
-		System.out.println(imgPath);
-		lblNewLabel_2.setIcon(new ImageIcon(imgPath));
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, 55, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 350, SpringLayout.WEST, panel);
-		lblNewLabel_2.setFont(UIManager.getFont("CheckBoxMenuItem.font"));
+		JLabel lblNewLabel_2 = new JLabel("Login");
+		lblNewLabel_2.setBounds(0, 10, 350, 45);
+		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		sl_panel.putConstraint(SpringLayout.SOUTH, pw, -10, SpringLayout.NORTH, lblNewLabel_4);
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_4, 140, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 184, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, 189, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_4, 301, SpringLayout.WEST, panel);
+		lblNewLabel_4.setBounds(184, 140, 90, 30);
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -140,11 +118,7 @@ public class MMLogin {
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -6, SpringLayout.NORTH, lblNewLabel_6);
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_6, 140, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_6, 77, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_6, 189, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_6, 172, SpringLayout.WEST, panel);
+		lblNewLabel_6.setBounds(77, 140, 90, 30);
 		lblNewLabel_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
