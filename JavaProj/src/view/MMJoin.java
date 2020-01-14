@@ -196,7 +196,7 @@ public class MMJoin {
 		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(0, 0, 1024, 720);
+		lblNewLabel_6.setBounds(0, 0, 1280, 720);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
 

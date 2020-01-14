@@ -145,7 +145,7 @@ public class MMLogin {
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
 		System.out.println(imgPath);
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
-		lblNewLabel_3.setBounds(0, 0, 1024, 720);
+		lblNewLabel_3.setBounds(0, 0, 1280, 720);
 		panel_1.add(lblNewLabel_3);
 	}
 }
