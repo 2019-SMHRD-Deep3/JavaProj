@@ -93,6 +93,7 @@ public class BookDAO {
 			    psmt = conn.prepareStatement(sql);
 			    psmt.setString(1,b.getBook_id());
 			    psmt.setString(2,b.getTitle());
+			 
 			    rs = psmt.executeQuery();
 			  
 			    if(rs.next()) {   //다음 줄 유무를 true, false로 전달
