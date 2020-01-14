@@ -33,7 +33,25 @@ public class MMJoin {
 	private JTextField id;
 
 	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MMJoin window = new MMJoin();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+
+	/**
 	 * Create the application.
+	 * 
 	 */
 	public MMJoin() {
 		initialize();
