@@ -20,6 +20,8 @@ import controller.MemberManagementService;
 import model.Member;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.DropMode;
 
 public class MMJoin {
 	MemberManagementService service = new MemberManagementService();
@@ -63,13 +65,13 @@ public class MMJoin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1024, 720);
+		frame.setBounds(100, 100, 1280, 900);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.control);
-		panel.setBounds(314, 164, 396, 402);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(452, 420, 396, 402);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -180,7 +182,7 @@ public class MMJoin {
 		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(0, 0, 1280, 720);
+		lblNewLabel_6.setBounds(0, 0, 1280, 871);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
 

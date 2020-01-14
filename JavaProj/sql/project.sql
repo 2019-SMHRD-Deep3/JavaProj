@@ -1,4 +1,6 @@
-    CREATE TABLE member
+drop table member cascade constraints;
+    
+CREATE TABLE member
     (member_id varchar2(30) not null,
     member_pw varchar2(20) not null,
     member_name varchar2(20) not null,
