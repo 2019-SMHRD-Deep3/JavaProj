@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -43,7 +44,7 @@ public class MMMain {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel cardPanel = new JPanel();
-		cardPanel.setBounds(0, 120, 1274, 571);
+		cardPanel.setBounds(0, 120, 1274, 651);
 		frame.getContentPane().add(cardPanel);
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
@@ -111,6 +112,11 @@ public class MMMain {
 		});
 		btnNewButton_3.setBounds(636, 48, 97, 23);
 		frame.getContentPane().add(btnNewButton_3);
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(759, 23, 125, 75);
+		frame.getContentPane().add(label);
 		
 		
 		

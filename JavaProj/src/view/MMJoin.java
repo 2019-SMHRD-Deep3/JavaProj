@@ -70,7 +70,7 @@ public class MMJoin {
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 240));
+		panel.setBackground(new Color(253, 245, 230));
 		panel.setBounds(452, 332, 396, 402);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -185,5 +185,4 @@ public class MMJoin {
 		lblNewLabel_6.setBounds(0, 0, 1280, 871);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
-
 }
