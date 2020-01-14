@@ -130,7 +130,7 @@ public class MMJoin {
 		socialNumber.setColumns(10);
 
 		phone = new JTextField();
-		phone.setBounds(120, 234, 220, 21);
+		phone.setBounds(120, 259, 220, 21);
 		panel.add(phone);
 		phone.setColumns(10);
 
@@ -199,7 +199,7 @@ public class MMJoin {
 		panel.add(lblNewLabel_7);
 
 		address = new JTextField();
-		address.setBounds(120, 259, 220, 21);
+		address.setBounds(120, 232, 220, 21);
 		panel.add(address);
 		address.setColumns(10);
 
