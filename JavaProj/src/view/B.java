@@ -8,6 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class B extends JPanel {	// 도서명부
 	private JTextField textField;
@@ -33,6 +35,14 @@ public class B extends JPanel {	// 도서명부
 		add(button);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+		
+		
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
 		
