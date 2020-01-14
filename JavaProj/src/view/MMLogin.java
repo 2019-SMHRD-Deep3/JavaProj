@@ -20,6 +20,7 @@ import javax.swing.UIManager;
 import controller.MemberManagementService;
 import model.Member;
 import java.awt.Color;
+import javax.swing.SpringLayout;
 
 public class MMLogin {
 	private MemberManagementService service = new MemberManagementService();
@@ -60,41 +61,72 @@ public class MMLogin {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 240));
-		panel.setBounds(473, 535, 350, 200);
+		panel.setBackground(new Color(229, 222, 211));
+		panel.setBounds(469, 536, 350, 200);
 		frame.getContentPane().add(panel);
-		panel.setLayout(null);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
 		
-		JLabel lblNewLabel = new JLabel("ID");
-		lblNewLabel.setBounds(50, 90, 57, 15);
+		JLabel lblNewLabel = new JLabel("");
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -104, SpringLayout.SOUTH, panel);
+		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
+		System.out.println(imgPath);
+		lblNewLabel.setIcon(new ImageIcon(imgPath));
 		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("PW");
-		lblNewLabel_1.setBounds(50, 115, 57, 15);
+		JLabel lblNewLabel_1 = new JLabel("");
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 4, SpringLayout.SOUTH, lblNewLabel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblNewLabel);
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
+		System.out.println(imgPath);
+		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_1);
 		
 		JTextField id = new JTextField();
-		id.setBounds(119, 87, 175, 21);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, id);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, -12, SpringLayout.WEST, id);
+		sl_panel.putConstraint(SpringLayout.WEST, id, 119, SpringLayout.WEST, panel);
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		panel.add(id);
 		id.setColumns(10);
 		
 		JPasswordField pw = new JPasswordField();
-		pw.setBounds(119, 112, 175, 21);
+		sl_panel.putConstraint(SpringLayout.SOUTH, id, -17, SpringLayout.NORTH, pw);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -12, SpringLayout.WEST, pw);
+		sl_panel.putConstraint(SpringLayout.WEST, pw, 119, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, id, 0, SpringLayout.EAST, pw);
+		sl_panel.putConstraint(SpringLayout.EAST, pw, -24, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, pw, 107, SpringLayout.NORTH, panel);
 		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		panel.add(pw);
 		
-		JLabel lblNewLabel_2 = new JLabel("Login");
-		lblNewLabel_2.setBounds(50, 30, 244, 29);
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		sl_panel.putConstraint(SpringLayout.NORTH, id, 12, SpringLayout.SOUTH, lblNewLabel_2);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 10, SpringLayout.NORTH, panel);
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn011.png";
+		System.out.println(imgPath);
+		lblNewLabel_2.setIcon(new ImageIcon(imgPath));
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, 55, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 350, SpringLayout.WEST, panel);
 		lblNewLabel_2.setFont(UIManager.getFont("CheckBoxMenuItem.font"));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
+		sl_panel.putConstraint(SpringLayout.SOUTH, pw, -10, SpringLayout.NORTH, lblNewLabel_4);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_4, 140, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 184, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, 189, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_4, 301, SpringLayout.WEST, panel);
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -102,13 +134,17 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
 		System.out.println(imgPath);
 		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
-		lblNewLabel_4.setBounds(184, 140, 117, 49);
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -6, SpringLayout.NORTH, lblNewLabel_6);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_6, 140, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_6, 77, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_6, 189, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_6, 172, SpringLayout.WEST, panel);
 		lblNewLabel_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -129,10 +165,9 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";
 		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
-		lblNewLabel_6.setBounds(77, 140, 95, 49);
 		panel.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
