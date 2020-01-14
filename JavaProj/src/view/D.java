@@ -50,18 +50,22 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBounds(77, 440, 234, 15);
 		add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setBounds(77, 465, 234, 15);
 		add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setBounds(77, 490, 234, 15);
 		add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("New label");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_7.setBounds(77, 515, 234, 15);
 		add(lblNewLabel_7);
 

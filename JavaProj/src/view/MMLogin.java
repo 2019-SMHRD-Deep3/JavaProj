@@ -19,6 +19,7 @@ import javax.swing.UIManager;
 
 import controller.MemberManagementService;
 import model.Member;
+import java.awt.Color;
 
 public class MMLogin {
 	private MemberManagementService service = new MemberManagementService();
@@ -53,14 +54,14 @@ public class MMLogin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1280, 900);
+		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.menu);
-		panel.setBounds(472, 609, 350, 200);
+		panel.setBackground(new Color(255, 255, 240));
+		panel.setBounds(473, 535, 350, 200);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		

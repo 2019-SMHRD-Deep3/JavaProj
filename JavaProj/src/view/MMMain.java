@@ -11,6 +11,8 @@ import java.awt.CardLayout;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -36,7 +38,7 @@ public class MMMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1280, 720);
+		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
