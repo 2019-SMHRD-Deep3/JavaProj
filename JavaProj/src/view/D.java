@@ -38,7 +38,7 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 				
 			}
 		});
-		comboBox.setBounds(97, 36, 200, 31);
+		comboBox.setBounds(150, 57, 200, 31);
 		add(comboBox);
 		
 		JPanel panel = new JPanel();
