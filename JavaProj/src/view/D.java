@@ -84,8 +84,6 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		bookTitle.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
 		bookTitle.setBounds(600, 150, 200, 31);
-		frame.getContentPane().add(bookTitle);
-		bookTitle.setText(loginUser.getName());
 		add(bookTitle);
 
 		JLabel bookAuthor = new JLabel("");
