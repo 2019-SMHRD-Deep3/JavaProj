@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import controller.MemberManagementService;
 import model.Member;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -39,6 +40,7 @@ public class MMMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +98,7 @@ public class MMMain {
 		});
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon001.png";
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
-		lblNewLabel.setBounds(716, 10, 128, 128);
+		lblNewLabel.setBounds(716, 27, 128, 128);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label_1 = new JLabel("member");
@@ -108,7 +110,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
 		label_1.setIcon(new ImageIcon(imgPath));
-		label_1.setBounds(296, 10, 128, 128);
+		label_1.setBounds(296, 27, 128, 128);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("home");
@@ -120,7 +122,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
 		label_2.setIcon(new ImageIcon(imgPath));
-		label_2.setBounds(157, 10, 128, 128);
+		label_2.setBounds(157, 27, 128, 128);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("book");
@@ -132,7 +134,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
 		label_3.setIcon(new ImageIcon(imgPath));
-		label_3.setBounds(436, 10, 128, 128);
+		label_3.setBounds(436, 27, 128, 128);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("loan");
@@ -144,7 +146,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
 		label_4.setIcon(new ImageIcon(imgPath));
-		label_4.setBounds(576, 10, 128, 128);
+		label_4.setBounds(576, 27, 128, 128);
 		frame.getContentPane().add(label_4);
 		
 		JLabel label = new JLabel("logout");
@@ -157,7 +159,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";
 		label.setIcon(new ImageIcon(imgPath));
-		label.setBounds(1116, 10, 128, 128);
+		label.setBounds(1118, 27, 128, 128);
 		frame.getContentPane().add(label);
 		
 		
