@@ -53,7 +53,7 @@ public class MMMain {
 		DFirst d1Panel = new DFirst();
 		cardPanel.add(d1Panel, "d1");
 		
-		JLabel lblNewLabel = new JLabel("\uC774\uB2EC\uC758 \uCD94\uCC9C\uB3C4\uC11C");
+		JLabel lblNewLabel = new JLabel("\uC774\uB2EC\uC758 \uB9CE\uC774 \uB300\uCD9C\uD55C \uB3C4\uC11C");
 		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 25));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(317, 46, 313, 42);
@@ -78,7 +78,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "a");
 			}
 		});
-		btnNewButton.setBounds(255, 47, 97, 23);
+		btnNewButton.setBounds(335, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uB3C4\uC11C");
@@ -88,7 +88,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "b");
 			}
 		});
-		btnNewButton_1.setBounds(364, 47, 97, 23);
+		btnNewButton_1.setBounds(444, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("\uC5F0\uCCB4 \uB300\uCD9C");
@@ -98,7 +98,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "c");
 			}
 		});
-		btnNewButton_2.setBounds(473, 47, 97, 23);
+		btnNewButton_2.setBounds(553, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("\uD1B5\uACC4");
@@ -108,7 +108,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "d");
 			}
 		});
-		btnNewButton_3.setBounds(582, 47, 97, 23);
+		btnNewButton_3.setBounds(662, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_3);
 		
 		JButton button = new JButton("\uBA54\uC778");
@@ -118,13 +118,28 @@ public class MMMain {
 				cardLayout.show(cardPanel, "d1");
 			}
 		});
-		button.setBounds(146, 47, 97, 23);
+		button.setBounds(226, 47, 97, 23);
 		frame.getContentPane().add(button);
 		
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(759, 23, 125, 75);
 		frame.getContentPane().add(label);
+		
+		JLabel lblNewLabel_1 = new JLabel("ooo");
+		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(896, 51, 57, 15);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
+		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(965, 51, 170, 15);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JButton button_1 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		button_1.setBounds(1147, 47, 97, 23);
+		frame.getContentPane().add(button_1);
 		
 		
 		
