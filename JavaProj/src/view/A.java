@@ -36,7 +36,7 @@ public class A extends JPanel { // 회원정보
 	 * @param loginUser
 	 */
 	public A(Member loginUser) {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.WHITE);
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
