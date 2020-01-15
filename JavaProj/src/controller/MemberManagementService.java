@@ -1,15 +1,17 @@
 package controller;
 
+
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
 
 import javax.swing.JOptionPane;
 
 import model.Book;
 import model.BookDAO;
+
 import model.Member;
 import model.MemberDAO;
-import view.MMJoin;
 
 public class MemberManagementService {
 	// 데이터 베이스에 직접 접근: DAO
@@ -28,6 +30,11 @@ public class MemberManagementService {
 	public Member memberLogin(Member m) {
 		Member loginUser = dao.selectOne(m);
 		return loginUser;
+	}
+	
+    public ArrayList<Member> memberLookup(String id) {
+		
+		return dao.selectAll(id);
 	}
 	
 
