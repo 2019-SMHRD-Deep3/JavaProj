@@ -34,7 +34,7 @@ public class A extends JPanel {	// 회원정보
 		setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 100, 1028, 490);
+		scrollPane.setBounds(200, 100, 1014, 490);
 		add(scrollPane);
 		
 		scrollPane_1 = new JScrollPane();
@@ -54,7 +54,6 @@ public class A extends JPanel {	// 회원정보
 
 		table = new JTable(data, columnNames);
 		scrollPane.setViewportView(table);
-	
 		
 		
 		String[] combo = {"이름", "주소", "전화번호"};
