@@ -92,7 +92,7 @@ public class MemberDAO {
 	}
 		
 	
-	private static void update(Member loginUser) { // 수정
+	public void updateMember(Member loginUser) {  // 수정
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
 		String password = "hr";
@@ -358,6 +358,10 @@ public class MemberDAO {
 
 			return list;
 		}
+
+
+
+
 
 
 

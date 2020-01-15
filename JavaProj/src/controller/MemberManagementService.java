@@ -16,7 +16,7 @@ public class MemberManagementService {
 	private MemberDAO dao = new MemberDAO();
 	private BookDAO bdao = new BookDAO();
 
-	public boolean memberJoin(Member m) {
+	public boolean memberJoin(Member m) { //회원가입
 		int row = dao.insert(m);
 		if (row == 0) {
 			return false;
@@ -25,27 +25,31 @@ public class MemberManagementService {
 		}
 	}
 
-	public Member memberLogin(Member m) {
+	public Member memberLogin(Member m) { //로그인
 		Member loginUser = dao.selectOne(m);
 		return loginUser;
 	}
 
-	public ArrayList<Member> memberLookup(String id) {
+	public ArrayList<Member> memberLookup(String id) { //회원 정보 확인
 
 		return dao.selectAll(id);
 	}
 	
-	public ArrayList<Member> findName(String name) {
+	public ArrayList<Member> findName(String name) { //회원 이름 검색
 
 		return dao.selectName(name);
 	}
-	public ArrayList<Member> findAddress(String address) {
+	public ArrayList<Member> findAddress(String address) { //회원 주소 검색
 		
 		return dao.selectAddress(address);
 	}
-	public ArrayList<Member> findPhone(String phone) {
+	public ArrayList<Member> findPhone(String phone) { //회원 전화번호 검색
 		
 		return dao.selectName(phone);
+	}
+	public void editMember(Member loginUser) { //회원  정보 수정
+		
+		 dao.updateMember(loginUser);
 	}
 
 	public ArrayList<Book> bookLookup() {

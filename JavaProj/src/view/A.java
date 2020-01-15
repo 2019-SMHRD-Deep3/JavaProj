@@ -99,9 +99,9 @@ public class A extends JPanel { // 회원정보
 					scrollPane.setViewportView(table);
 
 				} else if (j == 3) {
-					ArrayList<Member> list1 = service.findPhone(textField.getText());
+					ArrayList<Member> list = service.findPhone(textField.getText());
 
-					Object[][] data1 = new Object[list.size()][6];
+					Object[][] data = new Object[list.size()][6];
 
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
