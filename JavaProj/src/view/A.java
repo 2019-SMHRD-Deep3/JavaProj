@@ -1,17 +1,30 @@
 package view;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JScrollPane;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import controller.MemberManagementService;
+import model.Member;
 
 public class A extends JPanel {	// 회원정보
 	private JTextField textField;
-
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
+	private JTable table;
+	private MemberManagementService service = new MemberManagementService();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -19,11 +32,38 @@ public class A extends JPanel {	// 회원정보
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(200, 100, 1028, 490);
 		add(scrollPane);
 		
-		JComboBox comboBox = new JComboBox();
+		scrollPane_1 = new JScrollPane();
+		scrollPane.setViewportView(scrollPane_1);
+		
+		String[] columnNames = { "아이디", "이름", "주민등록번호","주소","전화번호","비밀번호" };
+
+//		ArrayList<Member> list = service.memberLookup(loginUser.getId());
+//
+//		Object[][] data = new Object[list.size()][6];
+//
+//		for (int i = 0; i < list.size(); i++) {
+//			Member m = list.get(i);
+//			data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
+//					                 m.getAddress(), m.getPhone(),};
+//		}
+//
+//		table = new JTable(data, columnNames);
+//		scrollPane.setViewportView(table);
+	
+		
+		
+		String[] combo = {"이름", "주소", "전화번호"};
+		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
+	      JComboBox comboBox = new JComboBox(comboModel);
+		
+		comboBox.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
 		
@@ -44,10 +84,10 @@ public class A extends JPanel {	// 회원정보
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
 		
-		JLabel lblNewLabel = new JLabel("\uC774\uBCF4\uB78C");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(36, 32, 57, 15);
-		add(lblNewLabel);
+		JLabel name = new JLabel("");
+		name.setHorizontalAlignment(SwingConstants.CENTER);
+		name.setBounds(36, 32, 57, 15);
+		add(name);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
 		lblNewLabel_1.setBounds(91, 32, 90, 15);

@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -25,6 +26,10 @@ public class MemberManagementService {
 		Member loginUser = dao.selectOne(m);
 		return loginUser;
 	}
-
+	
+    public ArrayList<Member> memberLookup(String id) {
+		
+		return dao.selectAll(id);
+	}
 
 }
