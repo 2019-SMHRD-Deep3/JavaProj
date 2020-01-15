@@ -61,7 +61,7 @@ public class MMMain {
 		JPanel panel_3 = new JPanel();
 		cardPanel.add(panel_3, "d");
 		
-		A aPanel = new A();
+		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
 		
 		B bPanel = new B();

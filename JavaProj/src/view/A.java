@@ -27,8 +27,9 @@ public class A extends JPanel {	// 회원정보
 	
 	/**
 	 * Create the panel.
+	 * @param loginUser 
 	 */
-	public A() {
+	public A(Member loginUser) {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -41,18 +42,18 @@ public class A extends JPanel {	// 회원정보
 		
 		String[] columnNames = { "아이디", "이름", "주민등록번호","주소","전화번호","비밀번호" };
 
-//		ArrayList<Member> list = service.memberLookup(loginUser.getId());
-//
-//		Object[][] data = new Object[list.size()][6];
-//
-//		for (int i = 0; i < list.size(); i++) {
-//			Member m = list.get(i);
-//			data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
-//					                 m.getAddress(), m.getPhone(),};
-//		}
-//
-//		table = new JTable(data, columnNames);
-//		scrollPane.setViewportView(table);
+		ArrayList<Member> list = service.memberLookup(loginUser.getId());
+
+		Object[][] data = new Object[list.size()][6];
+
+		for (int i = 0; i < list.size(); i++) {
+			Member m = list.get(i);
+			data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
+					                 m.getAddress(), m.getPhone(),};
+		}
+
+		table = new JTable(data, columnNames);
+		scrollPane.setViewportView(table);
 	
 		
 		
