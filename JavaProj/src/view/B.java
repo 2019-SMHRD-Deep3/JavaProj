@@ -34,13 +34,14 @@ public class B extends JPanel {	// 도서명부
 		button.setBounds(57, 57, 97, 23);
 		add(button);
 		
-		String CBmenu_1[]= {"제목","번호","작가","출판사"};
+		String CBmenu_1[]= {"제목","ISBN","작가","출판사"};
 		// 콤보박스 (메뉴)
 		JComboBox comboBox = new JComboBox(CBmenu_1);
 
 
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
+		
 		
 		
 		 
