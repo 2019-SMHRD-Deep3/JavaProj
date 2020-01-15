@@ -35,10 +35,7 @@ public class A extends JPanel {	// 회원정보
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(200, 100, 1014, 490);
-		add(scrollPane);
-		
-		scrollPane_1 = new JScrollPane();
-		scrollPane.setViewportView(scrollPane_1);
+		add(scrollPane);		
 		
 		String[] columnNames = { "아이디", "이름", "주민등록번호","주소","전화번호","비밀번호" };
 
@@ -49,7 +46,7 @@ public class A extends JPanel {	// 회원정보
 		for (int i = 0; i < list.size(); i++) {
 			Member m = list.get(i);
 			data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
-					                 m.getAddress(), m.getPhone(),};
+					                 m.getAddress(), m.getPhone(),m.getPw()};
 		}
 
 		table = new JTable(data, columnNames);
