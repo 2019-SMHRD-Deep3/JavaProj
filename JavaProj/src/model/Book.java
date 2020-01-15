@@ -8,6 +8,7 @@ public class Book {
 	private String loanDate; // 대출날짜
 	private String returnDate; // 반납날짜
 	private String isOverdue; // 연체여부
+	private String Genre; // 장르
 
 	public Book(String title, String isbn, String author, String publisher) {
 		super();

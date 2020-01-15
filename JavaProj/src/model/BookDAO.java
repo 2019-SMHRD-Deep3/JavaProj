@@ -72,7 +72,7 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "SELECT * FROM Book " + "WHERE ISBM = ? TITLE=?";
+			String sql = "SELECT * FROM Book " + "WHERE ISBN = ? TITLE=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
@@ -365,6 +365,59 @@ public class BookDAO {
 			}
 
 		}
+	}
+	public ArrayList<Book> selectMain() {
+
+		ArrayList<Book> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT * FROM BOOK "; // where 조건으로 rank 계산필요?
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				String title = rs.getString("book_title");
+				String author = rs.getString("book_author");
+				String publisher = rs.getString("book_publisher");
+				String genre = rs.getString("book_genre");
+
+				list.add(new Book(title, author, publisher, genre));
+			}
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+
+			} catch (SQLException e1) {
+
+				e1.printStackTrace();
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return list;
+
 	}
 
 }

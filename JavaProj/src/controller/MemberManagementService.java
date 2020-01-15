@@ -56,5 +56,10 @@ public class MemberManagementService {
 
 		return bdao.selectSome();
 	}
+	public ArrayList<Book> mainLookup() {
+
+		return bdao.selectMain();
+	}
+	
 
 }
