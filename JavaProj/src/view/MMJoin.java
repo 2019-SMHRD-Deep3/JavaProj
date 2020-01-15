@@ -86,7 +86,6 @@ public class MMJoin {
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel_1.setBounds(24, 106, 84, 27);
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
-		System.out.println(imgPath);
 		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_1);
@@ -95,7 +94,6 @@ public class MMJoin {
 		lblNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel_2.setBounds(24, 131, 84, 27);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
-		System.out.println(imgPath);
 		lblNewLabel_2.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_2);
@@ -104,7 +102,6 @@ public class MMJoin {
 		lblNewLabel_3.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel_3.setBounds(24, 156, 84, 27);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn008.png";
-		System.out.println(imgPath);
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_3);
@@ -112,7 +109,6 @@ public class MMJoin {
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(24, 180, 84, 27);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn006.png";
-		System.out.println(imgPath);
 		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_4);
@@ -121,7 +117,6 @@ public class MMJoin {
 		lblNewLabel_5.setBounds(24, 231, 84, 28);
 		lblNewLabel_5.setVerticalAlignment(SwingConstants.TOP);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn005.png";
-		System.out.println(imgPath);
 		lblNewLabel_5.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_5);
@@ -153,7 +148,6 @@ public class MMJoin {
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(24, 206, 84, 28);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn007.png";
-		System.out.println(imgPath);
 		lblNewLabel_7.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_7);
@@ -189,7 +183,6 @@ public class MMJoin {
 		lblNewLabel_8.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn009.png";
-		System.out.println(imgPath);
 		lblNewLabel_8.setIcon(new ImageIcon(imgPath));
 		panel.add(lblNewLabel_8);
 		
@@ -203,14 +196,12 @@ public class MMJoin {
 		label.setBounds(220, 300, 90, 30);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn010.png";
-		System.out.println(imgPath);
 		label.setIcon(new ImageIcon(imgPath));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(label);
 
 		JLabel lblNewLabel_6 = new JLabel("New label");
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
-		System.out.println(imgPath);
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setBounds(0, 0, 1280, 871);
