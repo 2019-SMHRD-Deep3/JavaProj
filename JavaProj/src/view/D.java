@@ -47,3 +47,4 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 
 	}
 }
+	
