@@ -53,7 +53,7 @@ public class C extends JPanel {	// 연체관리
 		for (int i = 0; i < list.size(); i++) {
 			Book b = list.get(i);
 			data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
-					b.getIsOverdue() }; // 1차원 배열을 만들고 실제 들어갈 데이터 나열
+					b.getIsOverdue() }; 
 		}
 		table = new JTable(data, columnNames);
 		scrollPane.setViewportView(table);
