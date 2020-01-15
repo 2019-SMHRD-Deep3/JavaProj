@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 
 import controller.MemberManagementService;
 import model.Member;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class A extends JPanel {	// 회원정보
 	private JTextField textField;
@@ -53,14 +55,10 @@ public class A extends JPanel {	// 회원정보
 		scrollPane.setViewportView(table);
 		
 		
-		String[] combo = {"이름", "주소", "전화번호"};
+		String[] combo = {"  ","이름", "주소", "전화번호"};
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 	      JComboBox comboBox = new JComboBox(comboModel);
 		
-		comboBox.addActionListener(new ActionListener() {			
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
 		
@@ -70,6 +68,12 @@ public class A extends JPanel {	// 회원정보
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				comboBox.getSelectedIndex();
+			}
+		});
 		btnNewButton.setBounds(709, 38, 136, 29);
 		add(btnNewButton);
 		
