@@ -8,6 +8,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MemberUpdate {
 
@@ -105,6 +107,12 @@ public class MemberUpdate {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton button = new JButton("\uCDE8\uC18C");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+			}
+		});
 		button.setBounds(245, 216, 97, 23);
 		frame.getContentPane().add(button);
 	}
