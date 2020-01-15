@@ -20,7 +20,7 @@ import controller.MemberManagementService;
 import model.Book;
 import model.Member;
 
-public class D extends JPanel { // 이달의 추천도서 혹은 통계
+public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 	private MemberManagementService service = new MemberManagementService();
 	private Member loginUser;
 	private JPanel panel;
@@ -42,9 +42,13 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 
 			}
 		});
-		comboBox.setBounds(150, 57, 200, 31);
+		comboBox.setBounds(12, 10, 200, 31);
 		add(comboBox);
-			
+
+		
+		
+		
 	}
 }
-	
+
+
