@@ -49,20 +49,38 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 		
-		DFirst d1Panel = new DFirst();
-		cardPanel.add(d1Panel, "d1");
+		if (loginUser.getId().equals("admin")) {
+			DFirst d1Panel = new DFirst();
+			cardPanel.add(d1Panel, "d1");
+			
+			A aPanel = new A(loginUser);
+			cardPanel.add(aPanel, "a");
+			
+			B bPanel = new B();
+			cardPanel.add(bPanel, "b");
+			
+			C cPanel = new C();
+			cardPanel.add(cPanel, "c");
+			
+			D dPanel = new D();
+			cardPanel.add(dPanel, "d");
+		} else {
+			AU auPanel = new AU(loginUser);
+			cardPanel.add(auPanel, "a");
+			
+			BU buPanel = new BU();
+			cardPanel.add(buPanel, "b");
+			
+			CU cuPanel = new CU();
+			cardPanel.add(cuPanel, "c");
+			
+			D dPanel = new D();
+			cardPanel.add(dPanel, "d");
+		}
 		
-		A aPanel = new A(loginUser);
-		cardPanel.add(aPanel, "a");
 		
-		B bPanel = new B();
-		cardPanel.add(bPanel, "b");
 		
-		C cPanel = new C();
-		cardPanel.add(cPanel, "c");
 		
-		D dPanel = new D();
-		cardPanel.add(dPanel, "d");
 		
 		JButton btnNewButton = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
 		btnNewButton.addMouseListener(new MouseAdapter() {
