@@ -3,10 +3,13 @@ package view;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 
@@ -17,7 +20,14 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+		String[] combo = {"2020년 1월", "2020년 2월", "2020년 3월"};
+		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
+	    JComboBox comboBox = new JComboBox(comboModel);
+		comboBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		comboBox.setBounds(323, 10, 200, 31);
 		add(comboBox);
 		
