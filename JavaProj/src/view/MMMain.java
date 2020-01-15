@@ -49,7 +49,7 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 		
-		if (loginUser.getId().equals("admin")) {
+//		if (loginUser.getId().equals("admin")) {
 			DFirst d1Panel = new DFirst();
 			cardPanel.add(d1Panel, "d1");
 			
@@ -64,19 +64,17 @@ public class MMMain {
 			
 			D dPanel = new D();
 			cardPanel.add(dPanel, "d");
-		} else {
+//		} else {
 			AU auPanel = new AU(loginUser);
-			cardPanel.add(auPanel, "a");
+			cardPanel.add(auPanel, "au");
 			
 			BU buPanel = new BU();
-			cardPanel.add(buPanel, "b");
+			cardPanel.add(buPanel, "bu");
 			
 			CU cuPanel = new CU();
-			cardPanel.add(cuPanel, "c");
+			cardPanel.add(cuPanel, "cu");
 			
-			D dPanel = new D();
-			cardPanel.add(dPanel, "d");
-		}
+//		}
 		
 		
 		
