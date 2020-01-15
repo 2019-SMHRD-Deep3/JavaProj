@@ -30,7 +30,7 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 	 * Create the panel.
 	 */
 	public D() {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.WHITE);
 		setLayout(null);
 
 		String[] combo = { "(선택할 연도 및 월)", "2020년 1월", "2020년 2월" };
