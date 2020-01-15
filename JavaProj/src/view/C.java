@@ -34,7 +34,7 @@ public class C extends JPanel { // 楷眉包府
 	 * Create the panel.
 	 */
 	public C() {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.WHITE);
 		setLayout(null);
 
 		String[] combo = { "力格", "ID" };
