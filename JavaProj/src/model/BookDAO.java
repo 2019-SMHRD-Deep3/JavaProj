@@ -208,6 +208,61 @@ public class BookDAO {
 	}return list;
 		
 	}
+	public ArrayList<Book> selectSome() {
+		
+		ArrayList<Book> list = new ArrayList<>();
+
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver"); /// try - 예외색출 //catch - 예외처리
+		/// surround with try/catch//java에서 예외처리-문법외의 에러, 실행중에 발행하는 에러
+
+		conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
+		/// connection - overloading
+		// String sql = "insert into book values(?,?,?,?,?,?)" ;
+		String sql = "SELECT * FROM BOOK ";
+	    psmt = conn.prepareStatement(sql);
+	    
+	    rs = psmt.executeQuery();
+	  
+	    while(rs.next()) { 
+			
+	    	String title2 = rs.getString("title");
+	    	String author = rs.getString("author");
+	    	String loanDate = rs.getString("loanDate");
+	    	String returnDate = rs.getString("returnDate");
+	    	Boolean isOverdue = rs.getBoolean("isOverdue");
+	    	
+	         list.add(new Book(title2,author,loanDate,returnDate,isOverdue));			    	
+		}
+
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} // 클래스 객체를 생성해서 메모리에 올려주는 역할
+	catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		/// 접속 out은 접속 in의 역순으로
+		try {
+			if(rs != null) rs.close();
+			if (psmt != null) psmt.close();
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			if (conn != null) conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // error에러 --> 처리 ; surround with try/catch
+
+
+	}return list;
+		
+	}
 	private static void update(String title,String isbn, String author, String publisher, String loanDate, String returnDate) {  //매개변수들을 하나의 객체(class)로 간주하고 처리하는 방법은 exam05 참조
 		// JDBC 활용순서
 		// 1. 사용할 데이터베이스 회사의 jar파일을 프로젝트에 import (process 별첨)
