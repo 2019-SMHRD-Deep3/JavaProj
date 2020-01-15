@@ -74,6 +74,9 @@ public class MMMain {
 			CU cuPanel = new CU();
 			cardPanel.add(cuPanel, "cu");
 			
+//			D dPanel = new D();
+//			cardPanel.add(dPanel, "d");
+			
 //		}
 		
 		
