@@ -20,6 +20,7 @@ public class B extends JPanel {	// 도서명부
 		setLayout(null);
 		
 		
+		
 
 		JLabel label = new JLabel("\uC774\uBCF4\uB78C");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
