@@ -13,7 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MemberUpdate {
-
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;

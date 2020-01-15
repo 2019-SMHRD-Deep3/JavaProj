@@ -8,14 +8,14 @@ public class Member {
 	private String address;
 	private String phone;
 
-	public Member(String id, String pw, String name, String socialNumber, String address, String phone) {
+	public Member(String id, String name, String socialNumber, String address, String phone, String pw) {
 		super();
 		this.id = id;
-		this.pw = pw;
-		this.name = name;
+		this.name = name;		
 		this.socialNumber = socialNumber;
 		this.address = address;
 		this.phone = phone;
+		this.pw = pw;
 	}
 
 	public Member(String id, String pw) {

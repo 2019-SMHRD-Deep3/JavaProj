@@ -102,17 +102,14 @@ public class MemberDAO {
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "UPDATE member SET user_id = ?, user_pw = ?"
-			           + "user_name = ?, user_socialNumber = ?"
-			           + "user_address = ?, user_phone"
+			String sql = "UPDATE member SET user_name = ?, user_pw = ?"			          
+			           +"user_address = ?, user_phone"
 			           +" WHERE user_id = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, loginUser.getId());
-			psmt.setString(2, loginUser.getPw());
-			psmt.setString(3, loginUser.getName());
-			psmt.setString(4, loginUser.getSocialNumber());
-			psmt.setString(5, loginUser.getAddress());
-			psmt.setString(6, loginUser.getPhone());
+			psmt = conn.prepareStatement(sql);			
+			psmt.setString(1, loginUser.getName());
+			psmt.setString(2, loginUser.getPw());			
+			psmt.setString(3, loginUser.getAddress());
+			psmt.setString(4, loginUser.getPhone());
 			int rows = psmt.executeUpdate();
 			if (rows == 0) {
 				System.out.println("SQL문을 확인하세요.");
