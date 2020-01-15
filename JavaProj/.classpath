@@ -5,6 +5,6 @@
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/SM013/Desktop/xchart-3.6.1/xchart-3.6.1/xchart-3.6.1.jar"/>
+	<classpathentry kind="lib" path="jarFalder/xchart-3.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
