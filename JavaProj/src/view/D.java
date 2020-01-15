@@ -45,81 +45,99 @@ public class D extends JPanel { // ¿Ã¥ﬁ¿« √ﬂ√µµµº≠ »§¿∫ ≈Î∞Ë
 		comboBox.setBounds(150, 57, 200, 31);
 		add(comboBox);
 
-		JPanel panel = new JPanel();
-		panel.setBounds(150, 125, 300, 400);
-		add(panel);
+	public ChartPanel(double[] v, String[] n, String t) { 
+			names = n; 
+			values = v; 
+			title = t; 
+			}
 
-
-		JLabel lblNewLabel = new JLabel("\uB3C4\uC11C\uBA85");
-		lblNewLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(500, 150, 100, 31);
-		add(lblNewLabel);
-
-		JLabel label = new JLabel("\uC800  \uC790");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label.setBounds(500, 200, 100, 31);
-		add(label);
-
-		JLabel label_1 = new JLabel("\uCD9C\uD310\uC0AC");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_1.setBounds(500, 250, 100, 31);
-		add(label_1);
-
-		JLabel label_2 = new JLabel("\uC7A5  \uB974");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_2.setBounds(500, 300, 100, 31);
-		add(label_2);
-
-		JLabel label_3 = new JLabel("ISBN");
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_3.setBounds(500, 350, 100, 31);
-		add(label_3);
-
-		JLabel bookTitle = new JLabel("");
-		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		bookTitle.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookTitle.setBounds(600, 150, 200, 31);
-		add(bookTitle);
-
-		JLabel bookAuthor = new JLabel("");
-		bookAuthor.setHorizontalAlignment(SwingConstants.CENTER);
-		bookAuthor.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookAuthor.setBounds(600, 200, 200, 31);
-		add(bookAuthor);
-
-		JLabel bookPublisher = new JLabel("");
-		bookPublisher.setHorizontalAlignment(SwingConstants.CENTER);
-		bookPublisher.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookPublisher.setBounds(600, 250, 200, 31);
-		add(bookPublisher);
-
-		JLabel bookGenre = new JLabel("");
-		bookGenre.setHorizontalAlignment(SwingConstants.CENTER);
-		bookGenre.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookGenre.setBounds(600, 300, 200, 31);
-		add(bookGenre);
-
-		JLabel bookIsbn = new JLabel("");
-		bookIsbn.setHorizontalAlignment(SwingConstants.CENTER);
-		bookIsbn.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookIsbn.setBounds(600, 350, 200, 31);
-		add(bookIsbn);
-
-		String[] columnNames = { "√•¿Ã∏ß", "¿˙¿⁄", "√‚∆«ªÁ", "ISBN" };
-
-		ArrayList<Book> list = service.bookLookup();
-
-		Object[][] data = new Object[list.size()][3];
-
-		for (int i = 0; i < list.size(); i++) {
-			Book b = list.get(i);
-			data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getPublisher(), b.getIsbn() };
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if (values == null || values.length == 0)
+			return;
+		double minValue = 0;
+		double maxValue = 0;
+		for (int i = 0; i < values.length; i++) {
+			if (minValue > values[i])
+				minValue = values[i];
+			if (maxValue < values[i])
+				maxValue = values[i];
 		}
 
+		Dimension d = getSize();
+		int clientWidth = d.width;
+		int clientHeight = d.height;
+		int barWidth = clientWidth / values.length;
+
+		Font titleFont = new Font("SansSerif", Font.BOLD, 20);
+		FontMetrics titleFontMetrics = g.getFontMetrics(titleFont);
+		Font labelFont = new Font("SansSerif", Font.PLAIN, 10);
+		FontMetrics labelFontMetrics = g.getFontMetrics(labelFont);
+
+		int titleWidth = titleFontMetrics.stringWidth(title);
+		int y = titleFontMetrics.getAscent();
+		int x = (clientWidth - titleWidth) / 2;
+		g.setFont(titleFont);
+		g.drawString(title, x, y);
+
+		int top = titleFontMetrics.getHeight();
+		int bottom = labelFontMetrics.getHeight();
+		if (maxValue == minValue)
+			return;
+		double scale = (clientHeight - top - bottom) / (maxValue - minValue);
+		y = clientHeight - labelFontMetrics.getDescent();
+		g.setFont(labelFont);
+
+		for (int i = 0; i < values.length; i++) {
+			int valueX = i * barWidth + 1;
+			int valueY = top;
+			int height = (int) (values[i] * scale);
+			if (values[i] >= 0)
+				valueY += (int) ((maxValue - values[i]) * scale);
+			else {
+				valueY += (int) (maxValue * scale);
+				height = -height;
+			}
+
+			g.setColor(Color.red);
+			g.fillRect(valueX, valueY, barWidth - 80, height);
+			g.setColor(Color.black);
+			g.drawRect(valueX, valueY, barWidth - 80, height);
+
+			g.setColor(Color.blue);
+			g.fillRect(valueX, valueY + 20, barWidth - 80, height - 20);
+			g.setColor(Color.black);
+			g.drawRect(valueX, valueY + 20, barWidth - 80, height - 20);
+			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			x = i * barWidth + (barWidth - labelWidth) / 2;
+			g.drawString(names[i], x, y);
+		}
+	}
+
+	public static void main(String[] argv) {
+		JFrame f = new JFrame();
+		f.setSize(400, 300);
+		double[] values = new double[3];
+		String[] names = new String[3];
+		values[0] = 1;
+		names[0] = "Item 1";
+
+		values[1] = 2;
+		names[1] = "Item 2";
+
+		values[2] = 4;
+		names[2] = "Item 3";
+
+		f.getContentPane().add(new ChartPanel(values, names, "title"));
+
+		WindowListener wndCloser = new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		};
+		f.addWindowListener(wndCloser);
+		f.setVisible(true);
 	}
 }
+
+}}
