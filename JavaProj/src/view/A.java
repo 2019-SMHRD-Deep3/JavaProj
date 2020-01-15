@@ -55,9 +55,9 @@ public class A extends JPanel { // 회원정보
 					m.getPw() };
 		}
 
-		defaultTableModel.setDataVector(data, columnNames);
-		table = new JTable(defaultTableModel);
-		scrollPane.setViewportView(table);
+		defaultTableModel.setDataVector(data, columnNames); // 데이터를 가져오는 모델을 만듦.
+		table = new JTable(defaultTableModel); //데이터를 가진 변수 생성.
+		scrollPane.setViewportView(table);  // 화면에 데이터 보여줌
 		
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
