@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -16,11 +17,11 @@ import javax.swing.SwingConstants;
 import controller.MemberManagementService;
 import model.Book;
 import model.Member;
+import java.awt.Font;
 
 public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 	private MemberManagementService service = new MemberManagementService();
 	private Member loginUser;
-	private JTable table;
 	/**
 	 * Create the panel.
 	 */
@@ -28,7 +29,7 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
-		String[] combo = {"2020년 1월", "2020년 2월", "2020년 3월"};
+		String[] combo = {"(선택할 연도 및 월)", "2020년 1월", "2020년 2월"};
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 	    JComboBox comboBox = new JComboBox(comboModel);
 		comboBox.addMouseListener(new MouseAdapter() {
@@ -37,12 +38,74 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 				
 			}
 		});
-		comboBox.setBounds(323, 10, 200, 31);
+		comboBox.setBounds(97, 36, 200, 31);
 		add(comboBox);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(323, 51, 905, 539);
-		add(scrollPane);
+		JPanel panel = new JPanel();
+		panel.setBounds(97, 134, 342, 365);
+		add(panel);
+		
+		JLabel lblNewLabel = new JLabel("\uB3C4\uC11C\uBA85");
+		lblNewLabel.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(451, 170, 100, 31);
+		add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uC800  \uC790");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		label.setBounds(451, 211, 100, 31);
+		add(label);
+		
+		JLabel label_1 = new JLabel("\uCD9C\uD310\uC0AC");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		label_1.setBounds(451, 252, 100, 31);
+		add(label_1);
+		
+		JLabel label_2 = new JLabel("\uC7A5  \uB974");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		label_2.setBounds(451, 293, 100, 31);
+		add(label_2);
+		
+		JLabel label_3 = new JLabel("ISBN");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		label_3.setBounds(451, 334, 100, 31);
+		add(label_3);
+		
+		JLabel bookTitle = new JLabel("");
+		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		bookTitle.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		bookTitle.setBounds(563, 170, 200, 31);
+//		panel.getContentPane().add(name);
+//		name.setText(loginUser.getName());
+		add(bookTitle);
+		
+		JLabel bookAuthor = new JLabel("");
+		bookAuthor.setHorizontalAlignment(SwingConstants.CENTER);
+		bookAuthor.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		bookAuthor.setBounds(563, 211, 200, 31);
+		add(bookAuthor);
+		
+		JLabel bookPublisher = new JLabel("");
+		bookPublisher.setHorizontalAlignment(SwingConstants.CENTER);
+		bookPublisher.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		bookPublisher.setBounds(563, 252, 200, 31);
+		add(bookPublisher);
+		
+		JLabel bookGenre = new JLabel("");
+		bookGenre.setHorizontalAlignment(SwingConstants.CENTER);
+		bookGenre.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		bookGenre.setBounds(563, 293, 200, 31);
+		add(bookGenre);
+		
+		JLabel bookIsbn = new JLabel("");
+		bookIsbn.setHorizontalAlignment(SwingConstants.CENTER);
+		bookIsbn.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		bookIsbn.setBounds(563, 334, 200, 31);
+		add(bookIsbn);
 		
 		String[] columnNames = { "책이름", "저자", "출판사", "ISBN" };
 
@@ -54,53 +117,6 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 			Book b = list.get(i);
 			data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getPublisher(), b.getIsbn() };
 		}
-		
-		table = new JTable(data, columnNames);
-		scrollPane.setViewportView(table);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 51, 299, 379);
-		add(panel);
-		
-		JLabel lblNewLabel = new JLabel("\uB3C4\uC11C\uBA85");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(12, 440, 57, 15);
-		add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uC800\uC790");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(12, 465, 57, 15);
-		add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("\uCD9C\uD310\uC0AC");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(12, 490, 57, 15);
-		add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("\uD55C\uC904\uD3C9");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(12, 515, 57, 15);
-		add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(77, 440, 234, 15);
-		add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(77, 465, 234, 15);
-		add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(77, 490, 234, 15);
-		add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setBounds(77, 515, 234, 15);
-		add(lblNewLabel_7);
 
 	}
 }

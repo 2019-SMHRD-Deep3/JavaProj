@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -49,17 +50,14 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 		
-		JPanel panel = new JPanel();
-		cardPanel.add(panel, "a");
+		DFirst d1Panel = new DFirst();
+		cardPanel.add(d1Panel, "d1");
 		
-		JPanel panel_1 = new JPanel();
-		cardPanel.add(panel_1, "b");
-		
-		JPanel panel_2 = new JPanel();
-		cardPanel.add(panel_2, "c");
-		
-		JPanel panel_3 = new JPanel();
-		cardPanel.add(panel_3, "d");
+		JLabel lblNewLabel = new JLabel("\uC774\uB2EC\uC758 \uCD94\uCC9C\uB3C4\uC11C");
+		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 25));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(317, 46, 313, 42);
+		d1Panel.add(lblNewLabel);
 		
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
@@ -80,7 +78,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "a");
 			}
 		});
-		btnNewButton.setBounds(309, 48, 97, 23);
+		btnNewButton.setBounds(255, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uB3C4\uC11C");
@@ -90,7 +88,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "b");
 			}
 		});
-		btnNewButton_1.setBounds(418, 48, 97, 23);
+		btnNewButton_1.setBounds(364, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("\uC5F0\uCCB4 \uB300\uCD9C");
@@ -100,7 +98,7 @@ public class MMMain {
 				cardLayout.show(cardPanel, "c");
 			}
 		});
-		btnNewButton_2.setBounds(527, 48, 97, 23);
+		btnNewButton_2.setBounds(473, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("\uD1B5\uACC4");
@@ -110,8 +108,18 @@ public class MMMain {
 				cardLayout.show(cardPanel, "d");
 			}
 		});
-		btnNewButton_3.setBounds(636, 48, 97, 23);
+		btnNewButton_3.setBounds(582, 47, 97, 23);
 		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton button = new JButton("\uBA54\uC778");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(cardPanel, "d1");
+			}
+		});
+		button.setBounds(146, 47, 97, 23);
+		frame.getContentPane().add(button);
 		
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
