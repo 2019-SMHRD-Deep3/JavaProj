@@ -84,6 +84,7 @@ public class A extends JPanel {	// 회원정보
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
+
 		
 		JLabel name = new JLabel("");
 		name.setHorizontalAlignment(SwingConstants.CENTER);
