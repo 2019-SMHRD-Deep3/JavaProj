@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 
 import controller.MemberManagementService;
 import model.Member;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -38,13 +40,14 @@ public class MMMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel cardPanel = new JPanel();
-		cardPanel.setBounds(0, 120, 1274, 651);
+		cardPanel.setBounds(0, 165, 1274, 606);
 		frame.getContentPane().add(cardPanel);
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
@@ -73,70 +76,6 @@ public class MMMain {
 			
 			CU cuPanel = new CU();
 			cardPanel.add(cuPanel, "cu");
-			
-//			D dPanel = new D();
-//			cardPanel.add(dPanel, "d");
-			
-//		}
-		
-		
-		
-		
-		
-		JButton btnNewButton = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "a");
-			}
-		});
-		btnNewButton.setBounds(335, 47, 97, 23);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("\uB3C4\uC11C");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "b");
-			}
-		});
-		btnNewButton_1.setBounds(444, 47, 97, 23);
-		frame.getContentPane().add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("\uC5F0\uCCB4 \uB300\uCD9C");
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "c");
-			}
-		});
-		btnNewButton_2.setBounds(553, 47, 97, 23);
-		frame.getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("\uD1B5\uACC4");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "d");
-			}
-		});
-		btnNewButton_3.setBounds(662, 47, 97, 23);
-		frame.getContentPane().add(btnNewButton_3);
-		
-		JButton button = new JButton("\uBA54\uC778");
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "d1");
-			}
-		});
-		button.setBounds(226, 47, 97, 23);
-		frame.getContentPane().add(button);
-		
-		JLabel label = new JLabel("");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(759, 23, 125, 75);
-		frame.getContentPane().add(label);
 		
 		JLabel id = new JLabel("ooo");
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
@@ -150,17 +89,78 @@ public class MMMain {
 		lblNewLabel_2.setBounds(965, 51, 170, 15);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JButton button_1 = new JButton("\uB85C\uADF8\uC544\uC6C3");
-		button_1.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel = new JLabel("stat");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(cardPanel, "d");
+			}
+		});
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon001.png";
+		lblNewLabel.setIcon(new ImageIcon(imgPath));
+		lblNewLabel.setBounds(716, 27, 128, 128);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel label_1 = new JLabel("member");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(cardPanel, "a");
+			}
+		});
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
+		label_1.setIcon(new ImageIcon(imgPath));
+		label_1.setBounds(296, 27, 128, 128);
+		frame.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("home");
+		label_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cardLayout.show(cardPanel, "d1");
+			}
+		});
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
+		label_2.setIcon(new ImageIcon(imgPath));
+		label_2.setBounds(157, 27, 128, 128);
+		frame.getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("book");
+		label_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(cardPanel, "b");
+			}
+		});
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
+		label_3.setIcon(new ImageIcon(imgPath));
+		label_3.setBounds(436, 27, 128, 128);
+		frame.getContentPane().add(label_3);
+		
+		JLabel label_4 = new JLabel("loan");
+		label_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(cardPanel, "c");
+			}
+		});
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
+		label_4.setIcon(new ImageIcon(imgPath));
+		label_4.setBounds(576, 27, 128, 128);
+		frame.getContentPane().add(label_4);
+		
+		JLabel label = new JLabel("logout");
+		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				loginUser = null;
 				JOptionPane.showMessageDialog(frame, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.");
-//				frame.dispose();
 			}
 		});
-		button_1.setBounds(1147, 47, 97, 23);
-		frame.getContentPane().add(button_1);
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";
+		label.setIcon(new ImageIcon(imgPath));
+		label.setBounds(1118, 27, 128, 128);
+		frame.getContentPane().add(label);
 		
 		
 		
