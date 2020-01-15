@@ -66,13 +66,13 @@ public class MMJoin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1280, 800);
+		frame.setBounds(100, 100, 1280, 740);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(229, 222, 211));
-		panel.setBounds(452, 332, 396, 402);
+		panel.setBounds(453, 277, 396, 402);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -194,6 +194,12 @@ public class MMJoin {
 		panel.add(lblNewLabel_8);
 		
 		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
 		label.setBounds(220, 300, 90, 30);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn010.png";
