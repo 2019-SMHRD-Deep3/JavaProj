@@ -65,13 +65,13 @@ public class MMJoin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1280, 900);
+		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(452, 420, 396, 402);
+		panel.setBackground(new Color(229, 222, 211));
+		panel.setBounds(452, 332, 396, 402);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -185,5 +185,4 @@ public class MMJoin {
 		lblNewLabel_6.setBounds(0, 0, 1280, 871);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
-
 }

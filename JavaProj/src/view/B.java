@@ -19,6 +19,8 @@ public class B extends JPanel {	// 도서명부
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
+		
+
 		JLabel label = new JLabel("\uC774\uBCF4\uB78C");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(36, 32, 57, 15);
@@ -35,6 +37,8 @@ public class B extends JPanel {	// 도서명부
 		String CBmenu_1[]= {"제목","번호","작가","출판사"};
 		// 콤보박스 (메뉴)
 		JComboBox comboBox = new JComboBox(CBmenu_1);
+
+
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
 		
