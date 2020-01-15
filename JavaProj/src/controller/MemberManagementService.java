@@ -45,7 +45,7 @@ public class MemberManagementService {
 	}
 	public ArrayList<Member> findPhone(String phone) { //회원 전화번호 검색
 		
-		return dao.selectName(phone);
+		return dao.selectPhone(phone);
 	}
 	public void editMember(Member loginUser) { //회원  정보 수정
 		

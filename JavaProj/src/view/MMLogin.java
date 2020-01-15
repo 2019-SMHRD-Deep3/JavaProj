@@ -69,10 +69,7 @@ public class MMLogin {
 		lblNewLabel.setBounds(10, 67, 90, 30);
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn003.png";
-<<<<<<< HEAD
-		
-=======
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
+
 		panel.setLayout(null);
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
 		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
@@ -82,11 +79,7 @@ public class MMLogin {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(10, 100, 90, 30);
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
-<<<<<<< HEAD
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";		
-=======
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn004.png";
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -118,11 +111,7 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-<<<<<<< HEAD
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";		
-=======
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		lblNewLabel_4.setIcon(new ImageIcon(imgPath));
 		panel.add(lblNewLabel_4);
 		
@@ -148,20 +137,12 @@ public class MMLogin {
 			}
 		});
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-<<<<<<< HEAD
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";		
-=======
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn001.png";
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		lblNewLabel_6.setIcon(new ImageIcon(imgPath));
 		panel.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-<<<<<<< HEAD
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";		
-=======
-		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//0004.jpg";
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(0, 0, 1280, 871);

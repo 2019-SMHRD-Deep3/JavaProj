@@ -310,7 +310,8 @@ public class MemberDAO {
 		}
 	 
 	 public static ArrayList<Member> selectPhone(String login_id) { //전화번호 검색 기능 
-			ArrayList<Member> list = new ArrayList<>();
+			System.out.println(login_id);
+		 ArrayList<Member> list = new ArrayList<>();
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "hr";
 			String password = "hr";
