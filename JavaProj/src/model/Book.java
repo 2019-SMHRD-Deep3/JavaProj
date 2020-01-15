@@ -7,7 +7,7 @@ public class Book {
 	private String publisher; // 출판사
 	private String loanDate; // 대출날짜
 	private String returnDate; // 반납날짜
-	private boolean isOverdue; // 연체여부
+	private String isOverdue; // 연체여부
 
 	public Book(String title, String isbn, String author, String publisher) {
 		super();
@@ -27,7 +27,7 @@ public class Book {
 		this.loanDate = loanDate;
 		this.returnDate = returnDate;
 	}
-	public Book(String title, String author, String loanDate, String returnDate, boolean isOverdue) {
+	public Book(String title, String author, String loanDate, String returnDate, String isOverdue) {
 		super();
 		this.title = title;
 		this.author = author;
