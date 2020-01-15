@@ -80,13 +80,14 @@ public class MMMain {
 		JLabel id = new JLabel("ooo");
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		id.setHorizontalAlignment(SwingConstants.CENTER);
-		id.setBounds(920, 74, 57, 15);
+		id.setBounds(970, 62, 120, 15);
 		frame.getContentPane().add(id);
 		id.setText(loginUser.getName());
 		
-		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
+		JLabel lblNewLabel_2 = new JLabel("\uD658\uC601\uD569\uB2C8\uB2E4.");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(989, 74, 120, 15);
+		lblNewLabel_2.setBounds(970, 105, 152, 15);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel("stat");
@@ -161,6 +162,12 @@ public class MMMain {
 		label.setIcon(new ImageIcon(imgPath));
 		label.setBounds(1134, 27, 128, 128);
 		frame.getContentPane().add(label);
+		
+		JLabel lblNewLabel_1 = new JLabel("\uB2D8");
+		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(1098, 62, 24, 15);
+		frame.getContentPane().add(lblNewLabel_1);
 		
 		
 		
