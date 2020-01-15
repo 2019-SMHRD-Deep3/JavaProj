@@ -211,7 +211,7 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT * FROM BOOK";
+			String sql = "SELECT * FROM BOOK ";
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();

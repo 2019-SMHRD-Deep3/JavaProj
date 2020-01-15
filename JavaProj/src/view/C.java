@@ -29,7 +29,6 @@ public class C extends JPanel { // 연체관리
 	private MemberManagementService service = new MemberManagementService();
 	private JTable table;
 	private Book b;
-	int cnt = 0;
 
 	/**
 	 * Create the panel.
@@ -91,6 +90,7 @@ public class C extends JPanel { // 연체관리
 
 				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
 				ArrayList<Book> list = service.bookLookup();
+				int cnt = 0;
 
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
@@ -98,16 +98,17 @@ public class C extends JPanel { // 연체관리
 						cnt++;
 					}
 				}
-				System.out.println(cnt);
+				int j = 0;
 				Object[][] data = new Object[cnt][5];
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
-					if (b.getIsOverdue().equals("y"))
-						for (int j = 0; j < cnt; j++) {
+						if (b.getIsOverdue().equals("y")) {
 							data[j] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
 									b.getIsOverdue() };
+							j++;
 						}
-				}
+					}
+				
 				table = new JTable(data, columnNames);
 				scrollPane.setViewportView(table);
 
