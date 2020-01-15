@@ -2,16 +2,25 @@ package view;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import controller.MemberManagementService;
+import model.Book;
+import model.Member;
+
 public class B extends JPanel {	// 도서명부
 	private JTextField textField;
-
+	private JScrollPane scrollPane;
+	private MemberManagementService service = new MemberManagementService();
+	private JTable table;
 	/**
 	 * Create the panel.
 	 */
@@ -19,10 +28,26 @@ public class B extends JPanel {	// 도서명부
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
-
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(200, 100, 1014, 490);
+		add(scrollPane);		
 		
 		
+		
+		String[] columnNames = { "제목", "ISBN", "작가","출판사","대출일","회수일" };
 
+		ArrayList<Book> list = service.bookLookup();
+
+		Object[][] data = new Object[list.size()][6];
+
+		for (int i = 0; i < list.size(); i++) {
+			Book b = list.get(i);
+			data[i] = new Object[] { b.getTitle(), b.getIsbn(), b.getAuthor(),
+					                 b.getPublisher(), b.getLoanDate(),b.getReturnDate()};
+		}
+		table = new JTable(data,columnNames);
+		scrollPane.setViewportView(table);
+			
 		JLabel label = new JLabel("\uC774\uBCF4\uB78C");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(36, 32, 57, 15);
@@ -63,10 +88,6 @@ public class B extends JPanel {	// 도서명부
 		button_1.setBounds(709, 38, 136, 29);
 		add(button_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 100, 1028, 490);
-		add(scrollPane);
-		
 		JButton button_2 = new JButton("\uCD94\uAC00");
 		button_2.setBounds(57, 124, 97, 23);
 		add(button_2);
@@ -80,5 +101,4 @@ public class B extends JPanel {	// 도서명부
 		add(btnNewButton);
 
 	}
-
 }

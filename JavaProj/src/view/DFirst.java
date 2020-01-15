@@ -18,7 +18,6 @@ public class DFirst extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(150, 125, 300, 400);
 		add(panel);
-		
 		JLabel label = new JLabel("\uB3C4\uC11C\uBA85");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
