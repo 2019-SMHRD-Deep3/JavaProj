@@ -149,11 +149,10 @@ public class BookDAO {
 			conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
 			/// connection - overloading
 			// String sql = "insert into book values(?,?,?,?,?,?)" ;
-			String sql = "SELECT * FROM MEMBER " + "WHERE TITLE != ? ";
+			String sql = "SELECT * FROM BOOK " ;
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, title);
-
+			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
