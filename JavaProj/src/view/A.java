@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -13,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import controller.MemberManagementService;
 import model.Member;
@@ -24,7 +29,7 @@ public class A extends JPanel { // 회원정보
 	private JScrollPane scrollPane_1;
 	private JTable table;
 	private MemberManagementService service = new MemberManagementService();
-
+	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 	/**
 	 * Create the panel.
 	 * 
@@ -50,9 +55,10 @@ public class A extends JPanel { // 회원정보
 					m.getPw() };
 		}
 
-		table = new JTable(data, columnNames);
+		defaultTableModel.setDataVector(data, columnNames);
+		table = new JTable(defaultTableModel);
 		scrollPane.setViewportView(table);
-
+		
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
@@ -81,8 +87,7 @@ public class A extends JPanel { // 회원정보
 								m.getPhone(), m.getPw()};
 					}
 
-					table = new JTable(data, columnNames);
-					scrollPane.setViewportView(table);
+					defaultTableModel.setDataVector(data, columnNames);
 
 				} else if (j == 2) {
 					ArrayList<Member> list = service.findAddress(textField.getText());
@@ -95,8 +100,7 @@ public class A extends JPanel { // 회원정보
 								m.getPhone(), m.getPw()};
 					}
 
-					table = new JTable(data, columnNames);
-					scrollPane.setViewportView(table);
+					defaultTableModel.setDataVector(data, columnNames);
 
 				} else if (j == 3) {
 					ArrayList<Member> list = service.findPhone(textField.getText());
@@ -109,8 +113,7 @@ public class A extends JPanel { // 회원정보
 								m.getPhone(), m.getPw()};
 					}
 
-					table = new JTable(data, columnNames);
-					scrollPane.setViewportView(table);
+					defaultTableModel.setDataVector(data, columnNames);
 				}
 
 			}
@@ -122,6 +125,8 @@ public class A extends JPanel { // 회원정보
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int row_index = table.getSelectedRow();
+				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
 				MemberUpdate mu = new MemberUpdate();
 			}
 		});
@@ -146,8 +151,7 @@ public class A extends JPanel { // 회원정보
 							m.getPw() };
 				}
 
-				table = new JTable(data, columnNames);
-				scrollPane.setViewportView(table);
+				defaultTableModel.setDataVector(data, columnNames);
 			}
 		});
 
