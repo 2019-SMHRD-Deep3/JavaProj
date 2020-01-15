@@ -1,0 +1,111 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class MemberUpdate {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MemberUpdate window = new MemberUpdate();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MemberUpdate() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0\uC815\uBCF4\uC218\uC815");
+		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(12, 10, 420, 21);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uC774\uB984");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		label.setBounds(12, 60, 113, 21);
+		frame.getContentPane().add(label);
+		
+		JLabel lblPw = new JLabel("PW");
+		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblPw.setBounds(12, 91, 113, 21);
+		frame.getContentPane().add(lblPw);
+		
+		JLabel lblWnth = new JLabel("\uC8FC\uC18C");
+		lblWnth.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWnth.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		lblWnth.setBounds(12, 122, 113, 21);
+		frame.getContentPane().add(lblWnth);
+		
+		JLabel label_4 = new JLabel("\uC5F0\uB77D\uCC98");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		label_4.setBounds(12, 153, 113, 21);
+		frame.getContentPane().add(label_4);
+		
+		textField = new JTextField();
+		textField.setBounds(137, 62, 270, 21);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(137, 93, 270, 21);
+		frame.getContentPane().add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(137, 124, 270, 21);
+		frame.getContentPane().add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(137, 155, 270, 21);
+		frame.getContentPane().add(textField_3);
+		
+		JButton btnNewButton = new JButton("\uC218\uC815");
+		btnNewButton.setBounds(136, 216, 97, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton button = new JButton("\uCDE8\uC18C");
+		button.setBounds(245, 216, 97, 23);
+		frame.getContentPane().add(button);
+	}
+}
