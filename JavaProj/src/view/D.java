@@ -42,43 +42,43 @@ public class D extends JPanel {	// ¿Ã¥ﬁ¿« √ﬂ√µµµº≠ »§¿∫ ≈Î∞Ë
 		add(comboBox);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(97, 134, 342, 365);
+		panel.setBounds(150, 125, 300, 400);
 		add(panel);
 		
 		JLabel lblNewLabel = new JLabel("\uB3C4\uC11C\uBA85");
 		lblNewLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(451, 170, 100, 31);
+		lblNewLabel.setBounds(500, 150, 100, 31);
 		add(lblNewLabel);
 		
 		JLabel label = new JLabel("\uC800  \uC790");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label.setBounds(451, 211, 100, 31);
+		label.setBounds(500, 200, 100, 31);
 		add(label);
 		
 		JLabel label_1 = new JLabel("\uCD9C\uD310\uC0AC");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_1.setBounds(451, 252, 100, 31);
+		label_1.setBounds(500, 250, 100, 31);
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("\uC7A5  \uB974");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_2.setBounds(451, 293, 100, 31);
+		label_2.setBounds(500, 300, 100, 31);
 		add(label_2);
 		
 		JLabel label_3 = new JLabel("ISBN");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		label_3.setBounds(451, 334, 100, 31);
+		label_3.setBounds(500, 350, 100, 31);
 		add(label_3);
 		
 		JLabel bookTitle = new JLabel("");
 		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		bookTitle.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookTitle.setBounds(563, 170, 200, 31);
+		bookTitle.setBounds(600, 150, 200, 31);
 //		panel.getContentPane().add(name);
 //		name.setText(loginUser.getName());
 		add(bookTitle);
@@ -86,25 +86,25 @@ public class D extends JPanel {	// ¿Ã¥ﬁ¿« √ﬂ√µµµº≠ »§¿∫ ≈Î∞Ë
 		JLabel bookAuthor = new JLabel("");
 		bookAuthor.setHorizontalAlignment(SwingConstants.CENTER);
 		bookAuthor.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookAuthor.setBounds(563, 211, 200, 31);
+		bookAuthor.setBounds(600, 200, 200, 31);
 		add(bookAuthor);
 		
 		JLabel bookPublisher = new JLabel("");
 		bookPublisher.setHorizontalAlignment(SwingConstants.CENTER);
 		bookPublisher.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookPublisher.setBounds(563, 252, 200, 31);
+		bookPublisher.setBounds(600, 250, 200, 31);
 		add(bookPublisher);
 		
 		JLabel bookGenre = new JLabel("");
 		bookGenre.setHorizontalAlignment(SwingConstants.CENTER);
 		bookGenre.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookGenre.setBounds(563, 293, 200, 31);
+		bookGenre.setBounds(600, 300, 200, 31);
 		add(bookGenre);
 		
 		JLabel bookIsbn = new JLabel("");
 		bookIsbn.setHorizontalAlignment(SwingConstants.CENTER);
 		bookIsbn.setFont(new Font("∏º¿∫ ∞ÌµÒ Semilight", Font.PLAIN, 15));
-		bookIsbn.setBounds(563, 334, 200, 31);
+		bookIsbn.setBounds(600, 350, 200, 31);
 		add(bookIsbn);
 		
 		String[] columnNames = { "√•¿Ã∏ß", "¿˙¿⁄", "√‚∆«ªÁ", "ISBN" };

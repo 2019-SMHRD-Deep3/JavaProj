@@ -53,12 +53,6 @@ public class MMMain {
 		DFirst d1Panel = new DFirst();
 		cardPanel.add(d1Panel, "d1");
 		
-		JLabel lblNewLabel = new JLabel("\uC774\uB2EC\uC758 \uB9CE\uC774 \uB300\uCD9C\uD55C \uB3C4\uC11C");
-		lblNewLabel.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 25));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(317, 46, 313, 42);
-		d1Panel.add(lblNewLabel);
-		
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
 		
