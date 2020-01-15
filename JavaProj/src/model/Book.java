@@ -60,7 +60,7 @@ public class Book {
 		return returnDate;
 	}
 
-	public Object getIsOverdue() {
+	public String getIsOverdue() {
 		return isOverdue;
 	}
 
