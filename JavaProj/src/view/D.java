@@ -2,11 +2,13 @@ package view;
 
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,9 +43,22 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		comboBox.setBounds(150, 57, 200, 31);
 		add(comboBox);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(150, 125, 300, 400);
-		add(panel);
+		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//btn002.png";
+		ImageIcon icon = new ImageIcon();
+		System.out.println(imgPath);
+
+		JPanel panel = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 150, 125, 300, 400, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		
+		
+
+		
 		
 		JLabel lblNewLabel = new JLabel("\uB3C4\uC11C\uBA85");
 		lblNewLabel.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));

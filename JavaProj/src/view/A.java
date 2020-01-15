@@ -1,8 +1,8 @@
 package view;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -17,8 +17,6 @@ import javax.swing.SwingConstants;
 
 import controller.MemberManagementService;
 import model.Member;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class A extends JPanel {	// 회원정보
 	private JTextField textField;
@@ -118,6 +116,12 @@ public class A extends JPanel {	// 회원정보
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uC218\uC815");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MemberUpdate mu = new MemberUpdate();
+			}
+		});
 		btnNewButton_1.setBounds(57, 124, 97, 23);
 		add(btnNewButton_1);
 		

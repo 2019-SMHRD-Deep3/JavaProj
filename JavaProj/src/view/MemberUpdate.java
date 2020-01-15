@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -40,6 +41,7 @@ public class MemberUpdate {
 	 */
 	public MemberUpdate() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -103,6 +105,13 @@ public class MemberUpdate {
 		frame.getContentPane().add(textField_3);
 		
 		JButton btnNewButton = new JButton("\uC218\uC815");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(frame,
+					    "수정 성공");
+			}
+		});
 		btnNewButton.setBounds(136, 216, 97, 23);
 		frame.getContentPane().add(btnNewButton);
 		
