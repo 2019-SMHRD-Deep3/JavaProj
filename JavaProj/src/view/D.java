@@ -1,18 +1,26 @@
 package view;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JList;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+
+import controller.MemberManagementService;
+import model.Book;
+import model.Member;
 
 public class D extends JPanel {	// 이달의 추천도서 혹은 통계
-
+	private MemberManagementService service = new MemberManagementService();
+	private Member loginUser;
+	private JTable table;
 	/**
 	 * Create the panel.
 	 */
@@ -26,6 +34,7 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		comboBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 			}
 		});
 		comboBox.setBounds(323, 10, 200, 31);
@@ -34,6 +43,20 @@ public class D extends JPanel {	// 이달의 추천도서 혹은 통계
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(323, 51, 905, 539);
 		add(scrollPane);
+		
+		String[] columnNames = { "책이름", "저자", "출판사", "ISBN" };
+
+		ArrayList<Book> list = service.bookLookup();
+
+		Object[][] data = new Object[list.size()][3];
+
+		for (int i = 0; i < list.size(); i++) {
+			Book b = list.get(i);
+			data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getPublisher(), b.getIsbn() };
+		}
+		
+		table = new JTable(data, columnNames);
+		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 51, 299, 379);
