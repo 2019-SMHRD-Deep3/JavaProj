@@ -1,20 +1,19 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.CardLayout;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import controller.MemberManagementService;
 import model.Member;
-import javax.swing.JPanel;
-import java.awt.CardLayout;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 
 public class MMMain {
 	private MemberManagementService service = new MemberManagementService();
@@ -120,11 +119,12 @@ public class MMMain {
 		label.setBounds(759, 23, 125, 75);
 		frame.getContentPane().add(label);
 		
-		JLabel lblNewLabel_1 = new JLabel("ooo");
-		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(896, 51, 57, 15);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel id = new JLabel("ooo");
+		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		id.setHorizontalAlignment(SwingConstants.CENTER);
+		id.setBounds(896, 51, 57, 15);
+		frame.getContentPane().add(id);
+		id.setText(loginUser.getName());
 		
 		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
 		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
@@ -132,6 +132,14 @@ public class MMMain {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton button_1 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				loginUser = null;
+				JOptionPane.showMessageDialog(frame, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.");
+//				frame.dispose();
+			}
+		});
 		button_1.setBounds(1147, 47, 97, 23);
 		frame.getContentPane().add(button_1);
 		
