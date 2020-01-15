@@ -19,19 +19,6 @@ public class B extends JPanel {	// 도서명부
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
-		JLabel label = new JLabel("\uC774\uBCF4\uB78C");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(36, 32, 57, 15);
-		add(label);
-		
-		JLabel label_1 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
-		label_1.setBounds(91, 32, 90, 15);
-		add(label_1);
-		
-		JButton button = new JButton("\uB85C\uADF8\uC544\uC6C3");
-		button.setBounds(57, 57, 97, 23);
-		add(button);
-		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
