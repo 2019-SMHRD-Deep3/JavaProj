@@ -21,6 +21,14 @@ public class Member {
 	public Member(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
+	}	
+
+	public Member(String id, String name, String address, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
 	}
 
 	public String getId() {
