@@ -212,7 +212,7 @@ public class MemberDAO {
 			return list;
 		}
 	 
-	 private static ArrayList<Member> select(String login_name) { //원하는 검색 기능 
+	 public static ArrayList<Member> selectName(String login_id) { //이름 검색 기능 
 			ArrayList<Member> list = new ArrayList<>();
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "hr";
@@ -226,7 +226,7 @@ public class MemberDAO {
 				conn = DriverManager.getConnection(url, user, password);
 				String sql = "select * FROM member WHERE member_name like '%' || ? || '%' ";
 				psmt = conn.prepareStatement(sql);	
-				psmt.setString(1, login_name);
+				psmt.setString(1, login_id);
 				rs = psmt.executeQuery();
 				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
 
@@ -261,5 +261,107 @@ public class MemberDAO {
 
 			return list;
 		}
+	 
+	 public static ArrayList<Member> selectAddress(String login_id) { //주소 검색 기능 
+			ArrayList<Member> list = new ArrayList<>();
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "hr";
+			String password = "hr";
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null; // 인터페이스(ResultSet)
+
+			try { // 실행 도중 잡아낼 수 있는 예외 처리
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection(url, user, password);
+				String sql = "select * FROM member WHERE member_address like '%' || ? || '%' ";
+				psmt = conn.prepareStatement(sql);	
+				psmt.setString(1, login_id);
+				rs = psmt.executeQuery();
+				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
+
+				while (rs.next()) {
+					String id = rs.getString("MEMBER_ID");
+					String name = rs.getString("MEMBER_NAME");
+					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
+					String address = rs.getString("MEMBER_ADDRESS");
+					String phone = rs.getString("MEMBER_PHONE");
+					String pw = rs.getString("MEMBER_PW");
+
+					Member m = new Member(id, name, socialNumber, address, phone, pw);
+					list.add(m);					
+				}
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) { // id,비번,url등이 틀렸을 때
+				e.printStackTrace();
+			} finally {
+				try {
+					if (psmt != null) // 객체가 생성됐을때만 닫아야한다.
+						psmt.close();
+
+					if (conn != null)
+						conn.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			return list;
+		}
+	 
+	 public static ArrayList<Member> selectPhone(String login_id) { //전화번호 검색 기능 
+			ArrayList<Member> list = new ArrayList<>();
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String user = "hr";
+			String password = "hr";
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null; // 인터페이스(ResultSet)
+
+			try { // 실행 도중 잡아낼 수 있는 예외 처리
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection(url, user, password);
+				String sql = "select * FROM member WHERE member_phone like '%' || ? || '%' ";
+				psmt = conn.prepareStatement(sql);	
+				psmt.setString(1, login_id);
+				rs = psmt.executeQuery();
+				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
+
+				while (rs.next()) {
+					String id = rs.getString("MEMBER_ID");
+					String name = rs.getString("MEMBER_NAME");
+					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
+					String address = rs.getString("MEMBER_ADDRESS");
+					String phone = rs.getString("MEMBER_PHONE");
+					String pw = rs.getString("MEMBER_PW");
+
+					Member m = new Member(id, name, socialNumber, address, phone, pw);
+					list.add(m);					
+				}
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) { // id,비번,url등이 틀렸을 때
+				e.printStackTrace();
+			} finally {
+				try {
+					if (psmt != null) // 객체가 생성됐을때만 닫아야한다.
+						psmt.close();
+
+					if (conn != null)
+						conn.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			return list;
+		}
+
+
 
 }

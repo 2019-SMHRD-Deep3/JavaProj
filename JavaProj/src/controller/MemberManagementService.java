@@ -34,6 +34,19 @@ public class MemberManagementService {
 
 		return dao.selectAll(id);
 	}
+	
+	public ArrayList<Member> findName(String name) {
+
+		return dao.selectName(name);
+	}
+	public ArrayList<Member> findAddress(String address) {
+		
+		return dao.selectAddress(address);
+	}
+	public ArrayList<Member> findPhone(String phone) {
+		
+		return dao.selectName(phone);
+	}
 
 	public ArrayList<Book> bookLookup() {
 

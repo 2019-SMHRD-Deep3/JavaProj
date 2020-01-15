@@ -71,7 +71,47 @@ public class A extends JPanel {	// 회원정보
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				comboBox.getSelectedIndex();
+				comboBox.getItemAt(1);
+				ArrayList<Member> list = service.findName(textField.getText());
+
+				Object[][] data = new Object[list.size()][6];
+
+				for (int i = 0; i < list.size(); i++) {
+					Member m = list.get(i);
+					data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
+							                 m.getAddress(), m.getPhone(),m.getPw()};
+				}
+
+				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
+				
+				comboBox.getItemAt(2);
+				ArrayList<Member> list2 = service.findAddress(textField.getText());
+
+				Object[][] data2 = new Object[list.size()][6];
+
+				for (int i = 0; i < list.size(); i++) {
+					Member m = list.get(i);
+					data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
+							                 m.getAddress(), m.getPhone(),m.getPw()};
+				}
+
+				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
+				
+				comboBox.getItemAt(3);
+				ArrayList<Member> list3 = service.findPhone(textField.getText());
+
+				Object[][] data3 = new Object[list.size()][6];
+
+				for (int i = 0; i < list.size(); i++) {
+					Member m = list.get(i);
+					data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(),
+							                 m.getAddress(), m.getPhone(),m.getPw()};
+				}
+
+				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
 			}
 		});
 		btnNewButton.setBounds(709, 38, 136, 29);
