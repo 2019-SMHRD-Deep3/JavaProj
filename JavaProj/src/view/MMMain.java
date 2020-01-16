@@ -114,17 +114,17 @@ public class MMMain {
 		label_1.setBounds(370, 19, 128, 128);
 		frame.getContentPane().add(label_1);
 		
-		JLabel label_2 = new JLabel("home");
-		label_2.addMouseListener(new MouseAdapter() {
+		JLabel lblHome = new JLabel("home");
+		lblHome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cardPanel, "d1");
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
-		label_2.setIcon(new ImageIcon(imgPath));
-		label_2.setBounds(230, 19, 128, 128);
-		frame.getContentPane().add(label_2);
+		lblHome.setIcon(new ImageIcon(imgPath));
+		lblHome.setBounds(230, 19, 128, 128);
+		frame.getContentPane().add(lblHome);
 		
 		JLabel label_3 = new JLabel("book");
 		label_3.addMouseListener(new MouseAdapter() {
@@ -167,7 +167,7 @@ public class MMMain {
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//main001.png";
 		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(30, 30, 128, 128);
+		lblNewLabel_1.setBounds(25, 25, 128, 128);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		
