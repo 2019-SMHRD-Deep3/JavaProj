@@ -43,7 +43,7 @@ public class B extends JPanel {	// 도서명부
 		for (int i = 0; i < list.size(); i++) {
 			Book b = list.get(i);
 			data[i] = new Object[] { b.getTitle(), b.getIsbn(), b.getAuthor(),
-					                 b.getPublisher(), b.getLoanDate(),b.getReturnDate()};
+					                 b.getPublisher()};
 		}
 		table = new JTable(data,columnNames);
 		scrollPane.setViewportView(table);
