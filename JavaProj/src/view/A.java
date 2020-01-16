@@ -158,6 +158,24 @@ public class A extends JPanel { // 회원정보
 		add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				if(row < 0) {
+					JOptionPane.showMessageDialog(table,
+						    "삭제 할 회원을 선택해주세요.");
+				}
+				TableModel data = table.getModel();
+				System.out.println(row);
+				String id = (String) data.getValueAt(row, 0);
+				String pw = (String) data.getValueAt(row, 5);
+				
+				Member deleteUser = new Member(id, pw);
+				
+				MemberDelete frame = new MemberDelete(deleteUser);
+			}
+		});
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
 
