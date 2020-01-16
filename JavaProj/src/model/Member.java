@@ -33,6 +33,10 @@ public class Member {
 		this.phone = phone;
 	}
 	
+	public Member(String id) {
+		super();
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;

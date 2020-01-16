@@ -45,6 +45,13 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
+	public Book(String title, String isbn, String author) {
+		super();
+		this.title = title;
+		this.isbn = isbn;
+		this.author = author;
+	}
+
 	public String getTitle() {
 		return title;
 	}
