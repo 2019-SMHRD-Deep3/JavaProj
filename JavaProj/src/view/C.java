@@ -83,10 +83,10 @@ public class C extends JPanel { // 연체관리
 				TableModel data = table.getModel();
 
 				String title = (String) data.getValueAt(row, 0);
-				String author = (String) data.getValueAt(row, 1);
-				long isbn = (long) data.getValueAt(row, 2);
+				long isbn = (long) data.getValueAt(row, 1);
+				String author = (String) data.getValueAt(row, 2);
 
-				Book selectBook = new Book(title, author, isbn);
+				Book selectBook = new Book(title, isbn, author);
 
 				BookLoan frame = new BookLoan(selectBook);
 				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.

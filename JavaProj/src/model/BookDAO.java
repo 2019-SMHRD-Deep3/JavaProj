@@ -242,7 +242,7 @@ public class BookDAO {
 
 			while (rs.next()) {
 				String title = rs.getString("b_title");
-				int isbn = rs.getInt("b_isbn");
+				long isbn = rs.getLong("b_isbn");
 				String author = rs.getString("b_author");
 				list.add(new Book(title, isbn, author));
 			}
