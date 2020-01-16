@@ -54,6 +54,10 @@ public class MemberDelete {
 		id.setBounds(137, 62, 270, 21);
 		frame.getContentPane().add(id);
 		
+		JPasswordField pw = new JPasswordField();
+		pw.setBounds(137, 93, 270, 21);
+		frame.getContentPane().add(pw);
+		
 		JLabel label_1 = new JLabel("PW");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
@@ -97,9 +101,7 @@ public class MemberDelete {
 		label_2.setBounds(12, 10, 420, 21);
 		frame.getContentPane().add(label_2);
 		
-		JPasswordField pw = new JPasswordField();
-		pw.setBounds(137, 93, 270, 21);
-		frame.getContentPane().add(pw);
+		
 		
 		
 	}

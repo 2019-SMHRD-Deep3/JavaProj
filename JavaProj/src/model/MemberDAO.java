@@ -103,14 +103,19 @@ public class MemberDAO {
       try { // try ~ catch 예외처리
           Class.forName("oracle.jdbc.driver.OracleDriver");
           conn = DriverManager.getConnection(url, user, password);
-          String sql = "UPDATE member SET m_name = ?, m_pw = ?,"                   
-                     +"m_address = ?, m_phone = ? WHERE m_id = ?";
+          String sql = "UPDATE member SET m_name = ?, m_pw = ?, m_address = ?, m_phone = ? WHERE m_name = ?";
           psmt = conn.prepareStatement(sql);         
           psmt.setString(1, selectUser.getName());
           psmt.setString(2, selectUser.getPw());         
           psmt.setString(3, selectUser.getAddress());
           psmt.setString(4, selectUser.getPhone());
-          psmt.setString(5, selectUser.getId());
+          psmt.setString(5, selectUser.getName());
+          System.out.println(selectUser.getName());
+          System.out.println(selectUser.getPw());
+          System.out.println(selectUser.getAddress());
+          System.out.println(selectUser.getPhone());
+          System.out.println(selectUser.getName());
+          
           rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
