@@ -45,7 +45,7 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
-	public Book(String title, String author, int isbn) {
+	public Book(String title, int isbn, String author) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
