@@ -38,7 +38,7 @@ public class A extends JPanel { // 회원정보
 	 * Create the panel.
 	 * 
 	 * @param loginUser
-	 */
+	 */ 
 	public A(Member loginUser) {
 		setBackground(Color.WHITE);
 		setLayout(null);

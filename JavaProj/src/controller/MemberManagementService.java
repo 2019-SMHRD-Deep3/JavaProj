@@ -55,8 +55,7 @@ public class MemberManagementService {
 	
 	public boolean editMember(Member seletUser) { //회원  정보 수정
 		
-		if (dao.updateMember(seletUser
-				) == 0) {
+		if (dao.updateMember(seletUser) == 0) {
 			return false;
 		} else {
 			return true;

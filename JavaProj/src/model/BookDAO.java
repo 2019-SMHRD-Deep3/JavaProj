@@ -1,7 +1,9 @@
 package model;
 
 import java.lang.reflect.Member;
+import java.security.Timestamp;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,8 +33,8 @@ public class BookDAO {
 			psmt.setString(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
-			psmt.setString(5, b.getLoanDate());
-			psmt.setString(6, b.getReturnDate());
+			psmt.setDate(5, b.getLoanDate());
+			psmt.setDate(6, b.getReturnDate());
 
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -129,18 +131,16 @@ public class BookDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-
 			conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
 			/// connection - overloading
 			// String sql = "insert into book values(?,?,?,?,?,?)" ;
-			String sql = "SELECT * FROM BOOK " ;
+			String sql = "SELECT * FROM BOOK ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			String sql2 = "SELECT * FROM MEMBER " + "WHERE TITLE != ? ";
 
 			psmt = conn.prepareStatement(sql);
 
-			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -192,20 +192,21 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT * FROM BOOK ";
+			String sql = "SELECT b.b_title, b.b_author, l.l_loandate, l.l_returndate, l.l_isOverdue "
+					+ "FROM BOOK b, LOAN l" + "WHERE b.b_isbn = l.b_isbn";
 			psmt = conn.prepareStatement(sql);
-
+			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
 
-				String title2 = rs.getString("book_title");
-				String author = rs.getString("book_author");
-				String loanDate = rs.getString("book_loan");
-				String returnDate = rs.getString("book_return");
-				String isOverdue = rs.getString("book_isOverdue");
+				String title = rs.getString("b.b_title");
+				String author = rs.getString("b.b_author");
+				Date loanDate = rs.getDate("l.l_loandate");
+				Date returnDate = rs.getDate("l.l_returndate");
+				String isOverdue = rs.getString("l.l_isOverdue");
 
-				list.add(new Book(title2, author, loanDate, returnDate, isOverdue));
+				list.add(new Book(title, author, loanDate, returnDate, isOverdue));
 			}
 
 		} catch (ClassNotFoundException e) {
@@ -222,9 +223,9 @@ public class BookDAO {
 				if (psmt != null)
 					psmt.close();
 
-			} catch (SQLException e1) {
+			} catch (SQLException e) {
 
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
 			try {
 				if (conn != null)
@@ -261,8 +262,8 @@ public class BookDAO {
 			psmt.setString(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
-			psmt.setString(5, b.getLoanDate());
-			psmt.setString(6, b.getReturnDate());
+			psmt.setDate(5, b.getLoanDate());
+			psmt.setDate(6, b.getReturnDate());
 
 			int rows = psmt.executeUpdate();
 
@@ -334,8 +335,8 @@ public class BookDAO {
 			psmt.setString(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
-			psmt.setString(5, b.getLoanDate());
-			psmt.setString(6, b.getReturnDate());
+			psmt.setDate(5, b.getLoanDate());
+			psmt.setDate(6, b.getReturnDate());
 
 			int rows = psmt.executeUpdate();
 
@@ -344,7 +345,7 @@ public class BookDAO {
 			}
 
 		} catch (ClassNotFoundException e) {
-			
+
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -366,6 +367,7 @@ public class BookDAO {
 
 		}
 	}
+
 	public ArrayList<Book> selectMain() {
 
 		ArrayList<Book> list = new ArrayList<>();
