@@ -90,7 +90,6 @@ public class MemberDAO {
 		}
 		return loginUser;
 	}
-		
 	
 	public void updateMember(Member loginUser) {  // ¼öÁ¤
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";

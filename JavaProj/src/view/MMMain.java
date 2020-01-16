@@ -32,12 +32,8 @@ public class MMMain {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
-	
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
@@ -162,6 +158,8 @@ public class MMMain {
 			public void mouseClicked(MouseEvent e) {
 				loginUser = null;
 				JOptionPane.showMessageDialog(frame, "로그아웃 되었습니다.");
+				MMLogin Login = new MMLogin();
+				
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";
@@ -175,13 +173,6 @@ public class MMMain {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(30, 20, 128, 128);
 		frame.getContentPane().add(lblNewLabel_1);
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 }

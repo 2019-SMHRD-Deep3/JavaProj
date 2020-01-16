@@ -46,9 +46,6 @@ public class DFirst extends JPanel {
 		label.setBounds(500, 150, 100, 31);
 		add(label);
 
-		ArrayList<Book> list = service.bookLookup();
-		
-
 		JLabel label_1 = new JLabel("");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));

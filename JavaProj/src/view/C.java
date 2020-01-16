@@ -88,7 +88,7 @@ public class C extends JPanel { // 연체관리
 				scrollPane.setBounds(166, 96, 659, 490);
 				add(scrollPane);
 
-				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
+				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부"};
 				ArrayList<Book> list = service.bookLookup();
 				int cnt = 0;
 
@@ -102,13 +102,13 @@ public class C extends JPanel { // 연체관리
 				Object[][] data = new Object[cnt][5];
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
-						if (b.getIsOverdue().equals("y")) {
-							data[j] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
-									b.getIsOverdue() };
-							j++;
-						}
+					if (b.getIsOverdue().equals("y")) {
+						data[j] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
+								b.getIsOverdue() };
+						j++;
 					}
-				
+				}
+
 				table = new JTable(data, columnNames);
 				scrollPane.setViewportView(table);
 

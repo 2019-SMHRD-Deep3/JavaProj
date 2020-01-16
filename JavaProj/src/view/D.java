@@ -78,7 +78,9 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 	    chart.addSeries("하늘", 25);
 	 
 	    XChartPanel chartPanel = new XChartPanel(chart);
+	    chartPanel.setForeground(Color.LIGHT_GRAY);
 	    chartPanel.setBackground(new Color(229, 222, 211));
+
 	    return chartPanel;
 	  }
 }

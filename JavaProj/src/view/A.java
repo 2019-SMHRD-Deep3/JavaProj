@@ -32,11 +32,12 @@ public class A extends JPanel { // 회원정보
 	private JTable table;
 	private MemberManagementService service = new MemberManagementService();
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
+
 	/**
 	 * Create the panel.
 	 * 
 	 * @param loginUser
-	 */ 
+	 */
 	public A(Member loginUser) {
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -58,9 +59,9 @@ public class A extends JPanel { // 회원정보
 		}
 
 		defaultTableModel.setDataVector(data, columnNames); // 데이터를 가져오는 모델을 만듦.
-		table = new JTable(defaultTableModel); //데이터를 가진 변수 생성.
-		scrollPane.setViewportView(table);  // 화면에 데이터 보여줌
-		
+		table = new JTable(defaultTableModel); // 데이터를 가진 변수 생성.
+		scrollPane.setViewportView(table); // 화면에 데이터 보여줌
+
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
@@ -86,7 +87,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -99,7 +100,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -112,7 +113,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -142,7 +143,7 @@ public class A extends JPanel { // 회원정보
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
-		
+
 		JButton button = new JButton("\uCD08\uAE30\uD654");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -166,7 +167,6 @@ public class A extends JPanel { // 회원정보
 
 		btnNewButton.setBounds(709, 38, 136, 29);
 		add(btnNewButton);
-
 
 	}
 }
