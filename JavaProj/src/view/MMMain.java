@@ -50,10 +50,6 @@ public class MMMain {
 		DFirst d1Panel = new DFirst();
 		cardPanel.add(d1Panel, "d1");
 
-//		if (loginUser.getId().equals("admin")) {
-//			DFirst d1Panel = new DFirst();
-//			cardPanel.add(d1Panel, "d1");
-
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
 
@@ -65,11 +61,7 @@ public class MMMain {
 
 		D dPanel = new D();
 		cardPanel.add(dPanel, "d");
-//      } else {
-//         DFirst d1Panel = new DFirst();
-//         cardPanel.add(d1Panel, "d1");
-//			D dPanel = new D();
-//			cardPanel.add(dPanel, "d");
+
 //		} else {
 //			DFirst d1Panel = new DFirst();
 //			cardPanel.add(d1Panel, "d1");
@@ -82,18 +74,9 @@ public class MMMain {
 
 		CU cuPanel = new CU();
 		cardPanel.add(cuPanel, "cu");
-//			BU buPanel = new BU();
-//			cardPanel.add(buPanel, "bu");
-// 
-//			CU cuPanel = new CU();
-//			cardPanel.add(cuPanel, "cu");
 
-//         D dPanel = new D();
-//         cardPanel.add(dPanel, "d");
 //      }
-//			D dPanel = new D();
-//			cardPanel.add(dPanel, "d");
-//		}
+
 
 		JLabel id = new JLabel("ooo");
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
