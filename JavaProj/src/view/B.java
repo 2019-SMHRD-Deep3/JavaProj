@@ -25,7 +25,7 @@ public class B extends JPanel {	// 도서명부
 	 * Create the panel.
 	 */
 	public B() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(229, 222, 211));
 		setLayout(null);
 		
 		scrollPane = new JScrollPane();
