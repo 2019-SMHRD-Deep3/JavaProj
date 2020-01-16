@@ -30,7 +30,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setInt(2, b.getIsbn());
+			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -76,7 +76,7 @@ public class BookDAO {
 
 			String sql = "SELECT * FROM BOOK " + "WHERE b_ISBN = ? b_TITLE=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, b.getIsbn());
+			psmt.setLong(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
 
 			rs = psmt.executeQuery();
@@ -294,7 +294,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setInt(2, b.getIsbn());
+			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -352,7 +352,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setInt(2, b.getIsbn());
+			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -472,7 +472,7 @@ public class BookDAO {
 
 			psmt.setString(3, "y");
 
-			psmt.setInt(5, selectBook.getIsbn());
+			psmt.setLong(5, selectBook.getIsbn());
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
