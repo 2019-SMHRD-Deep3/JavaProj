@@ -189,16 +189,16 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT b.b_title, b.b_author, l.l_loandate, l.l_returndate, l.l_isOverdue"
-					+ "FROM BOOK b, LOAN l" + "WHERE b.b_isbn = l.b_isbn";
+					+ " FROM BOOK b, LOAN l" + " WHERE b.b_isbn = l.b_isbn";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String title = rs.getString("b.b_title");
-				String author = rs.getString("b.b_author");
-				Date loanDate = rs.getDate("l.l_loandate");
-				Date returnDate = rs.getDate("l.l_returndate");
-				String isOverdue = rs.getString("l.l_isOverdue");
+				String title = rs.getString("b_title");
+				String author = rs.getString("b_author");
+				Date loanDate = rs.getDate("l_loandate");
+				Date returnDate = rs.getDate("l_returndate");
+				String isOverdue = rs.getString("l_isOverdue");
 				list.add(new Book(title, author, loanDate, returnDate, isOverdue));
 			}
 

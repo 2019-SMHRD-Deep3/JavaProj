@@ -45,34 +45,52 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 
+
+//      if (loginUser.getId().equals("admin")) {
+		DFirst d1Panel = new DFirst();
+		cardPanel.add(d1Panel, "d1");
+
 //		if (loginUser.getId().equals("admin")) {
-			DFirst d1Panel = new DFirst();
-			cardPanel.add(d1Panel, "d1");
+//			DFirst d1Panel = new DFirst();
+//			cardPanel.add(d1Panel, "d1");
 
-			A aPanel = new A(loginUser);
-			cardPanel.add(aPanel, "a");
+		A aPanel = new A(loginUser);
+		cardPanel.add(aPanel, "a");
 
-			B bPanel = new B();
-			cardPanel.add(bPanel, "b");
+		B bPanel = new B();
+		cardPanel.add(bPanel, "b");
 
-			C cPanel = new C();
-			cardPanel.add(cPanel, "c");
+		C cPanel = new C();
+		cardPanel.add(cPanel, "c");
 
-			D dPanel = new D();
-			cardPanel.add(dPanel, "d");
+		D dPanel = new D();
+		cardPanel.add(dPanel, "d");
+//      } else {
+//         DFirst d1Panel = new DFirst();
+//         cardPanel.add(d1Panel, "d1");
+//			D dPanel = new D();
+//			cardPanel.add(dPanel, "d");
 //		} else {
 //			DFirst d1Panel = new DFirst();
 //			cardPanel.add(d1Panel, "d1");
 
-			AU auPanel = new AU(loginUser);
-			cardPanel.add(auPanel, "au");
+		AU auPanel = new AU(loginUser);
+		cardPanel.add(auPanel, "au");
 
-			BU buPanel = new BU();
-			cardPanel.add(buPanel, "bu");
- 
-			CU cuPanel = new CU();
-			cardPanel.add(cuPanel, "cu");
+		BU buPanel = new BU();
+		cardPanel.add(buPanel, "bu");
 
+		CU cuPanel = new CU();
+		cardPanel.add(cuPanel, "cu");
+//			BU buPanel = new BU();
+//			cardPanel.add(buPanel, "bu");
+// 
+//			CU cuPanel = new CU();
+//			cardPanel.add(cuPanel, "cu");
+
+//         D dPanel = new D();
+//         cardPanel.add(dPanel, "d");
+//      }
 //			D dPanel = new D();
 //			cardPanel.add(dPanel, "d");
 //		}
@@ -162,7 +180,7 @@ public class MMMain {
 			public void mouseClicked(MouseEvent e) {
 				loginUser = null;
 				JOptionPane.showMessageDialog(frame, "로그아웃 되었습니다.");
-
+				frame.dispose();
 				MMLogin Login = new MMLogin();
 
 			}
