@@ -55,19 +55,19 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT * FROM member WHERE member_id = ? AND member_pw = ?";
+			String sql = "SELECT * FROM member WHERE m_id = ? AND m_pw = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getId());
 			psmt.setString(2, m.getPw());
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				String id = rs.getString("MEMBER_ID");
-				String pw = rs.getString("MEMBER_PW");
-				String name = rs.getString("MEMBER_NAME");
-				String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
-				String address = rs.getString("MEMBER_ADDRESS");
-				String phone = rs.getString("MEMBER_PHONE");
+				String id = rs.getString("M_ID");
+				String pw = rs.getString("M_PW");
+				String name = rs.getString("M_NAME");
+				String socialNumber = rs.getString("M_SOCIALNUMBER");
+				String address = rs.getString("M_ADDRESS");
+				String phone = rs.getString("M_PHONE");
 
 				loginUser = new Member(id, pw, name, socialNumber, address, phone);
 			}
@@ -102,9 +102,9 @@ public class MemberDAO {
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "UPDATE member SET user_name = ?, user_pw = ?"			          
-			           +"user_address = ?, user_phone"
-			           +" WHERE user_id = ?";
+			String sql = "UPDATE member SET m_name = ?, m_pw = ?"			          
+			           +"m_address = ?, m_phone"
+			           +" WHERE m_id = ?";
 			psmt = conn.prepareStatement(sql);			
 			psmt.setString(1, loginUser.getName());
 			psmt.setString(2, loginUser.getPw());			
@@ -140,7 +140,7 @@ public class MemberDAO {
 	      try {
 	         Class.forName("oracle.jdbc.driver.OracleDriver");
 	         conn = DriverManager.getConnection(url, user, password); // 얘도 try catch를 새로. connection은 인터페이스
-	         String sql = "DELETE FROM member WHERE USER_ID = ?";
+	         String sql = "DELETE FROM member WHERE m_ID = ?";
 	         psmt = conn.prepareStatement(sql);
 	         psmt.setString(1, loginUser.getId());
 
@@ -174,18 +174,18 @@ public class MemberDAO {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection(url, user, password);
-				String sql = "SELECT * FROM member WHERE member_id != ?";
+				String sql = "SELECT * FROM member WHERE m_id != ?";
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, login_id);
 				rs = psmt.executeQuery();
 
 				while (rs.next()) {
-					String id = rs.getString("MEMBER_ID");
-					String name = rs.getString("MEMBER_NAME");
-					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
-					String address = rs.getString("MEMBER_ADDRESS");
-					String phone = rs.getString("MEMBER_PHONE");
-					String pw = rs.getString("MEMBER_PW");						
+					String id = rs.getString("M_ID");
+					String name = rs.getString("M_NAME");
+					String socialNumber = rs.getString("M_SOCIALNUMBER");
+					String address = rs.getString("M_ADDRESS");
+					String phone = rs.getString("M_PHONE");
+					String pw = rs.getString("M_PW");						
 
 					list.add(new Member(id, name, socialNumber,address,phone,pw));
 				}
@@ -221,19 +221,19 @@ public class MemberDAO {
 			try { // 실행 도중 잡아낼 수 있는 예외 처리
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection(url, user, password);
-				String sql = "select * FROM member WHERE member_name like '%' || ? || '%' ";
+				String sql = "select * FROM member WHERE m_name like '%' || ? || '%' ";
 				psmt = conn.prepareStatement(sql);	
 				psmt.setString(1, login_id);
 				rs = psmt.executeQuery();
 				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
 
 				while (rs.next()) {
-					String id = rs.getString("MEMBER_ID");
-					String name = rs.getString("MEMBER_NAME");
-					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
-					String address = rs.getString("MEMBER_ADDRESS");
-					String phone = rs.getString("MEMBER_PHONE");
-					String pw = rs.getString("MEMBER_PW");
+					String id = rs.getString("M_ID");
+					String name = rs.getString("M_NAME");
+					String socialNumber = rs.getString("M_SOCIALNUMBER");
+					String address = rs.getString("M_ADDRESS");
+					String phone = rs.getString("M_PHONE");
+					String pw = rs.getString("M_PW");
 
 					Member m = new Member(id, name, socialNumber, address, phone, pw);
 					list.add(m);					
@@ -271,19 +271,19 @@ public class MemberDAO {
 			try { // 실행 도중 잡아낼 수 있는 예외 처리
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection(url, user, password);
-				String sql = "select * FROM member WHERE member_address like '%' || ? || '%' ";
+				String sql = "select * FROM member WHERE m_address like '%' || ? || '%' ";
 				psmt = conn.prepareStatement(sql);	
 				psmt.setString(1, login_id);
 				rs = psmt.executeQuery();
 				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
 
 				while (rs.next()) {
-					String id = rs.getString("MEMBER_ID");
-					String name = rs.getString("MEMBER_NAME");
-					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
-					String address = rs.getString("MEMBER_ADDRESS");
-					String phone = rs.getString("MEMBER_PHONE");
-					String pw = rs.getString("MEMBER_PW");
+					String id = rs.getString("M_ID");
+					String name = rs.getString("M_NAME");
+					String socialNumber = rs.getString("M_SOCIALNUMBER");
+					String address = rs.getString("M_ADDRESS");
+					String phone = rs.getString("M_PHONE");
+					String pw = rs.getString("M_PW");
 
 					Member m = new Member(id, name, socialNumber, address, phone, pw);
 					list.add(m);					
@@ -322,19 +322,19 @@ public class MemberDAO {
 			try { // 실행 도중 잡아낼 수 있는 예외 처리
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection(url, user, password);
-				String sql = "select * FROM member WHERE member_phone like '%' || ? || '%' ";
+				String sql = "select * FROM member WHERE m_phone like '%' || ? || '%' ";
 				psmt = conn.prepareStatement(sql);	
 				psmt.setString(1, login_id);
 				rs = psmt.executeQuery();
 				// 다음 읽어드릴것이 있느냐 물어보는 말(계속 커서가 내려가면서 읽는 느낌)
 
 				while (rs.next()) {
-					String id = rs.getString("MEMBER_ID");
-					String name = rs.getString("MEMBER_NAME");
-					String socialNumber = rs.getString("MEMBER_SOCIALNUMBER");
-					String address = rs.getString("MEMBER_ADDRESS");
-					String phone = rs.getString("MEMBER_PHONE");
-					String pw = rs.getString("MEMBER_PW");
+					String id = rs.getString("M_ID");
+					String name = rs.getString("M_NAME");
+					String socialNumber = rs.getString("M_SOCIALNUMBER");
+					String address = rs.getString("M_ADDRESS");
+					String phone = rs.getString("M_PHONE");
+					String pw = rs.getString("M_PW");
 
 					Member m = new Member(id, name, socialNumber, address, phone, pw);
 					list.add(m);					
