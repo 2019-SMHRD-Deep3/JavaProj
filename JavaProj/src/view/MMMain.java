@@ -99,7 +99,7 @@ public class MMMain {
 		});
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon001.png";
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
-		lblNewLabel.setBounds(756, 19, 128, 128);
+		lblNewLabel.setBounds(790, 19, 128, 128);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label_1 = new JLabel("member");
@@ -111,7 +111,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
 		label_1.setIcon(new ImageIcon(imgPath));
-		label_1.setBounds(336, 19, 128, 128);
+		label_1.setBounds(370, 19, 128, 128);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("home");
@@ -123,7 +123,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
 		label_2.setIcon(new ImageIcon(imgPath));
-		label_2.setBounds(196, 19, 128, 128);
+		label_2.setBounds(230, 19, 128, 128);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("book");
@@ -135,7 +135,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
 		label_3.setIcon(new ImageIcon(imgPath));
-		label_3.setBounds(476, 19, 128, 128);
+		label_3.setBounds(510, 19, 128, 128);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("loan");
@@ -147,7 +147,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
 		label_4.setIcon(new ImageIcon(imgPath));
-		label_4.setBounds(616, 19, 128, 128);
+		label_4.setBounds(650, 19, 128, 128);
 		frame.getContentPane().add(label_4);
 		
 		JLabel label = new JLabel("logout");

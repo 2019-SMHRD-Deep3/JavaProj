@@ -34,13 +34,13 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 	 * Create the panel.
 	 */
 	public D() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(229, 222, 211));
 		setLayout(null);
 
 		String[] combo = { "(선택할 연도 및 월)", "2020년 1월", "2020년 2월" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
-		comboBox.setBackground(Color.WHITE);
+		comboBox.setBackground(new Color(229, 222, 211));
 		comboBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -51,7 +51,7 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 		add(comboBox);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
+		panel_1.setBackground(new Color(229, 222, 211));
 		panel_1.setBounds(0, 57, 1240, 560);
 		add(panel_1);
 
@@ -78,7 +78,7 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 	    chart.addSeries("하늘", 25);
 	 
 	    XChartPanel chartPanel = new XChartPanel(chart);
-	    chartPanel.setBackground(Color.WHITE);
+	    chartPanel.setBackground(new Color(229, 222, 211));
 	    return chartPanel;
 	  }
 }
