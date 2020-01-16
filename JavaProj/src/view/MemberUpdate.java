@@ -101,8 +101,14 @@ public class MemberUpdate {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				boolean result = service.editMember(selectUser);
-				if (result == true) {
+				String name = textField.getText();
+				String pw = textField_1.getText();
+				String address = textField_2.getText();
+				String phone = textField_2.getText();
+				
+				Member editUser = new Member(name, pw, address, phone);
+				boolean result = service.editMember(editUser);
+				if (result) {
 					JOptionPane.showMessageDialog(frame, "수정 성공");
 					frame.dispose();
 				} else {

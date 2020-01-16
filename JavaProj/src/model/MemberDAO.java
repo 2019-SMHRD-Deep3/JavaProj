@@ -92,7 +92,7 @@ public class MemberDAO {
       return loginUser;
    }
    
-   public  int updateMember(Member selectUser) {  // 수정
+   public  int updateMember(Member selectUser) {  // 회원 수정
 	   int rows = 0;
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String user = "hr";
@@ -134,7 +134,8 @@ public class MemberDAO {
 
 
    
-    private static void delete(Member loginUser) { //삭제
+    public static int deleteMember(Member deleteUser) { //회원 삭제
+    	 int rows = 0;
          String url = "jdbc:oracle:thin:@localhost:1521:xe";
          String user = "hr";
          String password = "hr";
@@ -146,9 +147,9 @@ public class MemberDAO {
             conn = DriverManager.getConnection(url, user, password); // 얘도 try catch를 새로. connection은 인터페이스
             String sql = "DELETE FROM member WHERE m_id = ?";
             psmt = conn.prepareStatement(sql);
-            psmt.setString(1, loginUser.getId());
+            psmt.setString(1, deleteUser.getId());
 
-            int rows = psmt.executeUpdate(); // 실행. 이 문장에 영향받은 rows가 리턴된다. 한 줄이니까 1 / 딜리트로 3개가 삭제되면 3
+            rows = psmt.executeUpdate(); // 실행. 이 문장에 영향받은 rows가 리턴된다. 한 줄이니까 1 / 딜리트로 3개가 삭제되면 3
             if (rows == 0) {
                System.out.println("SQL문을 확인하세요.");
             }
@@ -169,6 +170,7 @@ public class MemberDAO {
                e.printStackTrace();
             }
          }
+         return rows;
          
     }
     

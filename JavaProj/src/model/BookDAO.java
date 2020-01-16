@@ -30,7 +30,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setString(2, b.getIsbn());
+			psmt.setInt(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -76,7 +76,7 @@ public class BookDAO {
 
 			String sql = "SELECT * FROM BOOK " + "WHERE b_ISBN = ? b_TITLE=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, b.getIsbn());
+			psmt.setInt(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
 
 			rs = psmt.executeQuery();
@@ -84,7 +84,7 @@ public class BookDAO {
 			if (rs.next()) {
 
 				String title = rs.getString("b_title");
-				String isbn = rs.getString("b_isbn");
+				int isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
 				String publisher = rs.getString("publisher");
 				String loanDate = rs.getString("loanDate");
@@ -144,7 +144,7 @@ public class BookDAO {
 			while (rs.next()) {
 
 				String title2 = rs.getString("title");
-				String isbn = rs.getString("isbn");
+				int isbn = rs.getInt("isbn");
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
 
@@ -242,7 +242,7 @@ public class BookDAO {
 
 			while (rs.next()) {
 				String title = rs.getString("b_title");
-				String isbn = rs.getString("b_isbn");
+				int isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
 				list.add(new Book(title, isbn, author));
 			}
@@ -294,7 +294,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setString(2, b.getIsbn());
+			psmt.setInt(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -352,7 +352,7 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
-			psmt.setString(2, b.getIsbn());
+			psmt.setInt(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
 			psmt.setString(4, b.getPublisher());
 			psmt.setDate(5, b.getLoanDate());
@@ -451,28 +451,28 @@ public class BookDAO {
 		PreparedStatement psmt = null;
 
 		try { // try ~ catch 예외처리
-			
+
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "UPDATE LOAN SET l.l_loanDate = ?, l.l_returnDate = ?,"
 					+ "l.l_isOverdue = ?, l.l_count = ? WHERE b.b_isbn = ? AND b.b_isbn = l.b_isbn";
 			psmt = conn.prepareStatement(sql);
-			
+
 			Calendar cal = Calendar.getInstance();
 			java.util.Date date = cal.getTime();
 			String dateString = new SimpleDateFormat("yy/MM/dd").format(date);
-			
+
 			psmt.setString(1, dateString);
-			
-			 cal.add(Calendar.DATE, 14);
-		     date = cal.getTime();
-		    String dateString2 = new SimpleDateFormat("yy/MM/dd").format(date);
+
+			cal.add(Calendar.DATE, 14);
+			date = cal.getTime();
+			String dateString2 = new SimpleDateFormat("yy/MM/dd").format(date);
 
 			psmt.setString(2, dateString2);
-			
+
 			psmt.setString(3, "y");
-			
-			psmt.setString(5, selectBook.getIsbn());
+
+			psmt.setInt(5, selectBook.getIsbn());
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {

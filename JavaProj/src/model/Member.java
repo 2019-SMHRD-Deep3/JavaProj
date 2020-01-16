@@ -31,6 +31,14 @@ public class Member {
 		this.pw = pw;
 		this.address = address;
 		this.phone = phone;
+	}		
+
+	public Member(String name,String pw, String address, String phone) {
+		super();
+		this.name = name;
+		this.pw = pw;
+		this.address = address;
+		this.phone = phone;
 	}
 	
 	public Member(String id) {

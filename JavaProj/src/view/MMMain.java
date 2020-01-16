@@ -50,10 +50,6 @@ public class MMMain {
 		DFirst d1Panel = new DFirst();
 		cardPanel.add(d1Panel, "d1");
 
-//		if (loginUser.getId().equals("admin")) {
-//			DFirst d1Panel = new DFirst();
-//			cardPanel.add(d1Panel, "d1");
-
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
 
@@ -65,11 +61,7 @@ public class MMMain {
 
 		D dPanel = new D();
 		cardPanel.add(dPanel, "d");
-//      } else {
-//         DFirst d1Panel = new DFirst();
-//         cardPanel.add(d1Panel, "d1");
-//			D dPanel = new D();
-//			cardPanel.add(dPanel, "d");
+
 //		} else {
 //			DFirst d1Panel = new DFirst();
 //			cardPanel.add(d1Panel, "d1");
@@ -82,18 +74,9 @@ public class MMMain {
 
 		CU cuPanel = new CU();
 		cardPanel.add(cuPanel, "cu");
-//			BU buPanel = new BU();
-//			cardPanel.add(buPanel, "bu");
-// 
-//			CU cuPanel = new CU();
-//			cardPanel.add(cuPanel, "cu");
 
-//         D dPanel = new D();
-//         cardPanel.add(dPanel, "d");
 //      }
-//			D dPanel = new D();
-//			cardPanel.add(dPanel, "d");
-//		}
+
 
 		JLabel id = new JLabel("ooo");
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
@@ -118,7 +101,7 @@ public class MMMain {
 		});
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon001.png";
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
-		lblNewLabel.setBounds(770, 30, 100, 100);
+		lblNewLabel.setBounds(861, 30, 100, 100);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel label_1 = new JLabel("");
@@ -131,7 +114,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
 		label_1.setIcon(new ImageIcon(imgPath));
-		label_1.setBounds(380, 30, 100, 100);
+		label_1.setBounds(471, 30, 100, 100);
 		frame.getContentPane().add(label_1);
 
 		JLabel lblHome = new JLabel("");
@@ -144,7 +127,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
 		lblHome.setIcon(new ImageIcon(imgPath));
-		lblHome.setBounds(250, 30, 100, 100);
+		lblHome.setBounds(341, 30, 100, 100);
 		frame.getContentPane().add(lblHome);
 
 		JLabel label_3 = new JLabel("");
@@ -157,7 +140,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
 		label_3.setIcon(new ImageIcon(imgPath));
-		label_3.setBounds(510, 30, 100, 100);
+		label_3.setBounds(601, 30, 100, 100);
 		frame.getContentPane().add(label_3);
 
 		JLabel label_4 = new JLabel("");
@@ -170,7 +153,7 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
 		label_4.setIcon(new ImageIcon(imgPath));
-		label_4.setBounds(640, 30, 100, 100);
+		label_4.setBounds(731, 30, 100, 100);
 		frame.getContentPane().add(label_4);
 
 		JLabel label = new JLabel("");
@@ -197,34 +180,34 @@ public class MMMain {
 		lblNewLabel_1.setBounds(30, 10, 150, 130);
 		frame.getContentPane().add(lblNewLabel_1);
 
-		JLabel lblHome_1 = new JLabel("\uBA54\uC778\uBA54\uB274");
+		JLabel lblHome_1 = new JLabel("\uD648");
 		lblHome_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		lblHome_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHome_1.setBounds(250, 120, 100, 15);
+		lblHome_1.setBounds(341, 120, 100, 15);
 		frame.getContentPane().add(lblHome_1);
 
 		JLabel lblMember = new JLabel("\uD68C\uC6D0\uC815\uBCF4");
 		lblMember.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMember.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		lblMember.setBounds(380, 120, 100, 15);
+		lblMember.setBounds(471, 120, 100, 15);
 		frame.getContentPane().add(lblMember);
 
 		JLabel lblBook = new JLabel("\uB3C4\uC11C");
 		lblBook.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBook.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		lblBook.setBounds(510, 120, 100, 15);
+		lblBook.setBounds(601, 120, 100, 15);
 		frame.getContentPane().add(lblBook);
 
-		JLabel label_2 = new JLabel("\uC5F0\uCCB4.\uC5F0\uC7A5");
+		JLabel label_2 = new JLabel("\uB300\uC5EC.\uC5F0\uCCB4.\uC5F0\uC7A5");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		label_2.setBounds(640, 120, 100, 15);
+		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+		label_2.setBounds(731, 120, 100, 15);
 		frame.getContentPane().add(label_2);
 
 		JLabel label_5 = new JLabel("\uD1B5\uACC4");
 		label_5.setHorizontalAlignment(SwingConstants.CENTER);
 		label_5.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		label_5.setBounds(770, 120, 100, 15);
+		label_5.setBounds(861, 120, 100, 15);
 		frame.getContentPane().add(label_5);
 
 		JLabel lblNewLabel_3 = new JLabel("Readers are Leaders");

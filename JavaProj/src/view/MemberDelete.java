@@ -8,37 +8,27 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controller.MemberManagementService;
+import model.Member;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPasswordField;
 
 public class MemberDelete {
 
 	private JFrame frame;
 	private JTextField id;
-	private JTextField pw;
+	private JPasswordField pw;
+	private MemberManagementService service = new MemberManagementService();
+	private Member deletetUser;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MemberDelete window = new MemberDelete();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
-	public MemberDelete() {
+	public MemberDelete(Member deleteUser) {
+		this.deletetUser = deletetUser;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -70,17 +60,22 @@ public class MemberDelete {
 		label_1.setBounds(12, 91, 113, 21);
 		frame.getContentPane().add(label_1);
 		
-		pw = new JTextField();
-		pw.setColumns(10);
-		pw.setBounds(137, 93, 270, 21);
-		frame.getContentPane().add(pw);
-		
 		JButton button = new JButton("\uC0AD\uC81C");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				JOptionPane.showMessageDialog(frame,
-					    "삭제 성공");
+				String id = id.getText();
+				String pw = pw.getText();
+				
+				Member deleteUser = new Member(id, pw);
+				boolean result = service.delMember(deleteUser);
+				if (result) {
+					JOptionPane.showMessageDialog(frame, "삭제 성공");
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(frame, "삭제 실패");
+				}
+			
 			}
 		});
 		button.setBounds(136, 216, 97, 23);
@@ -101,6 +96,10 @@ public class MemberDelete {
 		label_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
 		label_2.setBounds(12, 10, 420, 21);
 		frame.getContentPane().add(label_2);
+		
+		JPasswordField pw = new JPasswordField();
+		pw.setBounds(137, 93, 270, 21);
+		frame.getContentPane().add(pw);
 		
 		
 	}

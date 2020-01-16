@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Book {
 	private String title; // 제목
-	private String isbn; // 책번호
+	private int isbn; // 책번호
 	private String author; // 작가
 	private String publisher; // 출판사
 	private Date loanDate; // 대출날짜
@@ -16,18 +16,17 @@ public class Book {
 		this.title = title;
 		this.author = author;
 	}
-	
-	public Book(String title, String isbn, String author, String publisher) {
+
+	public Book(String title, int isbn, String author, String publisher) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
 		this.author = author;
 		this.publisher = publisher;
-		
+
 	}
 
-	public Book(String title, String isbn, String author, String publisher, Date loanDate,
-			Date returnDate) {
+	public Book(String title, int isbn, String author, String publisher, Date loanDate, Date returnDate) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
@@ -36,6 +35,7 @@ public class Book {
 		this.loanDate = loanDate;
 		this.returnDate = returnDate;
 	}
+
 	public Book(String title, String author, Date loanDate2, Date returnDate2, String isOverdue) {
 		super();
 		this.title = title;
@@ -45,18 +45,30 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
-	public Book(String title, String isbn, String author) {
+	public Book(String title, String author, int isbn) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
 		this.author = author;
 	}
 
+	public Book(String title) {
+		this.title = title;
+	}
+
+	public Book(String title, String author, String publisher, String genre) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		Genre = genre;
+	}
+
 	public String getTitle() {
 		return title;
 	}
 
-	public String getIsbn() {
+	public int getIsbn() {
 		return isbn;
 	}
 
