@@ -163,6 +163,13 @@ public class MMMain {
 		label.setBounds(1134, 27, 128, 128);
 		frame.getContentPane().add(label);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//main001.png";
+		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(30, 30, 128, 128);
+		frame.getContentPane().add(lblNewLabel_1);
+		
 		
 		
 		
