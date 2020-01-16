@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.MemberManagementService;
 import model.Member;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class A extends JPanel { // 회원정보
 	private JTextField textField;
@@ -122,6 +124,10 @@ public class A extends JPanel { // 회원정보
 		add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("\uC218\uC815");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
