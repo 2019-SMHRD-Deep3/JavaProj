@@ -74,7 +74,7 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "SELECT * FROM Book " + "WHERE ISBN = ? TITLE=?";
+			String sql = "SELECT * FROM BOOK " + "WHERE b_ISBN = ? b_TITLE=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
@@ -83,9 +83,9 @@ public class BookDAO {
 
 			if (rs.next()) {
 
-				String title = rs.getString("title");
-				String isbn = rs.getString("isbn");
-				String author = rs.getString("author");
+				String title = rs.getString("b_title");
+				String isbn = rs.getString("b_isbn");
+				String author = rs.getString("b_author");
 				String publisher = rs.getString("publisher");
 				String loanDate = rs.getString("loanDate");
 				String returnDate = rs.getString("returnDate");
@@ -137,8 +137,6 @@ public class BookDAO {
 			String sql = "SELECT * FROM BOOK ";
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql2 = "SELECT * FROM MEMBER " + "WHERE TITLE != ? ";
-
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
@@ -187,25 +185,20 @@ public class BookDAO {
 	public ArrayList<Book> selectSome() {
 
 		ArrayList<Book> list = new ArrayList<>();
-
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, l.l_loandate, l.l_returndate, l.l_isOverdue "
+			String sql = "SELECT b.b_title, b.b_author, l.l_loandate, l.l_returndate, l.l_isOverdue"
 					+ "FROM BOOK b, LOAN l" + "WHERE b.b_isbn = l.b_isbn";
 			psmt = conn.prepareStatement(sql);
-			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-
 				String title = rs.getString("b.b_title");
 				String author = rs.getString("b.b_author");
 				Date loanDate = rs.getDate("l.l_loandate");
 				Date returnDate = rs.getDate("l.l_returndate");
 				String isOverdue = rs.getString("l.l_isOverdue");
-
 				list.add(new Book(title, author, loanDate, returnDate, isOverdue));
 			}
 
@@ -224,20 +217,17 @@ public class BookDAO {
 					psmt.close();
 
 			} catch (SQLException e) {
-
 				e.printStackTrace();
 			}
 			try {
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
-
 				e.printStackTrace();
 			}
 
 		}
 		return list;
-
 	}
 
 	private static void update(Book b) {
@@ -254,7 +244,7 @@ public class BookDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			String sql = "update book set title = ?, isbn = ?, author = ?, publisher = ?, "
-					+ "loanDate = ?, returnDate = ? WHERE USER_id = ?";
+					+ "loanDate = ?, returnDate = ? ";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -327,7 +317,7 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "delete from  users WHERE USER_id = ?";
+			String sql = "delete from BOOK WHERE B_ISBN = ?";
 
 			psmt = conn.prepareStatement(sql);
 

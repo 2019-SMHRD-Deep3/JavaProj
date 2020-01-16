@@ -47,6 +47,7 @@ public class MMLogin {
 	 */
 	public MMLogin() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**

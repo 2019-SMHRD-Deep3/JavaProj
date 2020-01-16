@@ -46,16 +46,13 @@ public class DFirst extends JPanel {
 		label.setBounds(500, 150, 100, 31);
 		add(label);
 
-		ArrayList<Book> list = service.bookLookup();
-		
-
 		JLabel label_1 = new JLabel("");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_1.setBounds(600, 150, 200, 31);
 		add(label_1);
 
-		JLabel label_2 = new JLabel("\uC800  \uC790");
+		JLabel label_2 = new JLabel("\uC800   \uC790");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_2.setBounds(500, 200, 100, 31);
@@ -79,7 +76,7 @@ public class DFirst extends JPanel {
 		label_5.setBounds(600, 250, 200, 31);
 		add(label_5);
 
-		JLabel label_6 = new JLabel("\uC7A5  \uB974");
+		JLabel label_6 = new JLabel("\uC7A5   \uB974");
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
 		label_6.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_6.setBounds(500, 300, 100, 31);

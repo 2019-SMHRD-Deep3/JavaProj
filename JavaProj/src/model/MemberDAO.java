@@ -72,6 +72,7 @@ public class MemberDAO {
             loginUser = new Member(id, pw, name, socialNumber, address, phone);
          }
 
+
       } catch (ClassNotFoundException e) {
          e.printStackTrace();
       } catch (SQLException e) {
@@ -98,37 +99,40 @@ public class MemberDAO {
       String password = "hr";
       Connection conn = null;
       PreparedStatement psmt = null;
-
+      
       try { // try ~ catch 예외처리
-         Class.forName("oracle.jdbc.driver.OracleDriver");
-         conn = DriverManager.getConnection(url, user, password);
-         String sql = "UPDATE member SET m_name = ?, m_pw = ?"                   
-                    +"m_address = ?, m_phone"
-                    +" WHERE m_id = ?";
-         psmt = conn.prepareStatement(sql);         
-         psmt.setString(1, selectUser.getName());
-         psmt.setString(2, selectUser.getPw());         
-         psmt.setString(3, selectUser.getAddress());
-         psmt.setString(4, selectUser.getPhone());
-         psmt.setString(5, selectUser.getId());
-         rows = psmt.executeUpdate();
-       
-      } catch (ClassNotFoundException e) { //
-         e.printStackTrace();
-      } catch (SQLException e) { // url, id, pw이 틀리면 예외사항을 걸어두는 곳
-         e.printStackTrace();
-      } finally {
-         try {
-            if (psmt != null)
-               psmt.close(); // 가장 최근에 열었던 객체부터 닫아줘야 함.
-            if (conn != null)
-               conn.close();
-         } catch (SQLException e) {
-            e.printStackTrace();
-         }
-      }
-      return rows;
-}
+          Class.forName("oracle.jdbc.driver.OracleDriver");
+          conn = DriverManager.getConnection(url, user, password);
+          String sql = "UPDATE member SET m_name = ?, m_pw = ?,"                   
+                     +"m_address = ?, m_phone = ? WHERE m_id = ?";
+          psmt = conn.prepareStatement(sql);         
+          psmt.setString(1, selectUser.getName());
+          psmt.setString(2, selectUser.getPw());         
+          psmt.setString(3, selectUser.getAddress());
+          psmt.setString(4, selectUser.getPhone());
+          psmt.setString(5, selectUser.getId());
+          rows = psmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return rows;	
+	}
+
+
    
     private static void delete(Member loginUser) { //삭제
          String url = "jdbc:oracle:thin:@localhost:1521:xe";

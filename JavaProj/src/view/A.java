@@ -10,6 +10,7 @@ import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -38,7 +39,7 @@ public class A extends JPanel { // 회원정보
 	 * Create the panel.
 	 * 
 	 * @param loginUser
-	 */ 
+	 */
 	public A(Member loginUser) {
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -134,6 +135,10 @@ public class A extends JPanel { // 회원정보
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int row = table.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(table,
+						    "수정 할 회원을 선택해주세요.");
+				}
 				TableModel data = table.getModel();
 
 				String id = (String) data.getValueAt(row, 0);

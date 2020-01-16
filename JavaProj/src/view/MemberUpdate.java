@@ -104,6 +104,7 @@ public class MemberUpdate {
 				boolean result = service.editMember(selectUser);
 				if (result == true) {
 					JOptionPane.showMessageDialog(frame, "수정 성공");
+					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(frame, "수정 실패");
 				}
