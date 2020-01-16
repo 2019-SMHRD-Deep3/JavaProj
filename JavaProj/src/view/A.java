@@ -141,13 +141,13 @@ public class A extends JPanel { // 회원정보
 				}
 				TableModel data = table.getModel();
 				System.out.println(row);
-				String id = (String) data.getValueAt(row, 0);
+				
 				String name = (String) data.getValueAt(row, 1);
 				String pw = (String) data.getValueAt(row, 5);
 				String address = (String) data.getValueAt(row, 3);
 				String phone = (String) data.getValueAt(row, 4);
 
-				Member selectUser = new Member(id, name, pw, address, phone);
+				Member selectUser = new Member(name, pw, address, phone);
 
 				MemberUpdate frame = new MemberUpdate(selectUser);
 				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
