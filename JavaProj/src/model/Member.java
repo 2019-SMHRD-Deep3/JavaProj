@@ -40,6 +40,11 @@ public class Member {
 		this.address = address;
 		this.phone = phone;
 	}
+	
+	public Member(String id) {
+		super();
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
