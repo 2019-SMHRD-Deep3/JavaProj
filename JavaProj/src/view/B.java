@@ -34,7 +34,7 @@ public class B extends JPanel {	// 도서명부
 		
 		
 		
-		String[] columnNames = { "제목", "ISBN", "작가","출판사","대출일","회수일" };
+		String[] columnNames = {"제목", "ISBN", "작가", "출판사"};
 
 		ArrayList<Book> list = service.bookLookup();
 
@@ -48,7 +48,7 @@ public class B extends JPanel {	// 도서명부
 		table = new JTable(data,columnNames);
 		scrollPane.setViewportView(table);
 		
-		String CBmenu_1[]= {"제목","ISBN","작가","출판사"};
+		String CBmenu_1[]= {"" , "제목", "ISBN", "작가", "출판사"};
 		// 콤보박스 (메뉴)
 		JComboBox comboBox = new JComboBox(CBmenu_1);
 
