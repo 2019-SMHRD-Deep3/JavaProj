@@ -1,5 +1,6 @@
 package model;
 
+
 public class Member {
 	private String id;
 	private String pw;
@@ -22,14 +23,16 @@ public class Member {
 		this.id = id;
 		this.pw = pw;
 	}	
-
-	public Member(String id, String name, String address, String phone) {
+	
+	public Member(String id, String name, String pw, String address, String phone) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.pw = pw;
 		this.address = address;
 		this.phone = phone;
 	}
+	
 
 	public String getId() {
 		return id;

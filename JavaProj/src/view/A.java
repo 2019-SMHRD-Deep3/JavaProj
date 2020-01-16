@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
 import model.Member;
@@ -32,6 +33,7 @@ public class A extends JPanel { // 회원정보
 	private JTable table;
 	private MemberManagementService service = new MemberManagementService();
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
+
 	/**
 	 * Create the panel.
 	 * 
@@ -58,9 +60,9 @@ public class A extends JPanel { // 회원정보
 		}
 
 		defaultTableModel.setDataVector(data, columnNames); // 데이터를 가져오는 모델을 만듦.
-		table = new JTable(defaultTableModel); //데이터를 가진 변수 생성.
-		scrollPane.setViewportView(table);  // 화면에 데이터 보여줌
-		
+		table = new JTable(defaultTableModel); // 데이터를 가진 변수 생성.
+		scrollPane.setViewportView(table); // 화면에 데이터 보여줌
+
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
@@ -86,7 +88,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -99,7 +101,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -112,7 +114,7 @@ public class A extends JPanel { // 회원정보
 					for (int i = 0; i < list.size(); i++) {
 						Member m = list.get(i);
 						data[i] = new Object[] { m.getId(), m.getName(), m.getSocialNumber(), m.getAddress(),
-								m.getPhone(), m.getPw()};
+								m.getPhone(), m.getPw() };
 					}
 
 					defaultTableModel.setDataVector(data, columnNames);
@@ -131,9 +133,20 @@ public class A extends JPanel { // 회원정보
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int row_index = table.getSelectedRow();
+				int row = table.getSelectedRow();
+				TableModel data = table.getModel();
+
+				String id = (String) data.getValueAt(row, 0);
+				String name = (String) data.getValueAt(row, 1);
+				String pw = (String) data.getValueAt(row, 5);
+				String address = (String) data.getValueAt(row, 3);
+				String phone = (String) data.getValueAt(row, 4);
+
+				Member selectUser = new Member(id, name, pw, address, phone);
+
+				MemberUpdate frame = new MemberUpdate(selectUser);
 				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
-				MemberUpdate mu = new MemberUpdate();
+
 			}
 		});
 		btnNewButton_1.setBounds(57, 124, 97, 23);
@@ -142,7 +155,7 @@ public class A extends JPanel { // 회원정보
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
 		btnNewButton_2.setBounds(57, 157, 97, 23);
 		add(btnNewButton_2);
-		
+
 		JButton button = new JButton("\uCD08\uAE30\uD654");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -166,7 +179,6 @@ public class A extends JPanel { // 회원정보
 
 		btnNewButton.setBounds(709, 38, 136, 29);
 		add(btnNewButton);
-
 
 	}
 }
