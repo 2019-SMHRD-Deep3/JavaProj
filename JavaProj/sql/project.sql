@@ -39,6 +39,7 @@ insert into member values('jandongun','0000','Àåµ·°Ç','941212-2570812','±¤ÁÖ±¤¿ª
 commit;
  
 drop table loan cascade constraints;
+
  CREATE TABLE loan
    (l_loandate date not null,
    l_returndate date not null,
@@ -49,8 +50,14 @@ drop table loan cascade constraints;
    CONSTRAINT loan_m_id_fk foreign key(m_id) references member(m_id),
   CONSTRAINT loan_b_isbn_fk foreign key(b_isbn) references book(b_isbn));
 
+insert into loan values ('20/01/02','20/01/16','n',001,'dolli',9791162540640);
+insert into loan values ('19/12/25','20/01/07','y',002,'mycall',9791196797706);
+insert into loan values ('20/01/05','20/01/19','n',002,'chensy',9788954655972);
+insert into loan values ('20/12/24','20/01/06','y',001,'1',9791187119845);
+insert into loan values ('20/01/03','20/01/17','n',001,'jandongun',9791157280292);
 
 commit;
+
 drop table genre cascade constraints;
 CREATE TABLE genre
   ( g_genre VARCHAR2(20) not null,
