@@ -10,6 +10,7 @@ import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
 import model.Member;
@@ -132,9 +134,24 @@ public class A extends JPanel { // 회원정보
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int row_index = table.getSelectedRow();
+				int row = table.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(table,
+						    "수정 할 회원을 선택해주세요.");
+				}
+				TableModel data = table.getModel();
+
+				String id = (String) data.getValueAt(row, 0);
+				String name = (String) data.getValueAt(row, 1);
+				String pw = (String) data.getValueAt(row, 5);
+				String address = (String) data.getValueAt(row, 3);
+				String phone = (String) data.getValueAt(row, 4);
+
+				Member selectUser = new Member(id, name, pw, address, phone);
+
+				MemberUpdate frame = new MemberUpdate(selectUser);
 				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
-				MemberUpdate mu = new MemberUpdate();
+
 			}
 		});
 		btnNewButton_1.setBounds(57, 124, 97, 23);
