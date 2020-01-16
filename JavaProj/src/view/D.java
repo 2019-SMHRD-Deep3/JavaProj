@@ -40,11 +40,17 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 		String[] combo = { "(선택할 연도 및 월)", "2020년 1월", "2020년 2월" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
+		
 		comboBox.setBackground(new Color(229, 222, 211));
 		comboBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				int j = comboBox.getSelectedIndex();
+				if (j == 1) {
+					
+					
+					
+				}
 			}
 		});
 		comboBox.setBounds(12, 10, 200, 31);
