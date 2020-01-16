@@ -65,16 +65,15 @@ public class BookLoan {
 
 				String infoId = memberId.getText();
 				Member m = new Member(infoId);
-				// Member loginUser = service.memberLogin(m);
 				
-//				Book b = bdao.updateLoan(selectBook);
-//				
-//				if (loginUser == null) {
-//					JOptionPane.showMessageDialog(frame, "대출 실패");
-//				} else {
-//					JOptionPane.showMessageDialog(frame, "대출 성공");
-//					frame.dispose();
-//				}
+				Book b = bdao.updateLoan(selectBook);
+				
+				if (loginUser == null) {
+					JOptionPane.showMessageDialog(frame, "대출 실패");
+				} else {
+					JOptionPane.showMessageDialog(frame, "대출 성공");
+					frame.dispose();
+				}
 
 			}
 		});

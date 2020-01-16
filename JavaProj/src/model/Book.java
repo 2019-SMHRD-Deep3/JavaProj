@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Book {
 	private String title; // 제목
-	private int isbn; // 책번호
+	private long isbn; // 책번호
 	private String author; // 작가
 	private String publisher; // 출판사
 	private Date loanDate; // 대출날짜
@@ -17,7 +17,7 @@ public class Book {
 		this.author = author;
 	}
 
-	public Book(String title, int isbn, String author, String publisher) {
+	public Book(String title, long isbn, String author, String publisher) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
@@ -26,7 +26,7 @@ public class Book {
 
 	}
 
-	public Book(String title, int isbn, String author, String publisher, Date loanDate, Date returnDate) {
+	public Book(String title, long isbn, String author, String publisher, Date loanDate, Date returnDate) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
@@ -45,11 +45,11 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
-	public Book(String title, String author, int isbn) {
+	public Book(String title, String author, long isbn) {
 		super();
 		this.title = title;
-		this.isbn = isbn;
 		this.author = author;
+		this.isbn = isbn;
 	}
 
 	public Book(String title) {
@@ -68,7 +68,7 @@ public class Book {
 		return title;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 

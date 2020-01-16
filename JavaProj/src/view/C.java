@@ -84,7 +84,7 @@ public class C extends JPanel { // 연체관리
 
 				String title = (String) data.getValueAt(row, 0);
 				String author = (String) data.getValueAt(row, 1);
-				int isbn = (int) data.getValueAt(row, 2);
+				long isbn = (long) data.getValueAt(row, 2);
 
 				Book selectBook = new Book(title, author, isbn);
 
