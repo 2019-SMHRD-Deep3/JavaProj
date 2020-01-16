@@ -80,17 +80,18 @@ public class MMMain {
 		JLabel id = new JLabel("ooo");
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		id.setHorizontalAlignment(SwingConstants.CENTER);
-		id.setBounds(970, 62, 152, 15);
+		id.setBounds(1092, 100, 152, 15);
 		frame.getContentPane().add(id);
 		id.setText(loginUser.getName());
 		
 		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(970, 106, 152, 15);
+		lblNewLabel_2.setBounds(1092, 125, 152, 15);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel = new JLabel("stat");
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -99,10 +100,11 @@ public class MMMain {
 		});
 		String imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon001.png";
 		lblNewLabel.setIcon(new ImageIcon(imgPath));
-		lblNewLabel.setBounds(790, 19, 128, 128);
+		lblNewLabel.setBounds(770, 40, 100, 100);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel label_1 = new JLabel("member");
+		JLabel label_1 = new JLabel("");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,10 +113,11 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
 		label_1.setIcon(new ImageIcon(imgPath));
-		label_1.setBounds(370, 19, 128, 128);
+		label_1.setBounds(380, 40, 100, 100);
 		frame.getContentPane().add(label_1);
 		
-		JLabel lblHome = new JLabel("home");
+		JLabel lblHome = new JLabel("");
+		lblHome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -123,10 +126,11 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon007.png";
 		lblHome.setIcon(new ImageIcon(imgPath));
-		lblHome.setBounds(230, 19, 128, 128);
+		lblHome.setBounds(250, 40, 100, 100);
 		frame.getContentPane().add(lblHome);
 		
-		JLabel label_3 = new JLabel("book");
+		JLabel label_3 = new JLabel("");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -135,10 +139,11 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
 		label_3.setIcon(new ImageIcon(imgPath));
-		label_3.setBounds(510, 19, 128, 128);
+		label_3.setBounds(510, 40, 100, 100);
 		frame.getContentPane().add(label_3);
 		
-		JLabel label_4 = new JLabel("loan");
+		JLabel label_4 = new JLabel("");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -147,10 +152,11 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
 		label_4.setIcon(new ImageIcon(imgPath));
-		label_4.setBounds(650, 19, 128, 128);
+		label_4.setBounds(640, 40, 100, 100);
 		frame.getContentPane().add(label_4);
 		
-		JLabel label = new JLabel("logout");
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -160,14 +166,14 @@ public class MMMain {
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";
 		label.setIcon(new ImageIcon(imgPath));
-		label.setBounds(1134, 27, 128, 128);
+		label.setBounds(1137, 32, 64, 64);
 		frame.getContentPane().add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//main001.png";
 		lblNewLabel_1.setIcon(new ImageIcon(imgPath));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(25, 25, 128, 128);
+		lblNewLabel_1.setBounds(30, 20, 128, 128);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		
