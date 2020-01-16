@@ -134,13 +134,13 @@ public class A extends JPanel { // 회원정보
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int row = table.getSelectedRow();
-				if(row == -1) {
+				 int row = table.getSelectedRow();
+				if(row < 0) {
 					JOptionPane.showMessageDialog(table,
 						    "수정 할 회원을 선택해주세요.");
 				}
 				TableModel data = table.getModel();
-
+				System.out.println(row);
 				String id = (String) data.getValueAt(row, 0);
 				String name = (String) data.getValueAt(row, 1);
 				String pw = (String) data.getValueAt(row, 5);
