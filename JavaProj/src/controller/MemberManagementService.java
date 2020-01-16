@@ -62,6 +62,14 @@ public class MemberManagementService {
 		}
 		
 	}
+	
+	public boolean delMember(Member deleteUser) {
+		if (dao.deleteMember(deleteUser) == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	public ArrayList<Book> bookLookup() {
 
