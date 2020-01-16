@@ -24,7 +24,7 @@ import controller.MemberManagementService;
 import model.Book;
 import model.Member;
 
-public class D extends JPanel  { // 이달의 추천도서 혹은 통계
+public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	private MemberManagementService service = new MemberManagementService();
 	private Member loginUser;
 	private JPanel panel;
@@ -39,28 +39,18 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 
 		String[] combo = { "(선택할 연도 및 월)", "2020년 1월", "2020년 2월" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
-		JComboBox comboBox = new JComboBox(comboModel);
-		comboBox.setBackground(new Color(229, 222, 211));
-		comboBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
 
-			}
-		});
-		comboBox.setBounds(12, 10, 200, 31);
-		add(comboBox);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(229, 222, 211));
 		panel_1.setBounds(0, 57, 1240, 560);
 		add(panel_1);
 
 		panel_1.add(getChart());
-		
-		
+
 	}
-	
+
 	public XChartPanel getChart() {
+
 		  
 	    // 원 차트 만들기
 	    PieChart chart = new PieChartBuilder().width(700).height(500).title("이달의 많은 대여 책 목록").build();
@@ -83,6 +73,5 @@ public class D extends JPanel  { // 이달의 추천도서 혹은 통계
 
 	    return chartPanel;
 	  }
+
 }
-
-
