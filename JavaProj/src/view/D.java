@@ -29,11 +29,16 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	private Member loginUser;
 	private JPanel panel;
 	private JFrame frame;
-
 	/**
 	 * Create the panel.
 	 */
 	public D() {
+		ArrayList<Book> list = service.bookRank();
+		for (int i = 0; i < list.size(); i++) {
+			Book b = list.get(i);
+			data[i] = new Object[] {b.getTitle(), b.get};
+		}
+		
 		setBackground(new Color(229, 222, 211));
 		setLayout(null);
 
@@ -46,7 +51,6 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 		add(panel_1);
 
 		panel_1.add(getChart());
-
 	}
 
 	public XChartPanel getChart() {
@@ -61,7 +65,7 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	    chart.getStyler().setSeriesColors(sliceColors);
 	 
 	    // 속성(Title, 대여수)
-	    chart.addSeries("펭수", 35);
+	    chart.addSeries("", 35);
 	    chart.addSeries("내가", 10);
 	    chart.addSeries("사람", 75);
 	    chart.addSeries("이냐", 5);
