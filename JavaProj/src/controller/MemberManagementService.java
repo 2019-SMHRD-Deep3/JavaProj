@@ -99,8 +99,12 @@ public class MemberManagementService {
 		return bdao.selectAll();
 	}
 
-	public ArrayList<Member> bkLookup() { // 대출 테이블에서 id검색
-		return dao.selectOneId();
+	public ArrayList<Member> bkLookup(String id) { // 대출 테이블에서 id검색
+		return dao.selectOneId(id);
+	}
+
+	public ArrayList<Member> bkAllLookup() {
+		return dao.selectAllId();
 	}
 
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정

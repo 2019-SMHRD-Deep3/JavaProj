@@ -119,7 +119,7 @@ public class MemberDAO {
 			System.out.println(selectUser.getName());
 
 			rows = psmt.executeUpdate();
-          
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -418,22 +418,60 @@ public class MemberDAO {
 		return list;
 	}
 
-	public ArrayList<Member> selectOneId() {
+	public ArrayList<Member> selectOneId(String id) {
 		ArrayList<Member> list = new ArrayList<>();
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT m.m_id, m.m_pw, b.b_title FROM member m, Book b, LOAN l "
-					+ "WHERE m.m_id = l.m_id AND b.b_isbn = l.b_isbn";
+					+ "WHERE m.m_id = l.m_id AND b.b_isbn = l.b_isbn " + "AND m.m_id like '%' || ? || '%'";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String id2 = rs.getString("m_id");
+				String pw = rs.getString("m_pw");
+				String title = rs.getString("b_title");
+				list.add(new Member(id2, pw, title));
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	public ArrayList<Member> selectAllId() {
+		ArrayList<Member> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT m.m_id, m.m_pw, b.b_title FROM member m, Book b, LOAN l "
+					+ "WHERE m.m_id = l.m_id AND b.b_isbn = l.b_isbn ";
+
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String id = rs.getString("m_id");
+				String id2 = rs.getString("m_id");
 				String pw = rs.getString("m_pw");
 				String title = rs.getString("b_title");
-				m = new Member(id, pw, title);
+				list.add(new Member(id2, pw, title));
 			}
 
 		} catch (ClassNotFoundException e) {

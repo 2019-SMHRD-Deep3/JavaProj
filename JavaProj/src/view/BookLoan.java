@@ -31,7 +31,6 @@ public class BookLoan {
 	private Book selectBook;
 	private BookDAO bdao = new BookDAO();
 	private JTextField MemberBook;
-	private Member m;
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private String user = "hr";
 	private String password = "hr";
@@ -125,27 +124,37 @@ public class BookLoan {
 		btnId.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				int i = 0;
+				int j = 0;
 
-				ArrayList<Member> list = service.bkLookup();
-
+				ArrayList<Member> list = service.bkLookup(memberId.getText());
+				ArrayList<Member> allList = service.bkAllLookup();
 				Object[][] data = new Object[list.size()][3];
-				for (int i = 0; i < list.size(); i++) {
-					m = list.get(i);
+				Object[][] allData = new Object[allList.size()][3];
+
+				for (i = 0; i < list.size(); i++) {
+					Member m = list.get(i);
 					data[i] = new Object[] { m.getId(), m.getPw(), m.getMemberBook() };
-					try {
-						if (memberId.getText() == data[i][0]) {
-							MemberBook.setText((String) data[i][2]);
-						} else {
-							JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
-							frame.dispose();
-							continue;
-						}
-					} catch (NullPointerException e) {
-						MemberBook.setText("빌린책이 없습니다.");
+				}
+				for (int k = 0; k < list.size(); k++) {
+					if (data[k][0] != null) {
+						MemberBook.setText((String) data[k][2]);
 					}
 				}
+				for (j = 0; j < allList.size(); j++) {
+					Member m2 = allList.get(j);
+					allData[j] = new Object[] { m2.getId(), m2.getPw(), m2.getMemberBook() };
+				}
+				for (int k = 0; k < allData.length; k++) {
+					if (i == 0 && !memberId.getText().equals(allData[k][0])) {
+						JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
+						frame.dispose();
+					}
+				}
+				if (MemberBook.getText() == null) {
+					MemberBook.setText("빌린책이 없습니다.");
+				}
 			}
-
 		}
 
 		);
