@@ -1,5 +1,9 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -446,9 +450,9 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO loan" +
-					" SELECT ?, ?, ?, ?, ?, ? FROM member m, loan l, book b WHERE m.m_id = l.m_id " +
-					" AND b.b_isbn = l.b_isbn";
+			String sql = "INSERT INTO loan"
+					+ " SELECT ?, ?, ?, ?, ?, ? FROM member m, loan l, book b WHERE m.m_id = l.m_id "
+					+ " AND b.b_isbn = l.b_isbn";
 			psmt = conn.prepareStatement(sql);
 
 			Calendar cal = Calendar.getInstance();
@@ -463,13 +467,31 @@ public class BookDAO {
 
 			psmt.setString(3, "y");
 			psmt.setInt(4, 1);
-//			psmt.setString(5,  );
-//			psmt.setString(6,  );
+
+			File file = new File("D:\\MemberId.txt");
+			FileReader file_reader = new FileReader(file);
+			int cur = 0;
+			while ((cur = file_reader.read()) != -1) {
+				psmt.setLong(5, (char) cur);
+			}
+
+			File file2 = new File("D:\\BookIsbn.txt");
+			FileReader file_reader2 = new FileReader(file2);
+			int cur2 = 0;
+			while ((cur2 = file_reader2.read()) != -1) {
+				psmt.setLong(6, (char) cur2);
+			}
+			file_reader.close();
+
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {

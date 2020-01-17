@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,13 +83,25 @@ public class BookLoan {
 			public void mouseClicked(MouseEvent e) {
 
 				String infoId = memberId.getText();
+
+				try {
+					OutputStream output = new FileOutputStream("D:\\MemberId.txt");
+					String str = infoId;
+					byte[] by = str.getBytes();
+					output.write(by);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
 				Member m = new Member(infoId);
 				Book b = bdao.updateLoan(selectBook);
 
 				if (MemberBook != null) {
-					JOptionPane.showMessageDialog(frame, "대출 실패");
-				} else {
 					JOptionPane.showMessageDialog(frame, "대출 성공");
+				} else {
+					JOptionPane.showMessageDialog(frame, "대출 실패");
 					frame.dispose();
 				}
 
