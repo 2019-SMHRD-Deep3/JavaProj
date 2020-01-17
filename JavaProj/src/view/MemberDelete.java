@@ -69,14 +69,14 @@ public class MemberDelete {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String deleteId = id.getText();
-				String deletePW = pw.getText();				
+							
 				Member deleteUser = new Member(deleteId);
 				boolean result = service.delMember(deleteUser);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "삭제 성공");
 					frame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(frame, "삭제 실패");
+					JOptionPane.showMessageDialog(frame, "책 반납 후 삭제해주세요.");
 				}
 			
 			}

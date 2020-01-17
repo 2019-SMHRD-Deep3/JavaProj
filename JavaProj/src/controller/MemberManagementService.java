@@ -67,7 +67,7 @@ public class MemberManagementService {
 
 	}
 	
-	public boolean delMember(Member deleteUser) {
+	public boolean delMember(Member deleteUser) { //회원 삭제 
 		if (dao.deleteMember(deleteUser) == 0) {
 			return false;
 		} else {
