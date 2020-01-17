@@ -120,7 +120,6 @@ public class MemberDAO {
 
 			rows = psmt.executeUpdate();
           
-
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

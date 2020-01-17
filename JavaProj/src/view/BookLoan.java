@@ -131,21 +131,25 @@ public class BookLoan {
 				Object[][] data = new Object[list.size()][3];
 				for (int i = 0; i < list.size(); i++) {
 					m = list.get(i);
-					data[i] = new Object[] { m.getId(), m.getPw(), m.getMemberBook()};
+					data[i] = new Object[] { m.getId(), m.getPw(), m.getMemberBook() };
 					try {
 						if (memberId.getText() == data[i][0]) {
 							MemberBook.setText((String) data[i][2]);
 						} else {
 							JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
 							frame.dispose();
-							break;
+							continue;
 						}
 					} catch (NullPointerException e) {
 						MemberBook.setText("빌린책이 없습니다.");
-					}}
+					}
 				}
-			
+			}
+
 		}
 
-	);btnId.setBounds(63,190,102,32);frame.getContentPane().add(btnId);
-}}
+		);
+		btnId.setBounds(63, 190, 102, 32);
+		frame.getContentPane().add(btnId);
+	}
+}

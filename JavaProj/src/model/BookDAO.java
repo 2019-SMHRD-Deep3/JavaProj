@@ -34,7 +34,7 @@ public class BookDAO {
 			psmt.setString(1, b.getTitle());
 			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());		
+			psmt.setString(4, b.getPublisher());
 
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -86,7 +86,7 @@ public class BookDAO {
 				String title = rs.getString("b_title");
 				long isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
-				String publisher = rs.getString("publisher");				
+				String publisher = rs.getString("publisher");
 
 				b = new Book(title, isbn, author, publisher);
 
@@ -135,7 +135,7 @@ public class BookDAO {
 			while (rs.next()) {
 
 				String title = rs.getString("b_title");
-				long isbn = rs.getInt("b_isbn");
+				long isbn = rs.getLong("b_isbn");
 				String author = rs.getString("b_author");
 				String publisher = rs.getString("p_publisher");
 				String genre = rs.getString("g_genre");
@@ -446,8 +446,8 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO loan VALUES l_loanDate = ?, l_returnDate = ?, " + 
-			"l_isOverdue = ?, l_count = ? WHERE l.b_isbn = ?";
+			String sql = "INSERT INTO loan VALUES l_loanDate = ?, l_returnDate = ?, "
+					+ "l_isOverdue = ?, l_count = ? WHERE l.b_isbn = ?";
 			psmt = conn.prepareStatement(sql);
 
 			Calendar cal = Calendar.getInstance();

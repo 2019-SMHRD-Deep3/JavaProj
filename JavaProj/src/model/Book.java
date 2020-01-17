@@ -10,12 +10,7 @@ public class Book {
 	private Date loanDate; // 대출날짜
 	private Date returnDate; // 반납날짜
 	private String isOverdue; // 연체여부
-<<<<<<< HEAD
-	private String Genre; // 장르
-	
-=======
 	private String genre; // 장르
->>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
 	public Book(String title, String author) {
 		this.title = title;
