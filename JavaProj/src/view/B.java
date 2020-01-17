@@ -26,7 +26,7 @@ public class B extends JPanel { // 도서명부
 	private JTable table;
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
-	/**
+	/** 
 	 * Create the panel.
 	 */
 	public B() {
