@@ -434,7 +434,7 @@ public class BookDAO {
 
 	}
 
-	public Book updateLoan(Book selectBook) {
+	public int updateLoan(Book selectBook) {
 		int rows = 0;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
@@ -446,25 +446,22 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO loan VALUES l_loanDate = ?, l_returnDate = ?, "
-					+ "l_isOverdue = ?, l_count = ? WHERE l.b_isbn = ?";
+			String sql = "SELECT * FROM member m, loan l, book b WHERE m.m_id = l.m_id AND b.b_isbn = l.b_isbn "
+					+ "INSERT INTO loan VALUES l_loanDate = ?, l_returnDate = ?, " + "l_isOverdue = ?, l_count = ?";
 			psmt = conn.prepareStatement(sql);
 
 			Calendar cal = Calendar.getInstance();
 			java.util.Date date = cal.getTime();
 			String dateString = new SimpleDateFormat("yy/MM/dd").format(date);
-
 			psmt.setString(1, dateString);
 
 			cal.add(Calendar.DATE, 14);
 			date = cal.getTime();
 			String dateString2 = new SimpleDateFormat("yy/MM/dd").format(date);
-
 			psmt.setString(2, dateString2);
 
 			psmt.setString(3, "y");
 			psmt.setInt(4, m.getCnt());
-			psmt.setLong(5, selectBook.getIsbn());
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -483,7 +480,7 @@ public class BookDAO {
 				e.printStackTrace();
 			}
 		}
-		return b;
+		return rows;
 	}
 
 }

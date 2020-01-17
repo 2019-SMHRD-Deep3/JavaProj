@@ -461,8 +461,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT m.m_id, m.m_pw, b.b_title FROM member m, Book b, LOAN l "
-					+ "WHERE m.m_id = l.m_id AND b.b_isbn = l.b_isbn ";
+			String sql = "SELECT m.m_id, m.m_pw, b.b_title FROM member m, Book b, LOAN l ";
 
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();

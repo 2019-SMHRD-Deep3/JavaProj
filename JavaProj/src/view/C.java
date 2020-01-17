@@ -93,8 +93,7 @@ public class C extends JPanel { // 연체관리
 				Book selectBook = new Book(title, author, isbn);
 
 				BookLoan frame = new BookLoan(selectBook);
-				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
-
+				
 			}
 
 		});
@@ -152,14 +151,17 @@ public class C extends JPanel { // 연체관리
 		add(btnNewButton_1);
 
 		JButton button = new JButton("\uCD08\uAE30\uD654");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Object[][] data = new Object[list.size()][5];
+				Object[][] data = new Object[list.size()][3];
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
-					data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
-							b.getIsOverdue() };
+					data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn() };
 				}
 				table = new JTable(data, columnNames);
 				scrollPane.setViewportView(table);

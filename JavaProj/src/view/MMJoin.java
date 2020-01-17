@@ -34,7 +34,7 @@ public class MMJoin {
 	private JTextField address;
 	private JTextField id;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {

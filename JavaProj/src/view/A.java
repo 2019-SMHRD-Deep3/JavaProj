@@ -36,7 +36,7 @@ public class A extends JPanel { // 회원정보
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
 	/**
-	 * Create the panel.
+	 * Create the panel
 	 * 
 	 * @param loginUser
 	 */

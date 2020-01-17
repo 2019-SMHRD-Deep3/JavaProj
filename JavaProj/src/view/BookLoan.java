@@ -80,7 +80,6 @@ public class BookLoan {
 
 				String infoId = memberId.getText();
 				Member m = new Member(infoId);
-
 				Book b = bdao.updateLoan(selectBook);
 
 				if (MemberBook != null) {
@@ -145,19 +144,20 @@ public class BookLoan {
 					Member m2 = allList.get(j);
 					allData[j] = new Object[] { m2.getId(), m2.getPw(), m2.getMemberBook() };
 				}
+
+				boolean is = false;
 				for (int k = 0; k < allData.length; k++) {
-					if (i == 0 && !memberId.getText().equals(allData[k][0])) {
-						JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
-						frame.dispose();
+					if (memberId.getText().equals(allData[k][0])) {
+						is = true;
+						break;
 					}
 				}
-				if (MemberBook.getText() == null) {
-					MemberBook.setText("빌린책이 없습니다.");
+				if (i == 0 && is == false) {
+					JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
+					frame.dispose();
 				}
 			}
-		}
-
-		);
+		});
 		btnId.setBounds(63, 190, 102, 32);
 		frame.getContentPane().add(btnId);
 	}
