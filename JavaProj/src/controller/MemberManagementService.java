@@ -75,9 +75,9 @@ public class MemberManagementService {
 		}
 	}
 
-	public ArrayList<Book> bookLookup() {
+	public ArrayList<Book> bookLookup(String title) { // 소장도서목록
 
-		return bdao.selectSome();
+		return bdao.selectAllBook(title);
 	}
 
 	public ArrayList<Book> mainLookup() {
@@ -99,5 +99,20 @@ public class MemberManagementService {
 		}
 
 	}
+	
+	public ArrayList<Book> findTitle(String title) { // 제목 검색
+
+		return bdao.selectTitle(title);
+	}
+	public ArrayList<Book> findAuthor(String title) { // 작가 검색
+		
+		return bdao.selectAuthor(title);
+	}
+	public ArrayList<Book> findPublisher(String title) { //  검색
+		
+		return bdao.selectTitle(title);
+	}
+
+
 
 }

@@ -25,14 +25,15 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "insert into Book values(?,?,?,?,?,?)";
+			String sql = "insert into Book values(?,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, b.getTitle());
 			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());		
+			psmt.setString(4, b.getPublisher());
+			psmt.setString(5, b.getGenre());
 
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -64,63 +65,8 @@ public class BookDAO {
 		return rows;
 	}
 
-	public Book selectOne(Book b) {
-
-		Book book = null;
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-			conn = DriverManager.getConnection(url, user, password);
-
-			String sql = "SELECT * FROM BOOK WHERE b_ISBN = ? b_TITLE = ? b_author";
-			psmt = conn.prepareStatement(sql);
-			psmt.setLong(1, b.getIsbn());
-			psmt.setString(2, b.getTitle());
-
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-
-				String title = rs.getString("b_title");
-				long isbn = rs.getInt("b_isbn");
-				String author = rs.getString("b_author");
-				String publisher = rs.getString("publisher");				
-
-				b = new Book(title, isbn, author, publisher);
-
-			}
-
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			try {
-				if (rs != null)
-					rs.close();
-				if (psmt != null)
-					psmt.close();
-
-			} catch (SQLException e1) {
-
-				e1.printStackTrace();
-			}
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-
-		}
-		return book;
-	}
-
-	public ArrayList<Book> selectALL(String title) {
+	
+	public ArrayList<Book> selectAllBook(String login_id) { // 소장도서목록
 
 		ArrayList<Book> list = new ArrayList<>();
 
@@ -128,7 +74,9 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT * FROM BOOK ";
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
+					" FROM book b, publisher p, genre g" + 
+					" WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
@@ -137,13 +85,16 @@ public class BookDAO {
 
 			while (rs.next()) {
 
-				String title2 = rs.getString("title");
-				long isbn = rs.getInt("isbn");
-				String author = rs.getString("author");
-				String publisher = rs.getString("publisher");
+				String title = rs.getString("B_TITLE");
+				String author = rs.getString("B_AUTHOR");
+				long isbn = rs.getLong("B_ISBN");
+				String publisher = rs.getString("p_PUBLISHER");
+				String genre = rs.getString("G_genre");
+				System.out.println(title);
+				System.out.println(author);
 
-				list.add(new Book(title2, isbn, author, publisher));
-
+				Book b = new Book(title, author, isbn, publisher, genre);
+				list.add(b);
 			}
 
 		} catch (ClassNotFoundException e) {
@@ -238,7 +189,8 @@ public class BookDAO {
 				String title = rs.getString("b_title");
 				long isbn = rs.getLong("b_isbn");
 				String author = rs.getString("b_author");
-				list.add(new Book(title, isbn, author));
+				Book b = new Book(title, author, isbn);
+				list.add(b);
 			}
 
 		} catch (ClassNotFoundException e) {
@@ -488,4 +440,181 @@ public class BookDAO {
 		return rows;
 	}
 
+	public ArrayList<Book> selectTitle(String title) { // 제목 검색
+
+		ArrayList<Book> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
+					" FROM book b, publisher p, genre g" + 
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND b.b_title like '%' || ? || '%' ";
+			conn = DriverManager.getConnection(url, user, password);
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				String title1 = rs.getString("B_TITLE");
+				String author = rs.getString("B_AUTHOR");
+				long isbn = rs.getLong("B_ISBN");
+				String publisher = rs.getString("p_PUBLISHER");
+				String genre = rs.getString("G_genre");				
+
+				Book b = new Book(title1, author, isbn, publisher, genre);
+				list.add(b);
+			}
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return list;
+
+	}
+	
+	public ArrayList<Book> selectAuthor(String title) { // 작가 검색
+
+		ArrayList<Book> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
+					" FROM book b, publisher p, genre g" + 
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND b.b_author like '%' || ? || '%' ";
+			conn = DriverManager.getConnection(url, user, password);
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				String title1 = rs.getString("B_TITLE");
+				String author = rs.getString("B_AUTHOR");
+				long isbn = rs.getLong("B_ISBN");
+				String publisher = rs.getString("p_PUBLISHER");
+				String genre = rs.getString("G_genre");				
+
+				Book b = new Book(title1, author, isbn, publisher, genre);
+				list.add(b);
+			}
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return list;
+
+	}
+	public ArrayList<Book> selectPublisher(String title) { // 출판사 검색
+
+		ArrayList<Book> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
+					" FROM book b, publisher p, genre g" + 
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND p.p_publisher like '%' || ? || '%' ";
+			conn = DriverManager.getConnection(url, user, password);
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				String title1 = rs.getString("B_TITLE");
+				String author = rs.getString("B_AUTHOR");
+				long isbn = rs.getLong("B_ISBN");
+				String publisher = rs.getString("p_PUBLISHER");
+				String genre = rs.getString("G_genre");
+				System.out.println(title1);
+				System.out.println(author);
+
+				Book b = new Book(title1, author, isbn, publisher, genre);
+				list.add(b);
+			}
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return list;
+
+	}
 }

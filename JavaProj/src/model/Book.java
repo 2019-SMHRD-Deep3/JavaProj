@@ -10,19 +10,20 @@ public class Book {
 	private Date loanDate; // 대출날짜
 	private Date returnDate; // 반납날짜
 	private String isOverdue; // 연체여부
-	private String Genre; // 장르
+	private String genre; // 장르
 
 	public Book(String title, String author) {
 		this.title = title;
 		this.author = author;
 	}
 
-	public Book(String title, long isbn, String author, String publisher) {
+	public Book(String title, String author, long isbn, String publisher, String genre) {
 		super();
 		this.title = title;
-		this.isbn = isbn;
 		this.author = author;
+		this.isbn = isbn;
 		this.publisher = publisher;
+		this.genre = genre;
 
 	}
 
@@ -45,11 +46,12 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
-	public Book(String title, long isbn, String author) {
+	public Book(String title, long isbn, String author,String publisher) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
 		this.author = author;
+		this.publisher = publisher;
 	}
 
 	public Book(String title) {
@@ -61,7 +63,14 @@ public class Book {
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
-		Genre = genre;
+		this.genre = genre;
+	}
+
+	public Book(String title, String author, long isbn) {
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		
 	}
 
 	public String getTitle() {
@@ -90,6 +99,10 @@ public class Book {
 
 	public String getIsOverdue() {
 		return isOverdue;
+	}
+
+	public String getGenre() {		
+		return genre;
 	}
 
 }
