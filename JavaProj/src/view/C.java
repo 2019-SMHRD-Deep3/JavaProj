@@ -88,12 +88,9 @@ public class C extends JPanel { // 연체관리
 				BookLoan frame = new BookLoan(selectBook);
 
 				try {
-					OutputStream output = new FileOutputStream("D:\\BookIsbn.txt");
-					Long str = isbn;
-
-					ByteBuffer buf = ByteBuffer.allocate(13);
-					buf.putLong(isbn);
-					byte[] by = buf.array();
+					OutputStream output = new FileOutputStream("C:\\BookIsbn.txt");
+					String str = String.valueOf(isbn);
+					byte[] by = str.getBytes();
 					output.write(by);
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();

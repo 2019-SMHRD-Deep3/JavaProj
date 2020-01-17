@@ -85,7 +85,7 @@ public class BookLoan {
 				String infoId = memberId.getText();
 
 				try {
-					OutputStream output = new FileOutputStream("D:\\MemberId.txt");
+					OutputStream output = new FileOutputStream("C:\\MemberId.txt");
 					String str = infoId;
 					byte[] by = str.getBytes();
 					output.write(by);

@@ -468,21 +468,20 @@ public class BookDAO {
 			psmt.setString(3, "y");
 			psmt.setInt(4, 1);
 
-			File file = new File("D:\\MemberId.txt");
+			File file = new File("C:\\MemberId.txt");
 			FileReader file_reader = new FileReader(file);
 			int cur = 0;
 			while ((cur = file_reader.read()) != -1) {
 				psmt.setLong(5, (char) cur);
 			}
-
-			File file2 = new File("D:\\BookIsbn.txt");
+			File file2 = new File("C:\\BookIsbn.txt");
 			FileReader file_reader2 = new FileReader(file2);
 			int cur2 = 0;
 			while ((cur2 = file_reader2.read()) != -1) {
 				psmt.setLong(6, (char) cur2);
 			}
+			
 			file_reader.close();
-
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
