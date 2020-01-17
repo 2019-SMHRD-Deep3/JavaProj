@@ -90,7 +90,7 @@ public class C extends JPanel { // 연체관리
 				long isbn = (long) data.getValueAt(row, 2);
 				String author = (String) data.getValueAt(row, 1);
 
-				Book selectBook = new Book(title, isbn, author);
+				Book selectBook = new Book(title, author, isbn);
 
 				BookLoan frame = new BookLoan(selectBook);
 				// defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
@@ -119,7 +119,7 @@ public class C extends JPanel { // 연체관리
 				add(scrollPane);
 
 				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
-				ArrayList<Book> list = service.bookLookup();
+				ArrayList<Book> list = service.ccLookup();
 				int cnt = 0;
 
 				for (int i = 0; i < list.size(); i++) {
@@ -178,7 +178,7 @@ public class C extends JPanel { // 연체관리
 				add(scrollPane);
 
 				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
-				ArrayList<Book> list = service.bookLookup();
+				ArrayList<Book> list = service.ccLookup();
 				int cnt = 0;
 
 				for (int i = 0; i < list.size(); i++) {

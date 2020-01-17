@@ -84,7 +84,7 @@ public class MemberManagementService {
 		}
 	}
 
-	public ArrayList<Book> bookLookup() { // c테이블 도서 목록 불러오기
+	public ArrayList<Book> ccLookup() { // c테이블 도서 목록 불러오기
 
 		return bdao.selectSome();
 	}

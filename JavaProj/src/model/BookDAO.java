@@ -234,9 +234,9 @@ public class BookDAO {
 
 			while (rs.next()) {
 				String title = rs.getString("b_title");
-				long isbn = rs.getLong("b_isbn");
 				String author = rs.getString("b_author");
-				list.add(new Book(title, isbn, author));
+				long isbn = rs.getLong("b_isbn");
+				list.add(new Book(title, author, isbn));
 			}
 
 		} catch (ClassNotFoundException e) {
