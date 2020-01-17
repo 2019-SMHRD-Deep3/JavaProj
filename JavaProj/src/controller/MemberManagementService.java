@@ -54,14 +54,19 @@ public class MemberManagementService {
 
 		return dao.selectName(id);
 	}
-	
+
 	public ArrayList<Member> findId(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
 
 		return dao.selectId(id);
 	}
 
-	public boolean editMember(Member editUser) { //회원  정보 수정
-		
+	public ArrayList<Member> searchId(String id) { // 책 대출할 때 id검색
+
+		return dao.selectId(id);
+	}
+
+	public boolean editMember(Member editUser) { // 회원 정보 수정
+
 		if (dao.updateMember(editUser) == 0) {
 
 			return false;
@@ -70,7 +75,7 @@ public class MemberManagementService {
 		}
 
 	}
-	
+
 	public boolean delMember(Member deleteUser) {
 		if (dao.deleteMember(deleteUser) == 0) {
 			return false;
@@ -79,12 +84,12 @@ public class MemberManagementService {
 		}
 	}
 
-	public ArrayList<Book> bookLookup() {
+	public ArrayList<Book> bookLookup() { // c테이블 도서 목록 불러오기
 
 		return bdao.selectSome();
 	}
 
-	public ArrayList<Book> mainLookup() {
+	public ArrayList<Book> mainLookup() { // main에 책 정보 출력
 
 		return bdao.selectMain();
 	}
@@ -94,14 +99,19 @@ public class MemberManagementService {
 		return bdao.selectAll();
 	}
 
-	public boolean editBook(Book selectBook) { // 회원 정보 수정
+	public ArrayList<Member> bkLookup() { // 대출 테이블에서 id검색
 
-		if (bdao.updateLoan(selectBook) == 0) {
-			return false;
-		} else {
-			return true;
-		}
-
+		return dao.selectOneId();
 	}
+
+//	public boolean editBook(Book selectBook) { // 회원 정보 수정
+//
+//		if (bdao.updateLoan(selectBook) == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+//
+//	}
 
 }

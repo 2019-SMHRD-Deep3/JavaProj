@@ -24,7 +24,12 @@ public class Member {
 		this.id = id;
 		this.pw = pw;
 	}
-	
+
+	public Member(String id, String pw, String memberBook) {
+		this.id = id;
+		this.pw = pw;
+		this.memberBook = memberBook;
+	}
 
 	public Member(String id, String name, String pw, String address, String phone) {
 		super();

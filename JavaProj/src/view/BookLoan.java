@@ -1,26 +1,27 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
 
 import controller.MemberManagementService;
 import model.Book;
 import model.BookDAO;
 import model.Member;
-
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import model.MemberDAO;
 
 public class BookLoan {
 	private JFrame frame;
@@ -31,6 +32,13 @@ public class BookLoan {
 	private BookDAO bdao = new BookDAO();
 	private JTextField MemberBook;
 	private Member m;
+	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String user = "hr";
+	private String password = "hr";
+	private Connection conn = null;
+	private PreparedStatement psmt = null;
+	private ResultSet rs = null;
+	private MemberDAO dao = new MemberDAO();
 
 	public BookLoan(Book selectBook) {
 		this.selectBook = selectBook;
@@ -62,6 +70,10 @@ public class BookLoan {
 		frame.getContentPane().add(memberId);
 
 		JButton btnNewButton = new JButton("\uB300\uCD9C");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -114,13 +126,26 @@ public class BookLoan {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				if (memberId.getText() == m.getId())
-					MemberBook.setText(m.getMemberBook());
-			}
+				ArrayList<Member> list = service.bkLookup();
+
+				Object[][] data = new Object[list.size()][3];
+				for (int i = 0; i < list.size(); i++) {
+					m = list.get(i);
+					data[i] = new Object[] { m.getId(), m.getPw(), m.getMemberBook()};
+					try {
+						if (memberId.getText() == data[i][0]) {
+							MemberBook.setText((String) data[i][2]);
+						} else {
+							JOptionPane.showMessageDialog(frame, "없는 ID입니다.");
+							frame.dispose();
+							break;
+						}
+					} catch (NullPointerException e) {
+						MemberBook.setText("빌린책이 없습니다.");
+					}}
+				}
+			
 		}
 
-		);
-		btnId.setBounds(63, 190, 102, 32);
-		frame.getContentPane().add(btnId);
-	}
-}
+	);btnId.setBounds(63,190,102,32);frame.getContentPane().add(btnId);
+}}
