@@ -80,9 +80,9 @@ public class MemberManagementService {
 		return bdao.selectSome();
 	}
 
-	public ArrayList<Book> mainLookup() {
+	public ArrayList<Book> mainLookup() { // 도서 메인 전체 보기2
 
-		return bdao.selectMain();
+		return bdao.mainALL();
 	}
 
 	public ArrayList<Book> CLookup() {
