@@ -67,7 +67,7 @@ public class MemberManagementService {
 
 	}
 	
-	public boolean delMember(Member deleteUser) {
+	public boolean delMember(Member deleteUser) { //회원 삭제 
 		if (dao.deleteMember(deleteUser) == 0) {
 			return false;
 		} else {
@@ -90,7 +90,7 @@ public class MemberManagementService {
 		return bdao.selectAll();
 	}
 
-	public boolean editBook(Book selectBook) { // 회원 정보 수정
+	public boolean editBook(Book selectBook) {
 
 		if (bdao.updateLoan(selectBook) == 0) {
 			return false;

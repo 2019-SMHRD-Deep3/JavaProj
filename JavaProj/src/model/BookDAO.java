@@ -32,9 +32,7 @@ public class BookDAO {
 			psmt.setString(1, b.getTitle());
 			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());
-			psmt.setDate(5, b.getLoanDate());
-			psmt.setDate(6, b.getReturnDate());
+			psmt.setString(4, b.getPublisher());		
 
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -74,7 +72,7 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "SELECT * FROM BOOK " + "WHERE b_ISBN = ? b_TITLE=?";
+			String sql = "SELECT * FROM BOOK WHERE b_ISBN = ? b_TITLE = ? b_author";
 			psmt = conn.prepareStatement(sql);
 			psmt.setLong(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
@@ -86,9 +84,7 @@ public class BookDAO {
 				String title = rs.getString("b_title");
 				long isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
-				String publisher = rs.getString("publisher");
-				String loanDate = rs.getString("loanDate");
-				String returnDate = rs.getString("returnDate");
+				String publisher = rs.getString("publisher");				
 
 				b = new Book(title, isbn, author, publisher);
 

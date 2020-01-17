@@ -24,11 +24,11 @@ public class MemberDelete {
 	private JTextField id;
 	private JPasswordField pw;
 	private MemberManagementService service = new MemberManagementService();
-	private Member deletetUser;
+	private Member deleteUser;
 
 
 	public MemberDelete(Member deleteUser) {
-		this.deletetUser = deletetUser;
+		this.deleteUser = deleteUser;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -49,12 +49,12 @@ public class MemberDelete {
 		lblId.setBounds(12, 60, 113, 21);
 		frame.getContentPane().add(lblId);
 		
-		id = new JTextField();
+		id = new JTextField(deleteUser.getId());
 		id.setColumns(10);
 		id.setBounds(137, 62, 270, 21);
 		frame.getContentPane().add(id);
 		
-		JPasswordField pw = new JPasswordField();
+		pw = new JPasswordField(deleteUser.getPw());
 		pw.setBounds(137, 93, 270, 21);
 		frame.getContentPane().add(pw);
 		
@@ -68,16 +68,15 @@ public class MemberDelete {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String id = id.getText();
-				String pw = pw.getText();
-				
-				Member deleteUser = new Member(id, pw);
+				String deleteId = id.getText();
+							
+				Member deleteUser = new Member(deleteId);
 				boolean result = service.delMember(deleteUser);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "삭제 성공");
 					frame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(frame, "삭제 실패");
+					JOptionPane.showMessageDialog(frame, "책 반납 후 삭제해주세요.");
 				}
 			
 			}
@@ -100,6 +99,16 @@ public class MemberDelete {
 		label_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
 		label_2.setBounds(12, 10, 420, 21);
 		frame.getContentPane().add(label_2);
+		
+		JLabel lblNewLabel = new JLabel("\uBCF5\uAD6C \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(132, 136, 162, 21);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uC2E0\uC911\uD558\uAC8C \uC120\uD0DD\uD574\uC8FC\uC138\uC694.");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(137, 167, 157, 21);
+		frame.getContentPane().add(label);
 		
 		
 		
