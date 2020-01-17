@@ -107,6 +107,10 @@ public class MemberManagementService {
 		return dao.selectAllId();
 	}
 
+	public Book loanMember(Book b) {
+		return bdao.updateLoan(b);
+	}
+
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정
 //
 //		if (bdao.updateLoan(selectBook) == 0) {

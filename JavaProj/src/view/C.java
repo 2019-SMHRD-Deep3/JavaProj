@@ -35,9 +35,7 @@ public class C extends JPanel { // 연체관리
 	private JTable table;
 	private Book b;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public C() {
 		setBackground(Color.WHITE);
 		setLayout(null);
