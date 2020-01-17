@@ -150,9 +150,11 @@ public class MemberDAO {
          try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(url, user, password); // 얘도 try catch를 새로. connection은 인터페이스
-            String sql = "DELETE FROM member WHERE m_id = ?";
+            String sql = "DELETE FROM member WHERE m_id = ? AND m_pw =?";
             psmt = conn.prepareStatement(sql);
-            psmt.setString(1, deleteUser.getId());
+            psmt.setString(1, deleteUser.getId());            
+            psmt.setString(2, deleteUser.getPw());            
+            System.out.println(deleteUser.getId());            
 
             rows = psmt.executeUpdate(); // 실행. 이 문장에 영향받은 rows가 리턴된다. 한 줄이니까 1 / 딜리트로 3개가 삭제되면 3
             if (rows == 0) {

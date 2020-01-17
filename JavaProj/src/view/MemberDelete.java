@@ -24,11 +24,11 @@ public class MemberDelete {
 	private JTextField id;
 	private JPasswordField pw;
 	private MemberManagementService service = new MemberManagementService();
-	private Member deletetUser;
+	private Member deleteUser;
 
 
 	public MemberDelete(Member deleteUser) {
-		this.deletetUser = deletetUser;
+		this.deleteUser = deleteUser;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -49,12 +49,12 @@ public class MemberDelete {
 		lblId.setBounds(12, 60, 113, 21);
 		frame.getContentPane().add(lblId);
 		
-		id = new JTextField();
+		id = new JTextField(deleteUser.getId());
 		id.setColumns(10);
 		id.setBounds(137, 62, 270, 21);
 		frame.getContentPane().add(id);
 		
-		JPasswordField pw = new JPasswordField();
+		pw = new JPasswordField(deleteUser.getPw());
 		pw.setBounds(137, 93, 270, 21);
 		frame.getContentPane().add(pw);
 		
@@ -68,10 +68,9 @@ public class MemberDelete {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String id = id.getText();
-				String pw = pw.getText();
-				
-				Member deleteUser = new Member(id, pw);
+				String deleteId = id.getText();
+				String deletePW = pw.getText();				
+				Member deleteUser = new Member(deleteId);
 				boolean result = service.delMember(deleteUser);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "삭제 성공");
