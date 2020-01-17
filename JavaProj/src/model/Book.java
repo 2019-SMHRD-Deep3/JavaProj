@@ -11,6 +11,7 @@ public class Book {
 	private Date returnDate; // 반납날짜
 	private String isOverdue; // 연체여부
 	private String Genre; // 장르
+	
 
 	public Book(String title, String author) {
 		this.title = title;

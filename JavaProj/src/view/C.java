@@ -73,6 +73,10 @@ public class C extends JPanel { // 楷眉包府
 		scrollPane.setViewportView(table);
 
 		JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -83,8 +87,8 @@ public class C extends JPanel { // 楷眉包府
 				TableModel data = table.getModel();
 
 				String title = (String) data.getValueAt(row, 0);
-				long isbn = (long) data.getValueAt(row, 1);
-				String author = (String) data.getValueAt(row, 2);
+				long isbn = (long) data.getValueAt(row, 2);
+				String author = (String) data.getValueAt(row, 1);
 
 				Book selectBook = new Book(title, isbn, author);
 

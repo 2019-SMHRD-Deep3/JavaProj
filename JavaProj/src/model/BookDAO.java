@@ -18,6 +18,8 @@ public class BookDAO {
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
+	Member m;
+	Book b;
 
 	public int insert(Book b) {
 		int rows = 0;
@@ -440,7 +442,7 @@ public class BookDAO {
 
 	}
 
-	public int updateLoan(Book selectBook) {
+	public Book updateLoan(Book selectBook) {
 		int rows = 0;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
@@ -452,9 +454,8 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO LOAN VALUES l_loanDate = ?, l_returnDate = ?," + 
-			"l_isOverdue = ?, l_count = ?"
-					+ " WHERE b.b_isbn = ? AND b.b_isbn = l.b_isbn";
+			String sql = "INSERT INTO loan VALUES l_loanDate = ?, l_returnDate = ?, " + 
+			"l_isOverdue = ?, l_count = ? WHERE l.b_isbn = ?";
 			psmt = conn.prepareStatement(sql);
 
 			Calendar cal = Calendar.getInstance();
@@ -470,7 +471,7 @@ public class BookDAO {
 			psmt.setString(2, dateString2);
 
 			psmt.setString(3, "y");
-
+			psmt.setInt(4, m.getCnt());
 			psmt.setLong(5, selectBook.getIsbn());
 			rows = psmt.executeUpdate();
 
@@ -490,7 +491,7 @@ public class BookDAO {
 				e.printStackTrace();
 			}
 		}
-		return rows;
+		return b;
 	}
 
 }

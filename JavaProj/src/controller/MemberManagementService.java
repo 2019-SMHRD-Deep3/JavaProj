@@ -50,12 +50,16 @@ public class MemberManagementService {
 		return dao.selectPhone(phone);
 	}
 
-	public ArrayList<Member> findId(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
+	public ArrayList<Member> findId2(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
 
 		return dao.selectName(id);
 	}
-
 	
+	public ArrayList<Member> findId(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
+
+		return dao.selectId(id);
+	}
+
 	public boolean editMember(Member editUser) { //회원  정보 수정
 		
 		if (dao.updateMember(editUser) == 0) {

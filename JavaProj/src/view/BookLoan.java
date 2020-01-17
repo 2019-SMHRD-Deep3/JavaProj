@@ -19,6 +19,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BookLoan {
 	private JFrame frame;
@@ -27,6 +29,8 @@ public class BookLoan {
 	private MemberManagementService service = new MemberManagementService();
 	private Book selectBook;
 	private BookDAO bdao = new BookDAO();
+	private JTextField MemberBook;
+	private Member m;
 
 	public BookLoan(Book selectBook) {
 		this.selectBook = selectBook;
@@ -65,10 +69,10 @@ public class BookLoan {
 
 				String infoId = memberId.getText();
 				Member m = new Member(infoId);
-				
+
 				Book b = bdao.updateLoan(selectBook);
-				
-				if (loginUser == null) {
+
+				if (MemberBook != null) {
 					JOptionPane.showMessageDialog(frame, "대출 실패");
 				} else {
 					JOptionPane.showMessageDialog(frame, "대출 성공");
@@ -77,7 +81,7 @@ public class BookLoan {
 
 			}
 		});
-		btnNewButton.setBounds(84, 146, 102, 32);
+		btnNewButton.setBounds(189, 190, 102, 32);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton button = new JButton("\uCDE8\uC18C");
@@ -87,7 +91,36 @@ public class BookLoan {
 				frame.dispose();
 			}
 		});
-		button.setBounds(234, 146, 118, 32);
+		button.setBounds(314, 190, 118, 32);
 		frame.getContentPane().add(button);
+
+		JLabel label = new JLabel("\uB300\uCD9C\uB3C4\uC11C");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 19));
+		label.setBounds(12, 132, 113, 27);
+		frame.getContentPane().add(label);
+
+		MemberBook = new JTextField();
+		MemberBook.setColumns(10);
+		MemberBook.setBounds(120, 127, 270, 32);
+		frame.getContentPane().add(MemberBook);
+
+		JButton btnId = new JButton("ID \uAC80\uC0C9");
+		btnId.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnId.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				if (memberId.getText() == m.getId())
+					MemberBook.setText(m.getMemberBook());
+			}
+		}
+
+		);
+		btnId.setBounds(63, 190, 102, 32);
+		frame.getContentPane().add(btnId);
 	}
 }
