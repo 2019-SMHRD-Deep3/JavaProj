@@ -84,7 +84,7 @@ public class BookDAO {
 			if (rs.next()) {
 
 				String title = rs.getString("b_title");
-				int isbn = rs.getInt("b_isbn");
+				long isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
 				String publisher = rs.getString("publisher");
 				String loanDate = rs.getString("loanDate");
@@ -131,9 +131,7 @@ public class BookDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			conn = DriverManager.getConnection(url, user, password); // 접속시도 , 코딩후 에러 - 캐치블럭 설정(팝업창2번째)
-			/// connection - overloading
-			// String sql = "insert into book values(?,?,?,?,?,?)" ;
+			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT * FROM BOOK ";
 			conn = DriverManager.getConnection(url, user, password);
 
@@ -144,7 +142,7 @@ public class BookDAO {
 			while (rs.next()) {
 
 				String title2 = rs.getString("title");
-				int isbn = rs.getInt("isbn");
+				long isbn = rs.getInt("isbn");
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
 
