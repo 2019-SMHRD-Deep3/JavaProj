@@ -34,9 +34,7 @@ public class BookDAO {
 			psmt.setString(1, b.getTitle());
 			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());
-			psmt.setDate(5, b.getLoanDate());
-			psmt.setDate(6, b.getReturnDate());
+			psmt.setString(4, b.getPublisher());		
 
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -76,7 +74,7 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "SELECT * FROM BOOK " + "WHERE b_ISBN = ? b_TITLE=?";
+			String sql = "SELECT * FROM BOOK WHERE b_ISBN = ? b_TITLE = ? b_author";
 			psmt = conn.prepareStatement(sql);
 			psmt.setLong(1, b.getIsbn());
 			psmt.setString(2, b.getTitle());
@@ -88,9 +86,7 @@ public class BookDAO {
 				String title = rs.getString("b_title");
 				long isbn = rs.getInt("b_isbn");
 				String author = rs.getString("b_author");
-				String publisher = rs.getString("publisher");
-				String loanDate = rs.getString("loanDate");
-				String returnDate = rs.getString("returnDate");
+				String publisher = rs.getString("publisher");				
 
 				b = new Book(title, isbn, author, publisher);
 
@@ -126,29 +122,25 @@ public class BookDAO {
 		return book;
 	}
 
-	public ArrayList<Book> selectALL(String title) {
-
+	public ArrayList<Book> mainALL() { // 도서 메인 전체 보기1
 		ArrayList<Book> list = new ArrayList<>();
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT * FROM BOOK ";
-			conn = DriverManager.getConnection(url, user, password);
-
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre FROM book b, publisher p, genre g WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
 			psmt = conn.prepareStatement(sql);
-
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
 
-				String title2 = rs.getString("title");
-				long isbn = rs.getInt("isbn");
-				String author = rs.getString("author");
-				String publisher = rs.getString("publisher");
+				String title = rs.getString("b_title");
+				long isbn = rs.getInt("b_isbn");
+				String author = rs.getString("b_author");
+				String publisher = rs.getString("p_publisher");
+				String genre = rs.getString("g_genre");
 
-				list.add(new Book(title2, isbn, author, publisher));
+				list.add(new Book(title, isbn, author, publisher, genre));
 
 			}
 

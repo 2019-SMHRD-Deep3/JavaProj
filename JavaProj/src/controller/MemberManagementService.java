@@ -76,7 +76,7 @@ public class MemberManagementService {
 
 	}
 
-	public boolean delMember(Member deleteUser) {
+	public boolean delMember(Member deleteUser) { // 회원 삭제
 		if (dao.deleteMember(deleteUser) == 0) {
 			return false;
 		} else {
@@ -89,9 +89,9 @@ public class MemberManagementService {
 		return bdao.selectSome();
 	}
 
-	public ArrayList<Book> mainLookup() { // main에 책 정보 출력
+	public ArrayList<Book> mainLookup() { // 도서 메인 전체 보기2
 
-		return bdao.selectMain();
+		return bdao.mainALL();
 	}
 
 	public ArrayList<Book> CLookup() {
@@ -100,7 +100,6 @@ public class MemberManagementService {
 	}
 
 	public ArrayList<Member> bkLookup() { // 대출 테이블에서 id검색
-
 		return dao.selectOneId();
 	}
 

@@ -119,6 +119,7 @@ public class MemberDAO {
 			System.out.println(selectUser.getName());
 
 			rows = psmt.executeUpdate();
+          
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
