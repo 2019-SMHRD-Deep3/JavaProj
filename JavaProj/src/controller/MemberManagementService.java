@@ -90,7 +90,7 @@ public class MemberManagementService {
 		return bdao.selectAll();
 	}
 
-	public boolean editBook(Book selectBook) { // 회원 정보 수정
+	public boolean editBook(Book selectBook) {
 
 		if (bdao.updateLoan(selectBook) == 0) {
 			return false;

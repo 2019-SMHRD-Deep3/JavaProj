@@ -100,6 +100,16 @@ public class MemberDelete {
 		label_2.setBounds(12, 10, 420, 21);
 		frame.getContentPane().add(label_2);
 		
+		JLabel lblNewLabel = new JLabel("\uBCF5\uAD6C \uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(132, 136, 162, 21);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uC2E0\uC911\uD558\uAC8C \uC120\uD0DD\uD574\uC8FC\uC138\uC694.");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(137, 167, 157, 21);
+		frame.getContentPane().add(label);
+		
 		
 		
 		
