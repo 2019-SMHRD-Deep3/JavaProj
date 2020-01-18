@@ -48,7 +48,6 @@ public class BookLoan {
 		initialize();
 		frame.setVisible(true);
 	}
-
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 482, 287);
@@ -78,7 +77,6 @@ public class BookLoan {
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
-
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
@@ -130,7 +128,6 @@ public class BookLoan {
 		MemberBook.setColumns(10);
 		MemberBook.setBounds(120, 127, 270, 32);
 		frame.getContentPane().add(MemberBook);
-
 		JButton btnId = new JButton("ID \uAC80\uC0C9");
 		btnId.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

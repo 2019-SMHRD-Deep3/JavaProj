@@ -17,12 +17,13 @@ public class Book {
 		this.author = author;
 	}
 
-	public Book(String title, long isbn, String author, String publisher) {
+	public Book(String title, String author, long isbn, String publisher, String genre) {
 		super();
 		this.title = title;
-		this.isbn = isbn;
 		this.author = author;
+		this.isbn = isbn;
 		this.publisher = publisher;
+		this.genre = genre;
 
 	}
 
@@ -45,10 +46,11 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
-	public Book(String title, String author, long isbn) {
+	public Book(String title, long isbn, String author,String publisher) {
 		super();
 		this.title = title;
 		this.author = author;
+		this.publisher = publisher;
 		this.isbn = isbn;
 	}
 
@@ -62,6 +64,12 @@ public class Book {
 		this.author = author;
 		this.publisher = publisher;
 		this.genre = genre;
+	}
+
+	public Book(String title, String author, long isbn) {
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
 	}
 
 	public Book(String title, long isbn, String author, String publisher, String genre) {
@@ -103,4 +111,5 @@ public class Book {
 	public String getGenre() {
 		return genre;
 	}
+
 }
