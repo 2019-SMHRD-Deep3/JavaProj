@@ -68,6 +68,7 @@ public class A extends JPanel { // 회원정보
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
+		comboBox.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 13));
 		comboBox.setBackground(Color.WHITE);
 
 		comboBox.setBounds(200, 38, 170, 29);
