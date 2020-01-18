@@ -48,12 +48,12 @@ public class Book {
 		this.returnDate = returnDate;
 	}
 
-	public Book(String title, String author, Date loanDate2, Date returnDate2, String isOverdue) {
+	public Book(String title, String author, Date loanDate, Date returnDate, String isOverdue) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.loanDate = loanDate2;
-		this.returnDate = returnDate2;
+		this.loanDate = loanDate;
+		this.returnDate = returnDate;
 		this.isOverdue = isOverdue;
 	}
 
@@ -89,6 +89,24 @@ public class Book {
 		this.author = author;
 		this.publisher = publisher;
 		this.genre = genre;
+	}
+	
+	public Book(Date loanDate, Date returnDate, String isOverdue, long isbn) {
+		super();
+		this.loanDate = loanDate;
+		this.returnDate = returnDate;
+		this.isOverdue = isOverdue;
+		this.isbn = isbn;
+	}
+	
+	public Book(String title, String author, Date loanDate, Date returnDate, String isOverdue, long isbn) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.loanDate = loanDate;
+		this.returnDate = returnDate;
+		this.isOverdue = isOverdue;
+		this.isbn = isbn;
 	}
 
 	public String getTitle() {

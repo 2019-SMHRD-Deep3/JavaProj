@@ -82,7 +82,7 @@ public class MemberManagementService {
 		return bdao.mainALL();
 	}
 
-	public ArrayList<Book> CLookup() {
+	public ArrayList<Book> CLookup() { //C에서 첫화면 데이터 출력용
 
 		return bdao.selectAll();
 	}
@@ -102,11 +102,19 @@ public class MemberManagementService {
 		return bdao.selectPublisher(title);
 	}
 
-	public ArrayList<Book> ccLookup() { // c테이블 도서 목록 불러오기
+	public ArrayList<Book> ccLookup() { // c클래스 도서 목록 불러오기
 
 		return bdao.selectSome();
 	}
 
+	public Book cReturn(Book b) { //책반납-선진
+		return bdao.returnLoan(b);
+	}
+	
+	public Book cExtension(Book b) { //대출연장-선진
+		return bdao.extensionLoan(b);
+	}
+	
 	public boolean editBook(Book editBook) { // 도서 정보 수정
 
 		if (bdao.updateBook(editBook) == 0) {
@@ -116,15 +124,15 @@ public class MemberManagementService {
 		}
 	}
 
-	public ArrayList<Member> bkLookup(String id) { // 대출 테이블에서 id검색
+	public ArrayList<Member> bkLookup(String id) { // C에서 id 1명 선택 - 선진
 		return dao.selectOneId(id);
 	}
 
-	public ArrayList<Member> bkAllLookup() {
+	public ArrayList<Member> bkAllLookup() { //C에서 id 전부 선택 - 선진
 		return dao.selectAllId();
 	}
 
-	public Book loanMember(Book b) {
+	public Book loanMember(Book b) { //C에서 책 빌려간 회원 찾기 - 선진
 		return bdao.updateLoan(b);
 	}
 
