@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,42 +16,35 @@ public class BookStDAO {
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
 	private Book b;
-	
-	
-	public ArrayList<Book> rankFive() {
+
+	public ArrayList<Book> rankFive(String login_id) {
 
 		ArrayList<Book> list = new ArrayList<>();
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, l.l_count," + 
-					"ROW_NUMBER() OVER (ORDER BY l.l_count DESC)AS RANK" + 
-					"FROM loan l, book b" + 
-					"WHERE l.b_isbn = b.b_isbn" + 
-					"AND ROWNUM <= 5;";
+			String sql = "SELECT b.b_title, l.l_count, ROW_NUMBER() OVER (ORDER BY l.l_count DESC) FROM loan l, book b WHERE b.b_isbn = l.b_isbn AND ROWNUM <= 5";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String title = rs.getString("b_title");
-				int cnt = rs.getInt("l_count");
+				String title = rs.getString("B_TITLE");
+				int cnt = rs.getInt("L_COUNT");
 				list.add(new Book(title, cnt));
+				System.out.println(title);
+				System.out.println(cnt);
 			}
-
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
-
 			try {
 				if (rs != null)
 					rs.close();
 				if (psmt != null)
 					psmt.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -62,9 +54,7 @@ public class BookStDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
 		return list;
 	}
-	
 }

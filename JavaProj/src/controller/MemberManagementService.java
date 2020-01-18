@@ -132,9 +132,8 @@ public class MemberManagementService {
 		return bdao.selectAllBook(title);
 	}
 
-	public ArrayList<Book> bookChart() {	// Rank5 chart 도식화
-		
-		return bstdao.rankFive();
+	public ArrayList<Book> bookChart(String title) {	// Rank5 chart 도식화
+		return bstdao.rankFive(title);	//
 	}
 
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정

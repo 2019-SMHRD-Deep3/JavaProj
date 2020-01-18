@@ -28,7 +28,8 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	private MemberManagementService service = new MemberManagementService();
 	private JPanel panel;
 	private JFrame frame;
-	private Book b;
+
+//	private Member loginUser;
 
 	/**
 	 * Create the panel.
@@ -42,36 +43,38 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 		panel_1.setBackground(new Color(229, 222, 211));
 		panel_1.setBounds(0, 57, 1240, 560);
 		add(panel_1);
-		panel_1.add(getChart());
+		panel_1.add(getChart(loginUser));
 		
 		
 	}
 
-	public XChartPanel getChart() {
+	public XChartPanel getChart(Member loginUser) {
 
 		// 원 차트 만들기
 		PieChart chart = new PieChartBuilder().width(700).height(500).title("이달의 많은 대여 책 목록").build();
 		// getClass().getSimpleName() 클래스 이름
 
 		// 차트 세부 변경(RGB)
-		Color[] sliceColors = new Color[] { new Color(255, 153, 000), new Color(204, 102, 000),
-				new Color(153, 051, 000), new Color(255, 153, 102), new Color(255, 102, 000) };
+		Color[] sliceColors = new Color[] { new Color(119, 170, 173), new Color(110, 119, 131),
+				new Color(216, 230, 231), new Color(157, 195, 193), new Color(224, 227, 218) };
 		chart.getStyler().setSeriesColors(sliceColors);
 
 		
-//		ArrayList<Book> list = service.bookChart();
-//		
-//		for (int i = 0; i < list.size(); i++) {
-//			b = list.get(i);
-//			chart.addSeries(b.getTitle(), b.getCnt());
-//		}
+		ArrayList<Book> list = service.bookChart(loginUser.getId());	//
+		
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			Book b = list.get(i);
+			chart.addSeries(b.getTitle(), b.getCnt());
+		}
+		
 
 		// 속성(Title, 대여수)
-		chart.addSeries("1가", 20);
-		chart.addSeries("내가", 10);
-		chart.addSeries("사람", 75);
-		chart.addSeries("이냐", 5);
-		chart.addSeries("하늘", 25);
+//		chart.addSeries("1가", 20);
+//		chart.addSeries("내가", 10);
+//		chart.addSeries("사람", 75);
+//		chart.addSeries("이냐", 5);
+//		chart.addSeries("하늘", 25);
 
 		XChartPanel chartPanel = new XChartPanel(chart);
 		chartPanel.setForeground(new Color(229, 222, 211));
