@@ -165,7 +165,6 @@ public class MMMain {
 				JOptionPane.showMessageDialog(frame, "로그아웃 되었습니다.");
 				frame.dispose();
 				MMLogin Login = new MMLogin();
-
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";

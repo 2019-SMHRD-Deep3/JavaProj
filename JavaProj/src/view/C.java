@@ -31,9 +31,15 @@ public class C extends JPanel { // 연체관리
    private JTable table;
    private Book b;
 
+<<<<<<< HEAD
    public C() {
       setBackground(Color.WHITE);
       setLayout(null);
+=======
+	public C() {
+		setBackground(Color.WHITE);
+		setLayout(null);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
       String[] combo = { "제목", "작가" };
       DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
@@ -65,6 +71,7 @@ public class C extends JPanel { // 연체관리
       table = new JTable(data, columnNames);
       scrollPane.setViewportView(table);
 
+<<<<<<< HEAD
       JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
       button_2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
@@ -78,14 +85,54 @@ public class C extends JPanel { // 연체관리
                JOptionPane.showMessageDialog(table, "대출할 책을 선택해주세요.");
             }
             TableModel data = table.getModel();
+=======
+		JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				if (row == -1) {
+					JOptionPane.showMessageDialog(table, "대출할 책을 선택해주세요.");
+				}
+				TableModel data = table.getModel();
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
+<<<<<<< HEAD
             String title = (String) data.getValueAt(row, 0);
             long isbn = (long) data.getValueAt(row, 2);
             String author = (String) data.getValueAt(row, 1);
+=======
+				String title = (String) data.getValueAt(row, 0);
+				long isbn = (long) data.getValueAt(row, 2);
+				String author = (String) data.getValueAt(row, 1);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
+<<<<<<< HEAD
             Book selectBook = new Book(title, author, isbn);
+=======
+				Book selectBook = new Book(title, author, isbn);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
+<<<<<<< HEAD
             BookLoan frame = new BookLoan(selectBook);
+=======
+				BookLoan frame = new BookLoan(selectBook);
+
+				try {
+					OutputStream output = new FileOutputStream("C:\\BookIsbn.txt");
+					String str = String.valueOf(isbn);
+					byte[] by = str.getBytes();
+					output.write(by);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
             try {
                OutputStream output = new FileOutputStream("D:\\BookIsbn.txt");
@@ -109,6 +156,7 @@ public class C extends JPanel { // 연체관리
       button_3.setBounds(41, 190, 113, 23);
       add(button_3);
 
+<<<<<<< HEAD
       JButton btnNewButton = new JButton("\uC5F0\uCCB4\uB3C4\uC11C \uBCF4\uAE30");
       btnNewButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
@@ -120,6 +168,11 @@ public class C extends JPanel { // 연체관리
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setBounds(166, 96, 659, 490);
             add(scrollPane);
+=======
+				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
+				ArrayList<Book> list = service.ccLookup();
+				int cnt = 0;
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
             String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
             ArrayList<Book> list = service.ccLookup();
@@ -150,9 +203,31 @@ public class C extends JPanel { // 연체관리
       btnNewButton.setBounds(41, 223, 113, 23);
       add(btnNewButton);
 
+<<<<<<< HEAD
       JButton btnNewButton_1 = new JButton("\uAE30\uAC04 \uC5F0\uC7A5");
       btnNewButton_1.setBounds(41, 256, 113, 23);
       add(btnNewButton_1);
+=======
+		JButton button = new JButton("\uCD08\uAE30\uD654");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Object[][] data = new Object[list.size()][3];
+				for (int i = 0; i < list.size(); i++) {
+					b = list.get(i);
+					data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn() };
+				}
+				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
+			}
+		});
+		button.setBounds(41, 289, 113, 23);
+		add(button);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
       JButton button = new JButton("\uCD08\uAE30\uD654");
       button.addActionListener(new ActionListener() {
@@ -179,9 +254,15 @@ public class C extends JPanel { // 연체관리
          @Override
          public void mouseClicked(MouseEvent arg0) {
 
+<<<<<<< HEAD
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setBounds(166, 96, 659, 490);
             add(scrollPane);
+=======
+				String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
+				ArrayList<Book> list = service.ccLookup();
+				int cnt = 0;
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
             String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부" };
             ArrayList<Book> list = service.ccLookup();

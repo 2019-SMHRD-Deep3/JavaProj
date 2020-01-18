@@ -46,12 +46,19 @@ public class Book {
 		this.isOverdue = isOverdue;
 	}
 
+<<<<<<< HEAD
 	public Book(String title, long isbn, String author,String publisher) {
+=======
+	public Book(String title, String author, long isbn) {
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		super();
 		this.title = title;
-		this.isbn = isbn;
 		this.author = author;
+<<<<<<< HEAD
 		this.publisher = publisher;
+=======
+		this.isbn = isbn;
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 	}
 
 	public Book(String title) {
@@ -66,11 +73,20 @@ public class Book {
 		this.genre = genre;
 	}
 
+<<<<<<< HEAD
 	public Book(String title, String author, long isbn) {
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		
+=======
+	public Book(String title, long isbn, String author, String publisher, String genre) {
+		this.title = title;
+		this.isbn = isbn;
+		this.author = author;
+		this.publisher = publisher;
+		this.genre = genre;
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 	}
 
 	public String getTitle() {
@@ -101,8 +117,14 @@ public class Book {
 		return isOverdue;
 	}
 
+<<<<<<< HEAD
 	public String getGenre() {		
 		return genre;
 	}
 
+=======
+	public String getGenre() {
+		return genre;
+	}
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 }

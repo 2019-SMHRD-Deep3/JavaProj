@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -13,7 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+<<<<<<< HEAD
 import javax.swing.table.TableModel;
+=======
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
 import controller.MemberManagementService;
 import model.Book;
@@ -31,7 +36,11 @@ public class B extends JPanel { // 도서명부
 	private JTable table;
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
+<<<<<<< HEAD
 	/**
+=======
+	/** 
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 	 * Create the panel.
 	 */
 	public B(Member loginUser) {
@@ -42,24 +51,66 @@ public class B extends JPanel { // 도서명부
 		scrollPane.setBounds(200, 100, 1014, 490);
 		add(scrollPane);
 
+<<<<<<< HEAD
 		String[] columnNames = { "제목", "작가", "ISBN", "출판사", "장르" };
+=======
+		String[] columnNames = { "제목", "ISBN", "작가", "출판사", "장르" };
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
+<<<<<<< HEAD
 		ArrayList<Book> list = service.bookLookup(loginUser.getId());
+=======
+		ArrayList<Book> list = service.mainLookup(); // 도서 메인 전체보기 3
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
 		Object[][] data = new Object[list.size()][5];
 
 		for (int i = 0; i < list.size(); i++) {
 			Book b = list.get(i);
+<<<<<<< HEAD
 			data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn(), b.getPublisher(), b.getGenre() };
+=======
+			data[i] = new Object[] { b.getTitle(), b.getIsbn(), b.getAuthor(), b.getPublisher(), b.getGenre() };
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		}
+<<<<<<< HEAD
 		table = new JTable(data, columnNames);
+=======
+		
+		defaultTableModel.setDataVector(data, columnNames);
+		table = new JTable(defaultTableModel);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		scrollPane.setViewportView(table);
 
+<<<<<<< HEAD
 		defaultTableModel.setDataVector(data, columnNames); // 데이터를 가져오는 모델을 만듦.
 		table = new JTable(defaultTableModel); // 데이터를 가진 변수 생성.
 		scrollPane.setViewportView(table); // 화면에 데이터 보여줌
 
 		String CBmenu_1[] = { " ", "제목", "작가", "출판사" };
+=======
+		JButton button = new JButton("\uCD08\uAE30\uD654"); // 초기화 버튼
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<Book> list = service.mainLookup();
+
+				Object[][] data = new Object[list.size()][5];
+
+				for (int i = 0; i < list.size(); i++) {
+					Book b = list.get(i);
+					data[i] = new Object[] { b.getTitle(), b.getIsbn(), b.getAuthor(), b.getPublisher(), b.getGenre() };
+				}
+
+				defaultTableModel.setDataVector(data, columnNames);
+			}
+		});
+
+		button.setBounds(57, 190, 97, 23);
+		add(button);
+
+		String CBmenu_1[] = { "", "제목", "ISBN", "작가", "출판사" };
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 		// 콤보박스 (메뉴)
 		JComboBox comboBox = new JComboBox(CBmenu_1);
 

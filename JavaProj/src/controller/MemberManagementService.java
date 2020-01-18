@@ -50,11 +50,24 @@ public class MemberManagementService {
 		return dao.selectPhone(phone);
 	}
 
-	public ArrayList<Member> findId(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
+	public ArrayList<Member> findId2(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
 
 		return dao.selectName(id);
 	}
 
+<<<<<<< HEAD
+=======
+	public ArrayList<Member> findId(String id) { // 회원 이름 검색(정보 수정시 아이디클릭)
+
+		return dao.selectId(id);
+	}
+
+	public ArrayList<Member> searchId(String id) { // 책 대출할 때 id검색
+
+		return dao.selectId(id);
+	}
+
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 	public boolean editMember(Member editUser) { // 회원 정보 수정
 
 		if (dao.updateMember(editUser) == 0) {
@@ -74,14 +87,18 @@ public class MemberManagementService {
 		}
 	}
 
+<<<<<<< HEAD
 	public ArrayList<Book> bookLookup(String title) { // 소장도서목록
+=======
+	public ArrayList<Book> ccLookup() { // c테이블 도서 목록 불러오기
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 
 		return bdao.selectAllBook(title);
 	}
 
-	public ArrayList<Book> mainLookup() {
+	public ArrayList<Book> mainLookup() { // 도서 메인 전체 보기2
 
-		return bdao.selectMain();
+		return bdao.mainALL();
 	}
 
 	public ArrayList<Book> CLookup() {
@@ -89,6 +106,7 @@ public class MemberManagementService {
 		return bdao.selectAll();
 	}
 
+<<<<<<< HEAD
 	public ArrayList<Book> findTitle(String title) { // 제목 검색
 
 		return bdao.selectTitle(title);
@@ -117,5 +135,32 @@ public class MemberManagementService {
 		} else {
 			return true;
 		}
+=======
+	public ArrayList<Member> bkLookup(String id) { // 대출 테이블에서 id검색
+		return dao.selectOneId(id);
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
 	}
+<<<<<<< HEAD
 }
+=======
+
+	public ArrayList<Member> bkAllLookup() {
+		return dao.selectAllId();
+	}
+
+	public Book loanMember(Book b) {
+		return bdao.updateLoan(b);
+	}
+
+//	public boolean editBook(Book selectBook) { // 회원 정보 수정
+//
+//		if (bdao.updateLoan(selectBook) == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+//
+//	}
+
+}
+>>>>>>> branch 'master' of https://github.com/fruitfuls2/JavaProj.git
