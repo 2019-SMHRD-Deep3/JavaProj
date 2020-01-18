@@ -157,9 +157,6 @@ public class BookDAO {
 				long isbn = rs.getLong("B_ISBN");
 				String publisher = rs.getString("p_PUBLISHER");
 				String genre = rs.getString("G_genre");
-				System.out.println(title);
-				System.out.println(author);
-
 				Book b = new Book(title, author, isbn, publisher, genre);
 				list.add(b);
 
@@ -363,7 +360,9 @@ public class BookDAO {
 			psmt.setLong(3, selectBook.getIsbn());
 			System.out.println(selectBook.getTitle());
 			System.out.println(selectBook.getAuthor());
+
 			rows = psmt.executeUpdate();
+
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -384,6 +383,7 @@ public class BookDAO {
 			System.out.println(selectBook.getGenre());
 			System.out.println(selectBook.getIsbn());
 			rows = psmt.executeUpdate();
+
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -556,15 +556,21 @@ public class BookDAO {
 			File file = new File("D:\\MemberId.txt");
 			FileReader file_reader = new FileReader(file);
 			int cur = 0;
+			String strMemberId = "";
 			while ((cur = file_reader.read()) != -1) {
-				psmt.setLong(5, (char) cur);
+				strMemberId += (char) cur;
 			}
+			psmt.setString(5, strMemberId);
+
 			File file2 = new File("D:\\BookIsbn.txt");
 			FileReader file_reader2 = new FileReader(file2);
 			int cur2 = 0;
+			String strBookISBN = "";
 			while ((cur2 = file_reader2.read()) != -1) {
-				psmt.setLong(6, (char) cur2);
+				strBookISBN += (char) cur2;
 			}
+			System.out.println(strBookISBN);
+			psmt.setLong(6, Long.parseLong(strBookISBN));
 
 			file_reader.close();
 			rows = psmt.executeUpdate();

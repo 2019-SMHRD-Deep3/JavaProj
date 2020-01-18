@@ -45,7 +45,7 @@ public class B extends JPanel { // 도서명부
       String[] columnNames = { "제목", "작가", "ISBN", "출판사", "장르" };
 
       ArrayList<Book> list = service.bookLookup(loginUser.getId());
-      System.out.println(list == null);
+//      System.out.println(list == null);
       Object[][] data = new Object[list.size()][5];
 
       for (int i = 0; i < list.size(); i++) {

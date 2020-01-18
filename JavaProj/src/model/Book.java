@@ -11,6 +11,17 @@ public class Book {
 	private Date returnDate; // 반납날짜
 	private String isOverdue; // 연체여부
 	private String genre; // 장르
+	private int cnt; // 대여횟수
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public Book(String title, int cnt) {
+		super();
+		this.title = title;
+		this.cnt = cnt;
+	}
 
 	public Book(String title, String author) {
 		this.title = title;
