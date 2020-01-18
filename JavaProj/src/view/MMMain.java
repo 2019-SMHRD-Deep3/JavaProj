@@ -59,7 +59,7 @@ public class MMMain {
 		C cPanel = new C();
 		cardPanel.add(cPanel, "c");
 
-		D dPanel = new D();
+		D dPanel = new D(loginUser);
 		cardPanel.add(dPanel, "d");
 
 //		} else {

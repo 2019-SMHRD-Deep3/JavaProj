@@ -147,8 +147,6 @@ public class BookDAO {
 	      long isbn = rs.getLong("B_ISBN");
 	      String publisher = rs.getString("p_PUBLISHER");
 	      String genre = rs.getString("G_genre");
-	      System.out.println(title);
-	      System.out.println(author);
 	      
 	      Book b = new Book(title, author, isbn, publisher, genre);
 	      list.add(b);
