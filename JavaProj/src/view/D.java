@@ -62,7 +62,6 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 		
 		ArrayList<Book> list = service.bookChart(loginUser.getId());	//
 		
-		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
 			Book b = list.get(i);
 			chart.addSeries(b.getTitle(), b.getCnt());

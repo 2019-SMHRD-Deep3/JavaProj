@@ -32,8 +32,6 @@ public class BookStDAO {
 				String title = rs.getString("B_TITLE");
 				int cnt = rs.getInt("L_COUNT");
 				list.add(new Book(title, cnt));
-				System.out.println(title);
-				System.out.println(cnt);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
