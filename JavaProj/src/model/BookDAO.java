@@ -221,8 +221,8 @@ public class BookDAO {
 		return list;
 	}
 
-	private static void update(Book b) {
-
+	public int updateBook(Book selectBook) { // 도서 수정
+		int rows = 0;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
 		String password = "hr";
@@ -234,50 +234,42 @@ public class BookDAO {
 
 			conn = DriverManager.getConnection(url, user, password);
 
-			String sql = "update book set title = ?, isbn = ?, author = ?, publisher = ?, "
-					+ "loanDate = ?, returnDate = ? ";
-
+			String sql = "update  book as b, publisher as p, genre as g set b.b_title = ?, b.b_isbn = ?, b.b_author = ?, p.p_publisher = ?, g.g_genre = ?";
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, b.getTitle());
-			psmt.setLong(2, b.getIsbn());
-			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());
-			psmt.setDate(5, b.getLoanDate());
-			psmt.setDate(6, b.getReturnDate());
-
-			int rows = psmt.executeUpdate();
-
-			if (rows == 0) {
-				System.out.println("SQL문을 확인하세요.");
-			}
-
+			psmt.setString(1, selectBook.getTitle());
+			psmt.setLong(2, selectBook.getIsbn());
+			psmt.setString(3, selectBook.getAuthor());
+			psmt.setString(4, selectBook.getPublisher());
+			psmt.setString(5, selectBook.getGenre());
+			System.out.println(selectBook.getTitle());
+			System.out.println(selectBook.getIsbn());
+			System.out.println(selectBook.getAuthor());
+			System.out.println(selectBook.getPublisher());
+			System.out.println(selectBook.getGenre());
+			
+			rows = psmt.executeUpdate();
+			
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
-
 			try {
 				if (psmt != null)
 					psmt.close();
-
 			} catch (SQLException e1) {
-
 				e1.printStackTrace();
 			}
 			try {
 				if (conn != null)
 					conn.close();
-
 			} catch (SQLException e) {
-
 				e.printStackTrace();
 			}
 
 		}
+		return rows;
 	}
 
 	private static void delete(Book b) {
@@ -450,11 +442,12 @@ public class BookDAO {
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
 					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND b.b_title like '%' || ? || '%' ";
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_title like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, title);
+			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -509,7 +502,7 @@ public class BookDAO {
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
 					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND b.b_author like '%' || ? || '%' ";
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_author like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
@@ -567,11 +560,12 @@ public class BookDAO {
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
 					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_isbn = g.b_isbn AND p.p_publisher like '%' || ? || '%' ";
+					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND p.p_publisher like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, title);
+			System.out.println(title+" ");
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -583,7 +577,7 @@ public class BookDAO {
 				String genre = rs.getString("G_genre");
 				System.out.println(title1);
 				System.out.println(author);
-
+				System.out.println(publisher);
 				Book b = new Book(title1, author, isbn, publisher, genre);
 				list.add(b);
 			}

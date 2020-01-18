@@ -10,8 +10,10 @@ import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
 import model.Book;
@@ -19,6 +21,8 @@ import model.Member;
 import oracle.net.aso.p;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class B extends JPanel { // 도서명부
 	private JTextField textField;
@@ -119,6 +123,28 @@ public class B extends JPanel { // 도서명부
 		add(button_2);
 
 		JButton button_3 = new JButton("\uC218\uC815");
+		button_3.addMouseListener(new MouseAdapter() { // 수정
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 int row = table.getSelectedRow();
+					if(row < 0) {
+						JOptionPane.showMessageDialog(table,
+							    "수정 할 책을 선택해주세요.");
+					}
+					TableModel data = table.getModel();
+					System.out.println(row);
+					
+					String title = (String) data.getValueAt(row, 0);
+					String author = (String) data.getValueAt(row, 1);
+					Long isbn = (long) data.getValueAt(row, 2);
+					String publisher = (String) data.getValueAt(row, 3);
+					String genre = (String) data.getValueAt(row, 4);
+
+					Book selectBook = new Book(title, author, isbn, publisher, genre);
+
+					BookUpdate frame = new BookUpdate(selectBook);
+			}
+		});
 		button_3.setBounds(57, 157, 97, 23);
 		add(button_3);
 
@@ -127,6 +153,10 @@ public class B extends JPanel { // 도서명부
 		add(btnNewButton);
 
 		JButton button = new JButton("\uCD08\uAE30\uD654");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) { //초기화
+			}
+		});
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
