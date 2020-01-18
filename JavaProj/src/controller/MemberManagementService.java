@@ -1,13 +1,10 @@
 package controller;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 import model.Book;
 import model.BookDAO;
-
+import model.BookStDAO;
 import model.Member;
 import model.MemberDAO;
 
@@ -15,6 +12,7 @@ public class MemberManagementService {
 	// 데이터 베이스에 직접 접근: DAO
 	private MemberDAO dao = new MemberDAO();
 	private BookDAO bdao = new BookDAO();
+	private BookStDAO bstdao = new BookStDAO();
 
 	public boolean memberJoin(Member m) { // 회원가입
 		int row = dao.insert(m);
@@ -132,6 +130,11 @@ public class MemberManagementService {
 		
 		
 		return bdao.selectAllBook(title);
+	}
+
+	public ArrayList<Book> bookChart() {	// Rank5 chart 도식화
+		
+		return bstdao.rankFive();
 	}
 
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정
