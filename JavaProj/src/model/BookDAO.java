@@ -126,70 +126,68 @@ public class BookDAO {
 //		}
 //		return book;
 //	}
-	
+
 	public ArrayList<Book> selectAllBook(String login_id) { // 소장도서목록
-	    ArrayList<Book> list = new ArrayList<>();
+		ArrayList<Book> list = new ArrayList<>();
 
-	   try {
-	      Class.forName("oracle.jdbc.driver.OracleDriver");
-	      conn = DriverManager.getConnection(url, user, password);
-	      String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
-	            " FROM book b, publisher p, genre g" + 
-	            " WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";   
-	      psmt = conn.prepareStatement(sql);
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre"
+					+ " FROM book b, publisher p, genre g" + " WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
+			psmt = conn.prepareStatement(sql);
 
-	      rs = psmt.executeQuery();
+			rs = psmt.executeQuery();
 
-	      while (rs.next()) {
-	      
-	      String title = rs.getString("B_TITLE");
-	      String author = rs.getString("B_AUTHOR");
-	      long isbn = rs.getLong("B_ISBN");
-	      String publisher = rs.getString("p_PUBLISHER");
-	      String genre = rs.getString("G_genre");
-	      
-	      Book b = new Book(title, author, isbn, publisher, genre);
-	      list.add(b);
-	      
-	      }}
-	      
-	      catch (ClassNotFoundException e) {
-	         e.printStackTrace();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         try {
-	            if (rs != null)
-	               rs.close();
-	            if (psmt != null)
-	               psmt.close();
+			while (rs.next()) {
 
-	         } catch (SQLException e1) {
-	            e1.printStackTrace();
-	         }
-	         try {
-	            if (conn != null)
-	               conn.close();
-	         } catch (SQLException e) {
+				String title = rs.getString("B_TITLE");
+				String author = rs.getString("B_AUTHOR");
+				long isbn = rs.getLong("B_ISBN");
+				String publisher = rs.getString("p_PUBLISHER");
+				String genre = rs.getString("G_genre");
 
-	            e.printStackTrace();
-	         }
+				Book b = new Book(title, author, isbn, publisher, genre);
+				list.add(b);
 
-	      }
-	      return list;
+			}
+		}
 
-	   }
-	
-	
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return list;
+
+	}
+
 	public ArrayList<Book> mainALL() { // 도서 메인 전체 보기1
 		ArrayList<Book> list = new ArrayList<>();
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
-					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre"
+					+ " FROM book b, publisher p, genre g" + " WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
 			conn = DriverManager.getConnection(url, user, password);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -417,9 +415,9 @@ public class BookDAO {
 			System.out.println(selectBook.getAuthor());
 			System.out.println(selectBook.getPublisher());
 			System.out.println(selectBook.getGenre());
-			
+
 			rows = psmt.executeUpdate();
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -581,15 +579,21 @@ public class BookDAO {
 			File file = new File("D:\\MemberId.txt");
 			FileReader file_reader = new FileReader(file);
 			int cur = 0;
+			String strMemberId = "";
 			while ((cur = file_reader.read()) != -1) {
-				psmt.setLong(5, (char) cur);
+				strMemberId += (char) cur;
 			}
+			psmt.setString(5, strMemberId);
+
 			File file2 = new File("D:\\BookIsbn.txt");
 			FileReader file_reader2 = new FileReader(file2);
 			int cur2 = 0;
+			String strBookISBN = "";
 			while ((cur2 = file_reader2.read()) != -1) {
-				psmt.setLong(6, (char) cur2);
+				strBookISBN += (char) cur2;
 			}
+			System.out.println(strBookISBN);
+			psmt.setLong(6, Long.parseLong(strBookISBN));
 
 			file_reader.close();
 			rows = psmt.executeUpdate();
@@ -625,14 +629,14 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
-					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_title like '%' || ? || '%' ";
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre"
+					+ " FROM book b, publisher p, genre g"
+					+ " WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_title like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, title);
-			
+
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -641,7 +645,7 @@ public class BookDAO {
 				String author = rs.getString("B_AUTHOR");
 				long isbn = rs.getLong("B_ISBN");
 				String publisher = rs.getString("p_PUBLISHER");
-				String genre = rs.getString("G_genre");				
+				String genre = rs.getString("G_genre");
 
 				Book b = new Book(title1, author, isbn, publisher, genre);
 				list.add(b);
@@ -676,7 +680,7 @@ public class BookDAO {
 		return list;
 
 	}
-	
+
 	public ArrayList<Book> selectAuthor(String title) { // 작가 검색
 
 		ArrayList<Book> list = new ArrayList<>();
@@ -685,9 +689,9 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
-					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_author like '%' || ? || '%' ";
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre"
+					+ " FROM book b, publisher p, genre g"
+					+ " WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND b.b_author like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
@@ -700,7 +704,7 @@ public class BookDAO {
 				String author = rs.getString("B_AUTHOR");
 				long isbn = rs.getLong("B_ISBN");
 				String publisher = rs.getString("p_PUBLISHER");
-				String genre = rs.getString("G_genre");				
+				String genre = rs.getString("G_genre");
 
 				Book b = new Book(title1, author, isbn, publisher, genre);
 				list.add(b);
@@ -735,6 +739,7 @@ public class BookDAO {
 		return list;
 
 	}
+
 	public ArrayList<Book> selectPublisher(String title) { // 출판사 검색
 
 		ArrayList<Book> list = new ArrayList<>();
@@ -743,14 +748,14 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre" + 
-					" FROM book b, publisher p, genre g" + 
-					" WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND p.p_publisher like '%' || ? || '%' ";
+			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre"
+					+ " FROM book b, publisher p, genre g"
+					+ " WHERE b.b_isbn = g.b_isbn AND b.b_isbn = p.b_isbn AND p.p_publisher like '%' || ? || '%' ";
 			conn = DriverManager.getConnection(url, user, password);
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, title);
-			System.out.println(title+" ");
+			System.out.println(title + " ");
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

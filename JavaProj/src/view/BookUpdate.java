@@ -24,7 +24,6 @@ public class BookUpdate {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private MemberManagementService service = new MemberManagementService();
@@ -80,11 +79,12 @@ public class BookUpdate {
 		lblIsbn_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		lblIsbn_2.setBounds(22, 113, 113, 21);
 		frame.getContentPane().add(lblIsbn_2);
-
-		textField_2 = new JTextField(Long.toString(selectBook.getIsbn()));
-		textField_2.setColumns(10);
-		textField_2.setBounds(137, 115, 270, 21);
-		frame.getContentPane().add(textField_2);
+		
+		JLabel label_2 = new JLabel(Long.toString(selectBook.getIsbn()));
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		label_2.setBounds(137, 115, 270, 21);
+		frame.getContentPane().add(label_2);
 
 		JLabel label_4 = new JLabel("\uCD9C\uD310\uC0AC");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +114,7 @@ public class BookUpdate {
 			public void mouseClicked(MouseEvent e) {
 				String title = textField.getText();
 				String author = textField_1.getText();
-				long isbn = Long.parseLong(textField_2.getText());
+				long isbn = Long.parseLong(label_2.getText());
 				String publisher = textField_3.getText();
 				String genre = textField_4.getText();
 
@@ -140,7 +140,8 @@ public class BookUpdate {
 		});
 		button_1.setBounds(252, 226, 97, 23);
 		frame.getContentPane().add(button_1);
+		
+
 
 	}
-
 }

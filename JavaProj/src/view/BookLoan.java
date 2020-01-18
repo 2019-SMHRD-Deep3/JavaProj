@@ -48,6 +48,7 @@ public class BookLoan {
 		initialize();
 		frame.setVisible(true);
 	}
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 482, 287);
@@ -148,15 +149,24 @@ public class BookLoan {
 					Member m = list.get(i);
 					data[i] = new Object[] { m.getId(), m.getPw(), m.getMemberBook() };
 				}
+
+				boolean IS = false;
+
 				for (int k = 0; k < list.size(); k++) {
 					if (data[k][0] != null) {
 						MemberBook.setText((String) data[k][2]);
+						IS = true;
 					}
 				}
+				if (IS == false) {
+					MemberBook.setText("");
+				}
+
 				for (j = 0; j < allList.size(); j++) {
 					Member m2 = allList.get(j);
 					allData[j] = new Object[] { m2.getId(), m2.getPw(), m2.getMemberBook() };
 				}
+				;
 
 				boolean is = false;
 				for (int k = 0; k < allData.length; k++) {
