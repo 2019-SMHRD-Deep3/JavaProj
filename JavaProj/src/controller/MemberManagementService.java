@@ -128,10 +128,10 @@ public class MemberManagementService {
 		return bdao.updateLoan(b);
 	}
 
-	public ArrayList<Book> bookLookup(String id) {
+	public ArrayList<Book> bookLookup(String title) {
 		
 		
-		return null;
+		return bdao.selectAllBook(title);
 	}
 
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정
