@@ -26,6 +26,7 @@ import controller.MemberManagementService;
 import model.Member;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class A extends JPanel { // 회원정보
 	private JTextField textField;
@@ -35,13 +36,13 @@ public class A extends JPanel { // 회원정보
 	private MemberManagementService service = new MemberManagementService();
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
-	/**	1
-	 * Create the panel
+	/**
+	 * 1 Create the panel
 	 * 
 	 * @param loginUser
 	 */
 	public A(Member loginUser) {
-		setBackground(Color.WHITE);
+		setBackground(new Color(240, 245, 249));
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -67,6 +68,7 @@ public class A extends JPanel { // 회원정보
 		String[] combo = { "  ", "이름", "주소", "전화번호" };
 		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
 		JComboBox comboBox = new JComboBox(comboModel);
+		comboBox.setBackground(Color.WHITE);
 
 		comboBox.setBounds(200, 38, 170, 29);
 		add(comboBox);
@@ -77,6 +79,8 @@ public class A extends JPanel { // 회원정보
 		textField.setColumns(10);
 
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
+		btnNewButton.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+		btnNewButton.setBackground(new Color(201, 214, 222));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -127,6 +131,9 @@ public class A extends JPanel { // 회원정보
 		add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("\uC218\uC815");
+		btnNewButton_1.setForeground(Color.BLACK);
+		btnNewButton_1.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		btnNewButton_1.setBackground(new Color(201, 214, 222));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -139,7 +146,6 @@ public class A extends JPanel { // 회원정보
 					JOptionPane.showMessageDialog(table, "수정 할 회원을 선택해주세요.");
 				}
 				TableModel data = table.getModel();
-				System.out.println(row);
 
 				String name = (String) data.getValueAt(row, 1);
 				String pw = (String) data.getValueAt(row, 5);
@@ -157,6 +163,8 @@ public class A extends JPanel { // 회원정보
 		add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
+		btnNewButton_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		btnNewButton_2.setBackground(new Color(201, 214, 222));
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -165,7 +173,6 @@ public class A extends JPanel { // 회원정보
 					JOptionPane.showMessageDialog(table, "삭제 할 회원을 선택해주세요.");
 				}
 				TableModel data = table.getModel();
-				System.out.println(row);
 				String id = (String) data.getValueAt(row, 0);
 				String pw = (String) data.getValueAt(row, 5);
 
@@ -178,6 +185,8 @@ public class A extends JPanel { // 회원정보
 		add(btnNewButton_2);
 
 		JButton button = new JButton("\uCD08\uAE30\uD654");
+		button.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		button.setBackground(new Color(201, 214, 222));
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

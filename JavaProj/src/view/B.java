@@ -23,6 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class B extends JPanel { // 도서명부
    private JTextField textField;
@@ -35,7 +36,7 @@ public class B extends JPanel { // 도서명부
     * Create the panel.
     */
    public B(Member loginUser) {
-      setBackground(new Color(229, 222, 211));
+      setBackground(new Color(240, 245, 249));
       setLayout(null);
 
       scrollPane = new JScrollPane();
@@ -72,6 +73,8 @@ public class B extends JPanel { // 도서명부
       add(textField);
 
       JButton button_1 = new JButton("\uAC80\uC0C9");
+      button_1.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
+      button_1.setBackground(new Color(201, 214, 222));
       button_1.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseClicked(MouseEvent e) {
@@ -119,6 +122,8 @@ public class B extends JPanel { // 도서명부
       add(button_1);
 
       JButton button_2 = new JButton("\uCD94\uAC00");
+      button_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+      button_2.setBackground(new Color(201, 214, 222));
       button_2.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -129,6 +134,8 @@ public class B extends JPanel { // 도서명부
       add(button_2);
 
       JButton button_3 = new JButton("\uC218\uC815");
+      button_3.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+      button_3.setBackground(new Color(201, 214, 222));
       button_3.addMouseListener(new MouseAdapter() { // 수정
          @Override
          public void mouseClicked(MouseEvent e) {
@@ -155,6 +162,8 @@ public class B extends JPanel { // 도서명부
       add(button_3);
 
       JButton btnNewButton = new JButton("\uC0AD\uC81C");
+      btnNewButton.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+      btnNewButton.setBackground(new Color(201, 214, 222));
       btnNewButton.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -182,6 +191,8 @@ public class B extends JPanel { // 도서명부
       add(btnNewButton);
 
       JButton button = new JButton("\uCD08\uAE30\uD654");
+      button.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+      button.setBackground(new Color(201, 214, 222));
       button.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) { //초기화
          }
