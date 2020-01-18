@@ -88,7 +88,7 @@ public class C extends JPanel { // 연체관리
 				BookLoan frame = new BookLoan(selectBook);
 
 				try {
-					OutputStream output = new FileOutputStream("C:\\BookIsbn.txt");
+					OutputStream output = new FileOutputStream("D:\\BookIsbn.txt");
 					String str = String.valueOf(isbn);
 					byte[] by = str.getBytes();
 					output.write(by);

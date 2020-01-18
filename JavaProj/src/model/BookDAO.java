@@ -70,113 +70,113 @@ public class BookDAO {
 		return rows;
 	}
 
-	public Book selectOne(Book b) {
+//	public Book selectOne(Book b) {
+//
+//		Book book = null;
+//		try {
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//
+//			conn = DriverManager.getConnection(url, user, password);
+//
+//			String sql = "SELECT * FROM BOOK WHERE b_ISBN = ? b_TITLE = ? b_author";
+//			psmt = conn.prepareStatement(sql);
+//			psmt.setLong(1, b.getIsbn());
+//			psmt.setString(2, b.getTitle());
+//
+//			rs = psmt.executeQuery();
+//
+//			if (rs.next()) {
+//
+//				String title = rs.getString("b_title");
+//				long isbn = rs.getInt("b_isbn");
+//				String author = rs.getString("b_author");
+//				String publisher = rs.getString("publisher");
+//
+//				b = new Book(title, isbn, author, publisher);
+//
+//			}
+//
+//		} catch (ClassNotFoundException e) {
+//
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//
+//			e.printStackTrace();
+//		} finally {
+//
+//			try {
+//				if (rs != null)
+//					rs.close();
+//				if (psmt != null)
+//					psmt.close();
+//
+//			} catch (SQLException e1) {
+//
+//				e1.printStackTrace();
+//			}
+//			try {
+//				if (conn != null)
+//					conn.close();
+//			} catch (SQLException e) {
+//
+//				e.printStackTrace();
+//			}
+//
+//		}
+//		return book;
+//	}
 
-		Book book = null;
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-			conn = DriverManager.getConnection(url, user, password);
-
-			String sql = "SELECT * FROM BOOK WHERE b_ISBN = ? b_TITLE = ? b_author";
-			psmt = conn.prepareStatement(sql);
-			psmt.setLong(1, b.getIsbn());
-			psmt.setString(2, b.getTitle());
-
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-
-				String title = rs.getString("b_title");
-				long isbn = rs.getInt("b_isbn");
-				String author = rs.getString("b_author");
-				String publisher = rs.getString("publisher");
-
-				b = new Book(title, isbn, author, publisher);
-
-			}
-
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			try {
-				if (rs != null)
-					rs.close();
-				if (psmt != null)
-					psmt.close();
-
-			} catch (SQLException e1) {
-
-				e1.printStackTrace();
-			}
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-
-		}
-		return book;
-	}
-
-	public ArrayList<Book> mainALL() { // 도서 메인 전체 보기1
-		ArrayList<Book> list = new ArrayList<>();
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password);
-			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre FROM book b, publisher p, genre g WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-
-				String title = rs.getString("b_title");
-				long isbn = rs.getLong("b_isbn");
-				String author = rs.getString("b_author");
-				String publisher = rs.getString("p_publisher");
-				String genre = rs.getString("g_genre");
-
-				list.add(new Book(title, isbn, author, publisher, genre));
-
-			}
-
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			try {
-				if (rs != null)
-					rs.close();
-				if (psmt != null)
-					psmt.close();
-
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-
-		}
-		return list;
-
-	}
+//	public ArrayList<Book> mainALL() { // 도서 메인 전체 보기1
+//		ArrayList<Book> list = new ArrayList<>();
+//
+//		try {
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			conn = DriverManager.getConnection(url, user, password);
+//			String sql = "SELECT b.b_title, b.b_author, b.b_isbn, p.p_publisher, g.g_genre FROM book b, publisher p, genre g WHERE b.b_isbn = p.b_isbn AND g.b_isbn = b.b_isbn";
+//			psmt = conn.prepareStatement(sql);
+//			rs = psmt.executeQuery();
+//
+//			while (rs.next()) {
+//
+//				String title = rs.getString("b_title");
+//				long isbn = rs.getLong("b_isbn");
+//				String author = rs.getString("b_author");
+//				String publisher = rs.getString("p_publisher");
+//				String genre = rs.getString("g_genre");
+//
+//				list.add(new Book(title, isbn, author, publisher, genre));
+//
+//			}
+//
+//		} catch (ClassNotFoundException e) {
+//
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//
+//			e.printStackTrace();
+//		} finally {
+//
+//			try {
+//				if (rs != null)
+//					rs.close();
+//				if (psmt != null)
+//					psmt.close();
+//
+//			} catch (SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//			try {
+//				if (conn != null)
+//					conn.close();
+//			} catch (SQLException e) {
+//
+//				e.printStackTrace();
+//			}
+//
+//		}
+//		return list;
+//
+//	}
 
 	public ArrayList<Book> selectSome() {
 
@@ -271,64 +271,64 @@ public class BookDAO {
 		return list;
 	}
 
-	private static void update(Book b) {
-
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String password = "hr";
-		Connection conn = null;
-		PreparedStatement psmt = null;
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-			conn = DriverManager.getConnection(url, user, password);
-
-			String sql = "update book set title = ?, isbn = ?, author = ?, publisher = ?, "
-					+ "loanDate = ?, returnDate = ? ";
-
-			psmt = conn.prepareStatement(sql);
-
-			psmt.setString(1, b.getTitle());
-			psmt.setLong(2, b.getIsbn());
-			psmt.setString(3, b.getAuthor());
-			psmt.setString(4, b.getPublisher());
-			psmt.setDate(5, b.getLoanDate());
-			psmt.setDate(6, b.getReturnDate());
-
-			int rows = psmt.executeUpdate();
-
-			if (rows == 0) {
-				System.out.println("SQL문을 확인하세요.");
-			}
-
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			try {
-				if (psmt != null)
-					psmt.close();
-
-			} catch (SQLException e1) {
-
-				e1.printStackTrace();
-			}
-			try {
-				if (conn != null)
-					conn.close();
-
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-
-		}
-	}
+//	private static void update(Book b) {
+//
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String user = "hr";
+//		String password = "hr";
+//		Connection conn = null;
+//		PreparedStatement psmt = null;
+//
+//		try {
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//
+//			conn = DriverManager.getConnection(url, user, password);
+//
+//			String sql = "update book set title = ?, isbn = ?, author = ?, publisher = ?, "
+//					+ "loanDate = ?, returnDate = ? ";
+//
+//			psmt = conn.prepareStatement(sql);
+//
+//			psmt.setString(1, b.getTitle());
+//			psmt.setLong(2, b.getIsbn());
+//			psmt.setString(3, b.getAuthor());
+//			psmt.setString(4, b.getPublisher());
+//			psmt.setDate(5, b.getLoanDate());
+//			psmt.setDate(6, b.getReturnDate());
+//
+//			int rows = psmt.executeUpdate();
+//
+//			if (rows == 0) {
+//				System.out.println("SQL문을 확인하세요.");
+//			}
+//
+//		} catch (ClassNotFoundException e) {
+//
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//
+//			e.printStackTrace();
+//		} finally {
+//
+//			try {
+//				if (psmt != null)
+//					psmt.close();
+//
+//			} catch (SQLException e1) {
+//
+//				e1.printStackTrace();
+//			}
+//			try {
+//				if (conn != null)
+//					conn.close();
+//
+//			} catch (SQLException e) {
+//
+//				e.printStackTrace();
+//			}
+//
+//		}
+//	}
 
 	private static void delete(Book b) {
 
@@ -450,9 +450,7 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO loan"
-					+ " SELECT ?, ?, ?, ?, ?, ? FROM member m, loan l, book b WHERE m.m_id = l.m_id "
-					+ " AND b.b_isbn = l.b_isbn";
+			String sql = "INSERT INTO loan" + " values (?, ?, ?, ?, ?, ?)";
 			psmt = conn.prepareStatement(sql);
 
 			Calendar cal = Calendar.getInstance();
@@ -468,19 +466,19 @@ public class BookDAO {
 			psmt.setString(3, "y");
 			psmt.setInt(4, 1);
 
-			File file = new File("C:\\MemberId.txt");
+			File file = new File("D:\\MemberId.txt");
 			FileReader file_reader = new FileReader(file);
 			int cur = 0;
 			while ((cur = file_reader.read()) != -1) {
 				psmt.setLong(5, (char) cur);
 			}
-			File file2 = new File("C:\\BookIsbn.txt");
+			File file2 = new File("D:\\BookIsbn.txt");
 			FileReader file_reader2 = new FileReader(file2);
 			int cur2 = 0;
 			while ((cur2 = file_reader2.read()) != -1) {
 				psmt.setLong(6, (char) cur2);
 			}
-			
+
 			file_reader.close();
 			rows = psmt.executeUpdate();
 
