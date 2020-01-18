@@ -24,10 +24,10 @@ public class BookDAO {
    private ResultSet rs = null;
    Member m;
    Book b;
-//   Publisher p;
-//   Genre g;
+   Publisher p;
+   Genre g;
 
-   public int insertBook(Member loginUser) { // 도서 추가 
+   public int insertBook() { // 도서 추가 
       int rows = 0;
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String user = "hr";
@@ -157,9 +157,6 @@ public class BookDAO {
             long isbn = rs.getLong("B_ISBN");
             String publisher = rs.getString("p_PUBLISHER");
             String genre = rs.getString("G_genre");
-            System.out.println(title);
-            System.out.println(author);
-
             Book b = new Book(title, author, isbn, publisher, genre);
             list.add(b);
 
@@ -363,7 +360,9 @@ public class BookDAO {
          psmt.setLong(3, selectBook.getIsbn());
          System.out.println(selectBook.getTitle());
          System.out.println(selectBook.getAuthor());
+
          rows = psmt.executeUpdate();
+
 
          Class.forName("oracle.jdbc.driver.OracleDriver");
          conn = DriverManager.getConnection(url, user, password);
@@ -378,6 +377,70 @@ public class BookDAO {
          Class.forName("oracle.jdbc.driver.OracleDriver");
          conn = DriverManager.getConnection(url, user, password);
          String sql3 = "UPDATE genre set g_genre = ? WHERE b_isbn = ?";
+         psmt = conn.prepareStatement(sql3);
+         psmt.setString(1, selectBook.getGenre());
+         psmt.setLong(2, selectBook.getIsbn());
+         System.out.println(selectBook.getGenre());
+         System.out.println(selectBook.getIsbn());
+         rows = psmt.executeUpdate();
+
+
+      } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            if (psmt != null)
+               psmt.close();
+         } catch (SQLException e1) {
+            e1.printStackTrace();
+         }
+         try {
+            if (conn != null)
+               conn.close();
+         } catch (SQLException e) {
+            e.printStackTrace();
+         }
+
+      }
+      return rows;
+   }
+
+   public int deletebook(Book selectBook) { //도서 삭제 
+      int rows = 0;
+      String url = "jdbc:oracle:thin:@localhost:1521:xe";
+      String user = "hr";
+      String password = "hr";
+      Connection conn = null;
+      PreparedStatement psmt = null;
+
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+
+         conn = DriverManager.getConnection(url, user, password);
+         String sql = "DELETE FROM book b_title = ?, b_author = ? WHERE b_isbn = ?";
+         psmt = conn.prepareStatement(sql);
+         psmt.setString(1, selectBook.getTitle());
+         psmt.setString(2, selectBook.getAuthor());
+         psmt.setLong(3, selectBook.getIsbn());
+         System.out.println(selectBook.getTitle());
+         System.out.println(selectBook.getAuthor());
+         rows = psmt.executeUpdate();
+
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         conn = DriverManager.getConnection(url, user, password);
+         String sql2 = "DELETE FROM book p_publisher = ? WHERE b_isbn = ?";
+         psmt = conn.prepareStatement(sql2);
+         psmt.setString(1, selectBook.getPublisher());
+         psmt.setLong(2, selectBook.getIsbn());
+         System.out.println(selectBook.getPublisher());
+         System.out.println(selectBook.getIsbn());
+         rows = psmt.executeUpdate();
+
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         conn = DriverManager.getConnection(url, user, password);
+         String sql3 = "DELETE FROM book g_genre = ? WHERE b_isbn = ?";
          psmt = conn.prepareStatement(sql3);
          psmt.setString(1, selectBook.getGenre());
          psmt.setLong(2, selectBook.getIsbn());
@@ -405,60 +468,7 @@ public class BookDAO {
 
       }
       return rows;
-   }
-
-   private static void delete(Book b) {
-
-      String url = "jdbc:oracle:thin:@localhost:1521:xe";
-      String user = "hr";
-      String password = "hr";
-      Connection conn = null;
-      PreparedStatement psmt = null;
-
-      try {
-         Class.forName("oracle.jdbc.driver.OracleDriver");
-
-         conn = DriverManager.getConnection(url, user, password);
-
-         String sql = "delete from BOOK WHERE B_ISBN = ?";
-
-         psmt = conn.prepareStatement(sql);
-
-         psmt.setString(1, b.getTitle());
-         psmt.setLong(2, b.getIsbn());
-         psmt.setString(3, b.getAuthor());
-         psmt.setString(4, b.getPublisher());
-         psmt.setDate(5, b.getLoanDate());
-         psmt.setDate(6, b.getReturnDate());
-
-         int rows = psmt.executeUpdate();
-
-         if (rows == 0) {
-            System.out.println("SQL문을 확인하세요.");
-         }
-
-      } catch (ClassNotFoundException e) {
-
-         e.printStackTrace();
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } finally {
-         try {
-            if (psmt != null)
-               psmt.close();
-
-         } catch (SQLException e1) {
-            e1.printStackTrace();
-         }
-         try {
-            if (conn != null)
-               conn.close();
-
-         } catch (SQLException e) {
-            e.printStackTrace();
-         }
-
-      }
+   
    }
 
    public ArrayList<Book> selectMain() {
@@ -546,15 +556,21 @@ public class BookDAO {
          File file = new File("D:\\MemberId.txt");
          FileReader file_reader = new FileReader(file);
          int cur = 0;
+         String strMemberId = "";
          while ((cur = file_reader.read()) != -1) {
-            psmt.setLong(5, (char) cur);
+            strMemberId += (char) cur;
          }
+         psmt.setString(5, strMemberId);
+
          File file2 = new File("D:\\BookIsbn.txt");
          FileReader file_reader2 = new FileReader(file2);
          int cur2 = 0;
+         String strBookISBN = "";
          while ((cur2 = file_reader2.read()) != -1) {
-            psmt.setLong(6, (char) cur2);
+            strBookISBN += (char) cur2;
          }
+         System.out.println(strBookISBN);
+         psmt.setLong(6, Long.parseLong(strBookISBN));
 
          file_reader.close();
          rows = psmt.executeUpdate();
@@ -762,4 +778,5 @@ public class BookDAO {
       return list;
 
    }
+
 }
