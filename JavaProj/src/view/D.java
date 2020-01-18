@@ -51,7 +51,7 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	public XChartPanel getChart(Member loginUser) {
 
 		// 원 차트 만들기
-		PieChart chart = new PieChartBuilder().width(700).height(500).title("이달의 많은 대여 책 목록").build();
+		PieChart chart = new PieChartBuilder().width(700).height(500).title("이달 많이 대여한 책 목록 Top 5").build();
 		// getClass().getSimpleName() 클래스 이름
 
 		// 차트 세부 변경(RGB)
