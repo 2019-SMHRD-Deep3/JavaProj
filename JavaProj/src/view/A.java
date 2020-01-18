@@ -35,7 +35,7 @@ public class A extends JPanel { // 회원정보
 	private MemberManagementService service = new MemberManagementService();
 	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
-	/**
+	/**	1
 	 * Create the panel
 	 * 
 	 * @param loginUser
