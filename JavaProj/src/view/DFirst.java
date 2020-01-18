@@ -25,7 +25,7 @@ public class DFirst extends JPanel {
 	private Book b;
 
 	public DFirst() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(240, 245, 249));
 		setLayout(null);
 
 		JPanel panel = new JPanel();

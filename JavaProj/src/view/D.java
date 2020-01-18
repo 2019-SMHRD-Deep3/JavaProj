@@ -36,7 +36,7 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 	 */
 	public D(Member loginUser) {
 		
-		setBackground(new Color(229, 222, 211));
+		setBackground(new Color(240, 245, 249));
 		setLayout(null);
 
 		JPanel panel_1 = new JPanel();
