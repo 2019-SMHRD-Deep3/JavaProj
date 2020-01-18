@@ -99,7 +99,7 @@ public class MemberManagementService {
 		return bdao.selectAuthor(title);
 	}
 
-	public ArrayList<Book> findPublisher(String title) { // 검색
+	public ArrayList<Book> findPublisher(String title) { // 출판사 검색
 
 		return bdao.selectPublisher(title);
 	}
@@ -115,10 +115,12 @@ public class MemberManagementService {
 			return false;
 		} else {
 			return true;
-		}}
+		}
+	}
+
 	public ArrayList<Member> bkLookup(String id) { // 대출 테이블에서 id검색
 		return dao.selectOneId(id);
-}
+	}
 
 	public ArrayList<Member> bkAllLookup() {
 		return dao.selectAllId();
@@ -129,8 +131,7 @@ public class MemberManagementService {
 	}
 
 	public ArrayList<Book> bookLookup(String title) {
-		
-		
+
 		return bdao.selectAllBook(title);
 	}
 
@@ -143,5 +144,23 @@ public class MemberManagementService {
 //		}
 //
 //	}
+
+	public boolean rgstBook() { // 도서 등록
+
+		if (bdao.insertBook() == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public boolean delBook(Book selectBook) { // 도서 삭제
+			if (bdao.deletebook(selectBook) == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	
 
 }

@@ -119,6 +119,12 @@ public class B extends JPanel { // 도서명부
       add(button_1);
 
       JButton button_2 = new JButton("\uCD94\uAC00");
+      button_2.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		BookAdd frame = new BookAdd(loginUser);
+      	}
+      });
       button_2.setBounds(57, 124, 97, 23);
       add(button_2);
 
@@ -149,6 +155,29 @@ public class B extends JPanel { // 도서명부
       add(button_3);
 
       JButton btnNewButton = new JButton("\uC0AD\uC81C");
+      btnNewButton.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		int row = table.getSelectedRow();
+            if(row < 0) {
+               JOptionPane.showMessageDialog(table,
+                      "삭제 할 책을 선택해주세요.");
+            }
+            TableModel data = table.getModel();
+            System.out.println(row);
+            
+            String title = (String) data.getValueAt(row, 0);
+            String author = (String) data.getValueAt(row, 1);
+            Long isbn = (long) data.getValueAt(row, 2);
+            String publisher = (String) data.getValueAt(row, 3);
+            String genre = (String) data.getValueAt(row, 4);
+
+            Book selectBook = new Book(title, author, isbn, publisher, genre);
+
+            BookDelete frame = new BookDelete(selectBook);
+      
+      	}
+      });
       btnNewButton.setBounds(57, 190, 97, 23);
       add(btnNewButton);
 
