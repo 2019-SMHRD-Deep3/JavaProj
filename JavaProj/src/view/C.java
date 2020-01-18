@@ -1,14 +1,21 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,17 +24,6 @@ import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
 import model.Book;
-import model.Member;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class C extends JPanel { // 연체관리
    private JTextField textField;
@@ -35,9 +31,6 @@ public class C extends JPanel { // 연체관리
    private JTable table;
    private Book b;
 
-   /**
-    * Create the panel.
-    */
    public C() {
       setBackground(Color.WHITE);
       setLayout(null);
@@ -93,7 +86,17 @@ public class C extends JPanel { // 연체관리
             Book selectBook = new Book(title, author, isbn);
 
             BookLoan frame = new BookLoan(selectBook);
-            // defaultTableModel.getValueAt(0, 0); // 테이블에서 값을 가져올수있다.
+
+            try {
+               OutputStream output = new FileOutputStream("D:\\BookIsbn.txt");
+               String str = String.valueOf(isbn);
+               byte[] by = str.getBytes();
+               output.write(by);
+            } catch (FileNotFoundException e1) {
+               e1.printStackTrace();
+            } catch (IOException e1) {
+               e1.printStackTrace();
+            }
 
          }
 
@@ -152,14 +155,17 @@ public class C extends JPanel { // 연체관리
       add(btnNewButton_1);
 
       JButton button = new JButton("\uCD08\uAE30\uD654");
+      button.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+         }
+      });
       button.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseClicked(MouseEvent arg0) {
-            Object[][] data = new Object[list.size()][5];
+            Object[][] data = new Object[list.size()][3];
             for (int i = 0; i < list.size(); i++) {
                b = list.get(i);
-               data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
-                     b.getIsOverdue() };
+               data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn() };
             }
             table = new JTable(data, columnNames);
             scrollPane.setViewportView(table);
