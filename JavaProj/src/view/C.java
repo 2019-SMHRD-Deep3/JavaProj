@@ -24,6 +24,7 @@ import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
 import model.Book;
+import java.awt.Font;
 
 public class C extends JPanel { // ¿¬Ã¼°ü¸®
    private JTextField textField;
@@ -32,12 +33,14 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
    private Book b;
 
    public C() {
-      setBackground(Color.WHITE);
+      setBackground(new Color(240, 245, 249));
       setLayout(null);
 
       String[] combo = { "Á¦¸ñ", "ÀÛ°¡" };
       DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
       JComboBox comboBox = new JComboBox(comboModel);
+      comboBox.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 13));
+      comboBox.setBackground(new Color(201, 214, 222));
       comboBox.setBounds(200, 38, 170, 29);
       add(comboBox);
 
@@ -47,11 +50,13 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
       add(textField);
 
       JButton button_1 = new JButton("\uAC80\uC0C9");
+      button_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+      button_1.setBackground(new Color(201, 214, 222));
       button_1.setBounds(709, 38, 136, 29);
       add(button_1);
 
       JScrollPane scrollPane = new JScrollPane();
-      scrollPane.setBounds(166, 96, 659, 490);
+      scrollPane.setBounds(200, 100, 659, 490);
       add(scrollPane);
 
       String[] columnNames = { "Á¦¸ñ", "ÀÛ°¡", "ISBN" };
@@ -66,6 +71,8 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
       scrollPane.setViewportView(table);
 
       JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
+      button_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      button_2.setBackground(new Color(201, 214, 222));
       button_2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
          }
@@ -101,15 +108,19 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
          }
 
       });
-      button_2.setBounds(41, 124, 113, 23);
+      button_2.setBounds(57, 124, 113, 23);
 
       add(button_2);
 
       JButton button_3 = new JButton("\uBC18\uB0A9\uD558\uAE30");
-      button_3.setBounds(41, 190, 113, 23);
+      button_3.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      button_3.setBackground(new Color(201, 214, 222));
+      button_3.setBounds(57, 190, 113, 23);
       add(button_3);
 
       JButton btnNewButton = new JButton("\uC5F0\uCCB4\uB3C4\uC11C \uBCF4\uAE30");
+      btnNewButton.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      btnNewButton.setBackground(new Color(201, 214, 222));
       btnNewButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
          }
@@ -147,14 +158,18 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
 
          }
       });
-      btnNewButton.setBounds(41, 223, 113, 23);
+      btnNewButton.setBounds(57, 223, 113, 23);
       add(btnNewButton);
 
       JButton btnNewButton_1 = new JButton("\uAE30\uAC04 \uC5F0\uC7A5");
-      btnNewButton_1.setBounds(41, 256, 113, 23);
+      btnNewButton_1.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      btnNewButton_1.setBackground(new Color(201, 214, 222));
+      btnNewButton_1.setBounds(57, 256, 113, 23);
       add(btnNewButton_1);
 
       JButton button = new JButton("\uCD08\uAE30\uD654");
+      button.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      button.setBackground(new Color(201, 214, 222));
       button.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
          }
@@ -171,10 +186,12 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
             scrollPane.setViewportView(table);
          }
       });
-      button.setBounds(41, 289, 113, 23);
+      button.setBounds(57, 289, 113, 23);
       add(button);
 
       JButton btnNewButton_2 = new JButton("\uB300\uCD9C\uB3C4\uC11C \uBCF4\uAE30");
+      btnNewButton_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
+      btnNewButton_2.setBackground(new Color(201, 214, 222));
       btnNewButton_2.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseClicked(MouseEvent arg0) {
@@ -212,7 +229,7 @@ public class C extends JPanel { // ¿¬Ã¼°ü¸®
          public void actionPerformed(ActionEvent e) {
          }
       });
-      btnNewButton_2.setBounds(41, 157, 113, 23);
+      btnNewButton_2.setBounds(57, 157, 113, 23);
       add(btnNewButton_2);
 
    }
