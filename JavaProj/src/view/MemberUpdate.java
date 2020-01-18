@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MemberUpdate {
 	private JFrame frame;
@@ -97,6 +99,10 @@ public class MemberUpdate {
 		frame.getContentPane().add(textField_3);
 
 		JButton btnNewButton = new JButton("\uC218\uC815");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -105,7 +111,7 @@ public class MemberUpdate {
 				String pw = textField_1.getText();
 				String address = textField_2.getText();
 				String phone = textField_3.getText();
-				
+
 				Member editUser = new Member(name, pw, address, phone);
 				boolean result = service.editMember(editUser);
 				if (result) {

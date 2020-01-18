@@ -53,7 +53,7 @@ public class MMMain {
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
 
-		B bPanel = new B();
+		B bPanel = new B(loginUser);
 		cardPanel.add(bPanel, "b");
 
 		C cPanel = new C();
@@ -165,7 +165,6 @@ public class MMMain {
 				JOptionPane.showMessageDialog(frame, "로그아웃 되었습니다.");
 				frame.dispose();
 				MMLogin Login = new MMLogin();
-
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon006.png";

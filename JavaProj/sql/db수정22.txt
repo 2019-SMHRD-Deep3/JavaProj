@@ -1,0 +1,45 @@
+create table genreid
+(g_genreid varchar2(10) not null,
+constraint genreid_g_genreid_pk primary key(g_genreid));
+
+insert into genreid
+values ('000');
+insert into genreid
+values ('100');
+insert into genreid
+values ('200');
+insert into genreid
+values ('300');
+insert into genreid
+values ('400');
+insert into genreid
+values ('500');
+insert into genreid
+values ('600');
+insert into genreid
+values ('700');
+insert into genreid
+values ('800');
+insert into genreid
+values ('900');
+
+alter table genre
+add (g_genreid varchar2(10))
+
+alter table genre
+add constraint genre_g_genreid_fk foreign key(g_genreid) references genreid(g_genreid)
+
+create table publisherid
+(p_publisherid number(3) not null,
+constraint publisherid_p_publisherid_pk primary key(p_publisherid));
+
+alter table publisher
+add (p_publisherid number(3))
+
+alter table publisher
+add constraint publisher_p_publisherid_fk foreign key(p_publisherid) references publisherid(p_publisherid)
+
+
+
+
+
