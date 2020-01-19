@@ -1,12 +1,14 @@
-
-
-
-
-
 drop table book cascade constraints;
+drop table member cascade constraints;
+drop table loan cascade constraints;
+drop table genre cascade constraints;
+drop table publisher cascade constraints;
+drop table genreid cascade constraints;
+drop table publisherid cascade constraints;
 
-CREATE TABLE book
- ( b_title varchar2(40) not null,
+
+ CREATE TABLE book
+ ( b_title varchar2(50) not null,
   b_ISBN NUMBER(13) not null,
   b_author VARCHAR2(20) not null,
  CONSTRAINT book_b_iSBN_pk primary key(b_iSBN));
@@ -19,35 +21,31 @@ CREATE TABLE book
  
  commit;
 
-
-
  
-drop table member cascade constraints;
 
-CREATE TABLE member
-  (m_id  VARCHAR2(10) not null,
-  m_pw  VARCHAR2(10) not null,
-  m_name  VARCHAR2(10) not null,
-  m_socialNumber VARCHAR2(14) not null,
+ CREATE TABLE member
+  (m_id varchar2(10) not null,
+  m_pw varchar2(10) not null,
+  m_name varchar2(10) not null,
+  m_socialNumber VARCHAR(14) not null,
   m_address VARCHAR2(60) not null,
-  m_phone VARCHAR2(14) not null,
+  m_phone varchar2(14) not null,
   CONSTRAINT member_m_id_pk primary key(m_id),
   CONSTRAINT member_m_socialNumber_uk unique(m_socialNumber),
   CONSTRAINT member_m_phone_uk unique(m_phone));
 
 insert into member values('admin','1111','ÀÌº¸¶÷','99999-999999','±¤ÁÖ','010-3333-3333');
 insert into member values('dolli','2222','µÑ¸®','901212-1566811','±¤ÁÖ±¤¿ª½Ã ºÏ±¸ °¢È­´ë·Î39¹ø±æ 10','010-1111-1111');
-insert into member values('mycall','3333','¸¶ÀÌÄÝ','911212-1567811','±¤ÁÖ±¤¿ª½Ã ºÏ±¸ Ã·´Ü¿¬½Å·Î108¹ø±æ 86','010-2222-2222');
+insert into member values('mycall','3333','¸¶ÀÌÄÝ','911222-1565811','±¤ÁÖ±¤¿ª½Ã ºÏ±¸ Ã·´Ü¿¬½Å·Î108¹ø±æ 86','010-2222-2222');
 insert into member values('chensy','1010','¶ÇÄ¡','921212-1568811','±¤ÁÖ±¤¿ª½Ã ºÏ±¸ ºÏ±¸ ºÏ¹®´ë·Î98¹ø±æ 20','010-3333-3323');
-insert into member values('1','5555','1','931212-2569811','±¤ÁÖ±¤¿ª½Ã ±¤»ê±¸ Ç³¿µ·Î 300','010-5555-5555');
-insert into member values('jandong','0000','Àåµ·°Ç','941212-2571382','±¤ÁÖ±¤¿ª½Ã ¼­±¸ ÇÏ³²´ë·Î 710¹ø±æ 19','010-7777-3277');
+insert into member values('1','5555','1','931201-1111111','±¤ÁÖ±¤¿ª½Ã ±¤»ê±¸ Ç³¿µ·Î 300','010-5555-5555');
+insert into member values('jandongun','0000','Àåµ·°Ç','941115-2566612','±¤ÁÖ±¤¿ª½Ã ¼­±¸ ÇÏ³²´ë·Î 710¹ø±æ 19','010-7777-3277');
 
 commit;
  
-drop table loan cascade constraints;
  CREATE TABLE loan
-   (l_loandate date not null,
-   l_returndate date not null,
+   (l_loandate date ,
+   l_returndate date ,
    l_isOverdue char(1) ,
    l_count number(3) not null,
    m_id VARCHAR2(10),
@@ -55,10 +53,18 @@ drop table loan cascade constraints;
    CONSTRAINT loan_m_id_fk foreign key(m_id) references member(m_id),
   CONSTRAINT loan_b_isbn_fk foreign key(b_isbn) references book(b_isbn));
 
+insert into loan values('19/12/25', '20/01/14', 'n', 2, 'dolli', 9791162540640);
+insert into loan values('20/01/04', '20/01/28', 'y', 1, 'dolli', 9791196797706);
+insert into loan values('19/12/26', '20/01/15', 'y', 2, '1', 9788954655972);
+insert into loan values('20/01/04', '20/01/28', 'y', 3, 'mycall', 9791187119845);  
+insert into loan values('20/01/04', '20/01/28', 'y', 1, 'chensy', 9791157280293);
+  
+  
 
 commit;
-drop table genre cascade constraints;
-CREATE TABLE genre
+
+
+ CREATE TABLE genre
   ( g_genre VARCHAR2(20) not null,
    b_isbn number(13),
    CONSTRAINT genre_b_isbn_fk foreign key(b_isbn) references book(b_isbn));
@@ -67,21 +73,67 @@ insert into genre values ('ÀÏ±â',9791162540640);
 insert into genre values ('½Ã',9791196797706);
 insert into genre values ('¼öÇÊ',9788954655972);
 insert into genre values ('ÀÚ¼­Àü',9791187119845);
-insert into genre values ('¼öÇÊ',9791157280292);
+insert into genre values ('¼öÇÊ',9791157280293);
 
 commit;
 
-drop table publisher cascade constraints;
-  CREATE TABLE publisher
+
+ CREATE TABLE publisher
  ( p_publisher VARCHAR2(20) not null,
   b_isbn number(13),
   CONSTRAINT publisher_b_isbn_fk foreign key(b_isbn) references book(b_isbn));
-  
-  insert into publisher values ('³î',9791162540640);
+    
+insert into publisher values ('³î',9791162540640);
 insert into publisher values ('°­ÇÑº°',9791196797706);
 insert into publisher values ('¹®ÇÐµ¿³×',9788954655972);
 insert into publisher values ('¸¶À½ÀÇ½£',9791187119845);
-insert into publisher values ('ÁöÇý',9791157280292);
+insert into publisher values ('ÁöÇý',9791157280293);
   
   
   commit;
+  
+  
+  
+  
+  create table genreid
+(g_genreid varchar2(10) not null,
+constraint genreid_g_genreid_pk primary key(g_genreid));
+
+insert into genreid
+values ('000');
+insert into genreid
+values ('100');
+insert into genreid
+values ('200');
+insert into genreid
+values ('300');
+insert into genreid
+values ('400');
+insert into genreid
+values ('500');
+insert into genreid
+values ('600');
+insert into genreid
+values ('700');
+insert into genreid
+values ('800');
+insert into genreid
+values ('900');
+
+alter table genre
+add (g_genreid varchar2(10));
+
+alter table genre
+add constraint genre_g_genreid_fk foreign key(g_genreid) references genreid(g_genreid);
+
+create table publisherid
+(p_publisherid number(3) not null,
+constraint publisherid_p_publisherid_pk primary key(p_publisherid));
+
+alter table publisher
+add (p_publisherid number(3));
+
+alter table publisher
+add constraint publisher_p_publisherid_fk foreign key(p_publisherid) references publisherid(p_publisherid);
+
+
