@@ -374,9 +374,9 @@ public class BookDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			
+
 			String sql2 = "DELETE FROM publisher WHERE b_isbn = ? ";
-			PreparedStatement psmt1 = conn.prepareStatement(sql2);		
+			PreparedStatement psmt1 = conn.prepareStatement(sql2);
 			psmt1.setLong(1, b.getIsbn());
 			rows = psmt1.executeUpdate();
 
@@ -389,13 +389,11 @@ public class BookDAO {
 			PreparedStatement psmt4 = conn.prepareStatement(sql4);
 			psmt4.setLong(1, b.getIsbn());
 			rows = psmt4.executeUpdate();
-			
-			String sql = "DELETE FROM book WHERE b_isbn = ?";			
+
+			String sql = "DELETE FROM book WHERE b_isbn = ?";
 			PreparedStatement psmt3 = conn.prepareStatement(sql);
 			psmt3.setLong(1, b.getIsbn());
 			rows = psmt3.executeUpdate();
-			
-			
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -499,7 +497,7 @@ public class BookDAO {
 			String dateString2 = new SimpleDateFormat("yy/MM/dd").format(date);
 			psmt.setString(2, dateString2);
 
-			psmt.setString(3, "y");
+			psmt.setString(3, "n");
 			psmt.setInt(4, 1);
 
 			File file = new File("D:\\MemberId.txt");

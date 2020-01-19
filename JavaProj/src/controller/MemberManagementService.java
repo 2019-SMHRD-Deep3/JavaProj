@@ -110,7 +110,7 @@ public class MemberManagementService {
 	public Book cReturn(Book b) { // 책반납-선진
 		return bdao.returnLoan(b);
 	}
-
+	
 	public Book cExtension(Book b) { // 대출연장-선진
 		return bdao.extensionLoan(b);
 	}

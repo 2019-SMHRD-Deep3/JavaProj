@@ -202,7 +202,7 @@ public class MMMain {
 		lblBook.setBounds(601, 120, 100, 15);
 		frame.getContentPane().add(lblBook);
 
-		JLabel label_2 = new JLabel("\uB300\uC5EC.\uC5F0\uCCB4.\uC5F0\uC7A5");
+		JLabel label_2 = new JLabel("\uB300\uCD9C.\uC5F0\uCCB4.\uC5F0\uC7A5");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		label_2.setBounds(731, 120, 100, 15);

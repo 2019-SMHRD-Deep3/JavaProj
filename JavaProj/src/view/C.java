@@ -127,9 +127,16 @@ public class C extends JPanel { // 연체관리
 				String title = (String) data.getValueAt(row, 0);
 				long isbn = (long) data.getValueAt(row, 5);
 				String author = (String) data.getValueAt(row, 1);
+				Date loanDate = (Date) data.getValueAt(row, 2);
 
-				Book selectBook = new Book(title, author, isbn);
-				BookLoan frame = new BookLoan(selectBook);
+				if (loanDate == null) {
+
+					Book selectBook = new Book(title, author, isbn);
+					BookLoan frame = new BookLoan(selectBook);
+
+				} else {
+					JOptionPane.showMessageDialog(table, "이미 대여된 책입니다.");
+				}
 
 				try {
 					OutputStream output = new FileOutputStream("D:\\BookIsbn.txt");
@@ -145,7 +152,7 @@ public class C extends JPanel { // 연체관리
 			}
 
 		});
-		button_2.setBounds(41, 124, 113, 23);
+		button_2.setBounds(30, 124, 124, 23);
 
 		add(button_2);
 
@@ -182,12 +189,14 @@ public class C extends JPanel { // 연체관리
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-
 				service.cReturn(selectBook);
 
+				if (selectBook != null) {
+					JOptionPane.showMessageDialog(table, "반납 성공");
+				}
 			}
 		});
-		button_3.setBounds(41, 190, 113, 23);
+		button_3.setBounds(30, 190, 124, 23);
 		add(button_3);
 
 		JButton btnNewButton = new JButton("\uC5F0\uCCB4\uB3C4\uC11C \uBCF4\uAE30");
@@ -226,7 +235,7 @@ public class C extends JPanel { // 연체관리
 				defaultTableModel.setDataVector(data, columnNames);
 			}
 		});
-		btnNewButton.setBounds(41, 223, 113, 23);
+		btnNewButton.setBounds(30, 223, 124, 23);
 		add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("\uAE30\uAC04 \uC5F0\uC7A5");
@@ -267,7 +276,7 @@ public class C extends JPanel { // 연체관리
 				service.cExtension(selectBook);
 			}
 		});
-		btnNewButton_1.setBounds(41, 256, 113, 23);
+		btnNewButton_1.setBounds(30, 256, 124, 23);
 		add(btnNewButton_1);
 
 		JButton button = new JButton("\uCD08\uAE30\uD654");
@@ -292,7 +301,7 @@ public class C extends JPanel { // 연체관리
 				scrollPane.setViewportView(table);
 			}
 		});
-		button.setBounds(41, 289, 113, 23);
+		button.setBounds(30, 289, 124, 23);
 		add(button);
 
 		JButton btnNewButton_2 = new JButton("\uB300\uCD9C\uB3C4\uC11C \uBCF4\uAE30");
@@ -332,7 +341,7 @@ public class C extends JPanel { // 연체관리
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(41, 157, 113, 23);
+		btnNewButton_2.setBounds(30, 157, 124, 23);
 		add(btnNewButton_2);
 
 	}

@@ -164,6 +164,10 @@ public class A extends JPanel { // È¸¿øÁ¤º¸
 		add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		btnNewButton_2.setBackground(new Color(201, 214, 222));
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
