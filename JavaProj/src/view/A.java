@@ -42,14 +42,14 @@ public class A extends JPanel { // 회원정보
 	 * @param loginUser
 	 */
 	public A(Member loginUser) {
-		setBackground(new Color(240, 245, 249));
+		setBackground(new Color(201, 214, 222));
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(200, 100, 1014, 490);
 		add(scrollPane);
 
-		String[] columnNames = { "아이디", "이름", "주민등록번호", "주소", "전화번호", "비밀번호" };
+		String[] columnNames = { "아이디", "이름" , "주민등록번호", "주소", "전화번호", "비밀번호",};
 
 		ArrayList<Member> list = service.memberLookup(loginUser.getId());
 
@@ -81,7 +81,7 @@ public class A extends JPanel { // 회원정보
 
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 15));
-		btnNewButton.setBackground(new Color(201, 214, 222));
+		btnNewButton.setBackground(new Color(240, 245, 249));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -134,7 +134,7 @@ public class A extends JPanel { // 회원정보
 		JButton btnNewButton_1 = new JButton("\uC218\uC815");
 		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
-		btnNewButton_1.setBackground(new Color(201, 214, 222));
+		btnNewButton_1.setBackground(new Color(240, 245, 249));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -169,7 +169,7 @@ public class A extends JPanel { // 회원정보
 			}
 		});
 		btnNewButton_2.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
-		btnNewButton_2.setBackground(new Color(201, 214, 222));
+		btnNewButton_2.setBackground(new Color(240, 245, 249));
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -191,7 +191,7 @@ public class A extends JPanel { // 회원정보
 
 		JButton button = new JButton("\uCD08\uAE30\uD654");
 		button.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
-		button.setBackground(new Color(201, 214, 222));
+		button.setBackground(new Color(240, 245, 249));
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

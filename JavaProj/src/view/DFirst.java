@@ -31,7 +31,7 @@ public class DFirst extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(150, 125, 300, 400);
 		add(panel);
-
+		
 		ImageIcon background = new ImageIcon(imgPath);
 		JLabel labelImage = new JLabel();
 		labelImage.setBounds(0, 0, 300, 400);

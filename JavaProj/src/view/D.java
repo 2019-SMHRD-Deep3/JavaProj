@@ -40,7 +40,7 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 		setLayout(null);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(229, 222, 211));
+		panel_1.setBackground(new Color(240, 245, 249));
 		panel_1.setBounds(0, 57, 1240, 560);
 		add(panel_1);
 		panel_1.add(getChart(loginUser));
@@ -50,6 +50,7 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 
 	public XChartPanel getChart(Member loginUser) {
 
+		// CategoryChart, Bar Chart
 		// 원 차트 만들기
 		PieChart chart = new PieChartBuilder().width(700).height(500).title("이달 많이 대여한 책 목록 Top 5").build();
 		// getClass().getSimpleName() 클래스 이름
@@ -76,8 +77,8 @@ public class D extends JPanel { // 이달의 추천도서 혹은 통계
 //		chart.addSeries("하늘", 25);
 
 		XChartPanel chartPanel = new XChartPanel(chart);
-		chartPanel.setForeground(new Color(229, 222, 211));
-		chartPanel.setBackground(new Color(229, 222, 211));
+		chartPanel.setForeground(new Color(240, 245, 249));
+		chartPanel.setBackground(new Color(240, 245, 249));
 
 		return chartPanel;
 	}

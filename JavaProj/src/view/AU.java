@@ -30,6 +30,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		id.setBounds(175, 75, 200, 31);
 		add(id);
+		id.setText(loginUser.getId());
 		
 		JLabel lblPw = new JLabel("PW");
 		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
@@ -42,6 +43,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		pw.setBounds(175, 125, 200, 31);
 		add(pw);
+		pw.setText(loginUser.getName());
 		
 		JLabel label_4 = new JLabel("\uC774\uB984");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -54,6 +56,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		name.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		name.setBounds(175, 175, 200, 31);
 		add(name);
+		name.setText(loginUser.getSocialNumber());
 		
 		JLabel label_6 = new JLabel("\uC8FC\uBBFC\uB4F1\uB85D\uBC88\uD638");
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
@@ -66,6 +69,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		socialNumber.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		socialNumber.setBounds(175, 225, 200, 31);
 		add(socialNumber);
+		socialNumber.setText(loginUser.getPw());
 		
 		JLabel label_8 = new JLabel("\uC5F0\uB77D\uCC98");
 		label_8.setHorizontalAlignment(SwingConstants.CENTER);

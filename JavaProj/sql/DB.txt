@@ -12,9 +12,9 @@ MEMBER
   (m_id varchar2(10) not null,
   m_pw varchar2(10) not null,
   m_name varchar2(10) not null,
-  m_socialNumber VARCHAR(7) not null,
-  m_address VARCHAR2(30) not null,
-  m_phone varchar2(7) not null,
+  m_socialNumber VARCHAR(14) not null,
+  m_address VARCHAR2(60) not null,
+  m_phone varchar2(14) not null,
   CONSTRAINT member_m_id_pk primary key(m_id),
   CONSTRAINT member_m_socialNumber_uk unique(m_socialNumber),
   CONSTRAINT member_m_phone_uk unique(m_phone));
