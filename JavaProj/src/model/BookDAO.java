@@ -373,16 +373,14 @@ public class BookDAO {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			conn = DriverManager.getConnection(url, user, password);
 			String sql2 = "DELETE FROM publisher WHERE b_isbn = ? ";
-			psmt = conn.prepareStatement(sql2);
+			psmt = conn.prepareStatement(sql2);		
 			psmt.setLong(1, b.getIsbn());
 			rows = psmt.executeUpdate();
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-
 			String sql3 = "DELETE FROM genre WHERE b_isbn = ? ";
 			psmt = conn.prepareStatement(sql3);
 			psmt.setLong(1, b.getIsbn());
