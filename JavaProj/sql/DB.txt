@@ -21,8 +21,8 @@ MEMBER
 
 LOAN  
   CREATE TABLE loan
-   (l_loandate date not null,
-   l_returndate date not null,
+   (l_loandate date ,
+   l_returndate date ,
    l_isOverdue char(1) ,
    l_count number(3) not null,
    m_id VARCHAR2(10),
