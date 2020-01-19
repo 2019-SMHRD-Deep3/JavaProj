@@ -14,14 +14,14 @@ drop table publisherid cascade constraints;
     b_count number(3),
  CONSTRAINT book_b_iSBN_pk primary key(b_iSBN));
  
- insert into book values ('오늘도 팽수 내일도 팽수',9791162540640,'놀',0);
- insert into book values ('지쳤거나 좋아하는 게 없거나',9791196797706,'글배우',0);
- insert into book values ('여행의 이유',9788954655972,'김영하',0);
- insert into book values ('나는 나로 살기로 했다',9791187119845,'김수현',0);
- insert into book values ('꽃을 보듯 너를 본다',9791157280293,'나태주',0);
- insert into book values ('데미안', 9791159036514, '헤르만 헤세', 0);
- insert into book values ('코스모스', 9788983711892, '칼 세이건', 0);
- insert into book values ('사피엔스', 9788934972464, '유발 하라리', 0);
+ insert into book values ('오늘도 팽수 내일도 팽수',9791162540640,'놀',52);
+ insert into book values ('지쳤거나 좋아하는 게 없거나',9791196797706,'글배우',11);
+ insert into book values ('여행의 이유',9788954655972,'김영하',18);
+ insert into book values ('나는 나로 살기로 했다',9791187119845,'김수현',7);
+ insert into book values ('꽃을 보듯 너를 본다',9791157280293,'나태주',36);
+ insert into book values ('데미안', 9791159036514, '헤르만 헤세', 9);
+ insert into book values ('코스모스', 9788983711892, '칼 세이건', 22);
+ insert into book values ('사피엔스', 9788934972464, '유발 하라리', 6);
  
  commit;
 
