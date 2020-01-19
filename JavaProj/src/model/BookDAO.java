@@ -38,11 +38,12 @@ public class BookDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO Book VALUES (?,?,?)";
+			String sql = "INSERT INTO Book VALUES (?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, b.getTitle());
 			psmt.setLong(2, b.getIsbn());
 			psmt.setString(3, b.getAuthor());
+			psmt.setInt(4, 0);
 			rows = psmt.executeUpdate();
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -257,7 +258,7 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "SELECT b.b_title, b.b_author, l.l_loandate, l.l_returndate, l.l_isOverdue, b.b_isbn"
-					+ " FROM BOOK b, LOAN l" + " WHERE b.b_isbn = l.b_isbn";
+					+ " FROM BOOK b, LOAN l WHERE l.b_isbn = b.b_isbn";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
@@ -375,7 +376,7 @@ public class BookDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql2 = "DELETE FROM publisher WHERE b_isbn = ? ";
-			psmt = conn.prepareStatement(sql2);		
+			psmt = conn.prepareStatement(sql2);
 			psmt.setLong(1, b.getIsbn());
 			rows = psmt.executeUpdate();
 
@@ -388,11 +389,9 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "DELETE FROM book b_title = ?, b_author = ? WHERE b_isbn = ?";
+			String sql = "DELETE FROM book WHERE b_isbn = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, b.getTitle());
-			psmt.setString(2, b.getAuthor());
-			psmt.setLong(3, b.getIsbn());
+			psmt.setLong(1, b.getIsbn());
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -516,11 +515,18 @@ public class BookDAO {
 			while ((cur2 = file_reader2.read()) != -1) {
 				strBookISBN += (char) cur2;
 			}
-			System.out.println(strBookISBN);
 			psmt.setLong(6, Long.parseLong(strBookISBN));
 
 			file_reader.close();
 			file_reader2.close();
+			rows = psmt.executeUpdate();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			conn = DriverManager.getConnection(url, user, password);
+			String sql2 = "UPDATE BOOK SET b_count = b_count + 1 WHERE b_isbn = ?";
+			psmt = conn.prepareStatement(sql2);
+			psmt.setLong(1, Long.parseLong(strBookISBN));
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -558,8 +564,8 @@ public class BookDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "UPDATE loan SET l_loandate = null, l_returndate = null, l_isoverdue = null, m_id = null"
-					+ " WHERE b_isbn = ?";
+			String sql = "UPDATE loan SET l_loandate = null, l_returndate = null, l_isoverdue = null, m_id = null "
+					+ "WHERE b_isbn = ?";
 
 			psmt = conn.prepareStatement(sql);
 
