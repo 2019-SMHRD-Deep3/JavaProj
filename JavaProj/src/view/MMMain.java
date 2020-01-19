@@ -49,6 +49,11 @@ public class MMMain {
 //      if (loginUser.getId().equals("admin")) {
 		DFirst d1Panel = new DFirst();
 		cardPanel.add(d1Panel, "d1");
+		
+		JLabel lblNewLabel_4 = new JLabel("Readers Pick!!");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(182, 49, 239, 33);
+		d1Panel.add(lblNewLabel_4);
 
 		A aPanel = new A(loginUser);
 		cardPanel.add(aPanel, "a");
