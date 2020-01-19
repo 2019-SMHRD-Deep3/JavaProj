@@ -39,21 +39,6 @@ public class C extends JPanel { // 楷眉包府
 		setBackground(Color.WHITE);
 		setLayout(null);
 
-		String[] combo = { "力格", "累啊" };
-		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
-		JComboBox comboBox = new JComboBox(comboModel);
-		comboBox.setBounds(200, 38, 170, 29);
-		add(comboBox);
-
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(382, 38, 315, 29);
-		add(textField);
-
-		JButton button_1 = new JButton("\uAC80\uC0C9");
-		button_1.setBounds(709, 38, 136, 29);
-		add(button_1);
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(200, 100, 1014, 490);
 		add(scrollPane);
@@ -73,6 +58,57 @@ public class C extends JPanel { // 楷眉包府
 		defaultTableModel.setDataVector(data, columnNames);
 		table = new JTable(defaultTableModel);
 		scrollPane.setViewportView(table);
+
+		String[] combo = { "", "力格", "累啊" };
+		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(combo);
+		JComboBox comboBox = new JComboBox(comboModel);
+		comboBox.setBounds(200, 38, 170, 29);
+		add(comboBox);
+
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(382, 38, 315, 29);
+		add(textField);
+
+		JButton button_1 = new JButton("\uAC80\uC0C9");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int j = comboBox.getSelectedIndex();
+				if (j == 1) {
+					ArrayList<Book> list = service.findTitle(textField.getText());
+
+					Object[][] data = new Object[list.size()][5];
+
+					for (int i = 0; i < list.size(); i++) {
+						Book b = list.get(i);
+						data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn(), b.getPublisher(),
+								b.getGenre() };
+					}
+
+					defaultTableModel.setDataVector(data, columnNames);
+				} else if (j == 2) {
+					ArrayList<Book> list = service.findAuthor(textField.getText());
+
+					Object[][] data = new Object[list.size()][5];
+
+					for (int i = 0; i < list.size(); i++) {
+						Book b = list.get(i);
+						data[i] = new Object[] { b.getTitle(), b.getAuthor(), b.getIsbn(), b.getPublisher(),
+								b.getGenre() };
+					}
+
+					defaultTableModel.setDataVector(data, columnNames);
+
+				}
+
+			}
+
+		});
+		button_1.setBounds(709, 38, 136, 29);
+
+		add(button_1);
 
 		JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
 		button_2.addActionListener(new ActionListener() {
@@ -187,14 +223,7 @@ public class C extends JPanel { // 楷眉包府
 						j++;
 					}
 				}
-
-				table = new JTable(data, columnNames);
-				scrollPane.setViewportView(table);
-
 				defaultTableModel.setDataVector(data, columnNames);
-				table = new JTable(defaultTableModel);
-				scrollPane.setViewportView(table);
-
 			}
 		});
 		btnNewButton.setBounds(41, 223, 113, 23);
@@ -257,6 +286,10 @@ public class C extends JPanel { // 楷眉包府
 				}
 				table = new JTable(data, columnNames);
 				scrollPane.setViewportView(table);
+
+				defaultTableModel.setDataVector(data, columnNames);
+				table = new JTable(defaultTableModel);
+				scrollPane.setViewportView(table);
 			}
 		});
 		button.setBounds(41, 289, 113, 23);
@@ -292,12 +325,7 @@ public class C extends JPanel { // 楷眉包府
 					}
 				}
 
-				table = new JTable(data, columnNames);
-				scrollPane.setViewportView(table);
-
 				defaultTableModel.setDataVector(data, columnNames);
-				table = new JTable(defaultTableModel);
-				scrollPane.setViewportView(table);
 			}
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
