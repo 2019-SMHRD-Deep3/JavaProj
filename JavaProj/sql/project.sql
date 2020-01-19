@@ -11,17 +11,19 @@ drop table publisherid cascade constraints;
  ( b_title varchar2(50) not null,
   b_ISBN NUMBER(13) not null,
   b_author VARCHAR2(20) not null,
+    b_count number(3),
  CONSTRAINT book_b_iSBN_pk primary key(b_iSBN));
  
- insert into book values ('오늘도 팽수 내일도 팽수',9791162540640,'놀');
- insert into book values ('지쳤거나 좋아하는 게 없거나',9791196797706,'글배우');
- insert into book values ('여행의 이유',9788954655972,'김영하');
- insert into book values ('나는 나로 살기로 했다',9791187119845,'김수현');
- insert into book values ('꽃을 보듯 너를 본다',9791157280293,'나태주');
+ insert into book values ('오늘도 팽수 내일도 팽수',9791162540640,'놀',52);
+ insert into book values ('지쳤거나 좋아하는 게 없거나',9791196797706,'글배우',11);
+ insert into book values ('여행의 이유',9788954655972,'김영하',18);
+ insert into book values ('나는 나로 살기로 했다',9791187119845,'김수현',7);
+ insert into book values ('꽃을 보듯 너를 본다',9791157280293,'나태주',36);
+ insert into book values ('데미안', 9791159036514, '헤르만 헤세', 9);
+ insert into book values ('코스모스', 9788983711892, '칼 세이건', 22);
+ insert into book values ('사피엔스', 9788934972464, '유발 하라리', 6);
  
  commit;
-
- 
 
  CREATE TABLE member
   (m_id varchar2(10) not null,
@@ -54,13 +56,12 @@ commit;
   CONSTRAINT loan_b_isbn_fk foreign key(b_isbn) references book(b_isbn));
 
 insert into loan values('19/12/25', '20/01/14', 'n', 2, 'dolli', 9791162540640);
-insert into loan values('20/01/04', '20/01/28', 'y', 1, 'dolli', 9791196797706);
+insert into loan values('20/01/04', '20/01/28', 'n', 1, 'dolli', 9791196797706);
 insert into loan values('19/12/26', '20/01/15', 'y', 2, '1', 9788954655972);
-insert into loan values('20/01/04', '20/01/28', 'y', 3, 'mycall', 9791187119845);  
-insert into loan values('20/01/04', '20/01/28', 'y', 1, 'chensy', 9791157280293);
+insert into loan values('20/01/04', '20/01/28', 'n', 3, 'mycall', 9791187119845);  
+insert into loan values('20/01/04', '20/01/28', 'n', 1, 'chensy', 9791157280293);
   
   
-
 commit;
 
 
@@ -74,6 +75,9 @@ insert into genre values ('시',9791196797706);
 insert into genre values ('수필',9788954655972);
 insert into genre values ('자서전',9791187119845);
 insert into genre values ('수필',9791157280293);
+insert into genre values ('소설', 9791159036514);
+insert into genre values ('천문학', 9788983711892);
+insert into genre values ('인문', 9788934972464);
 
 commit;
 
@@ -88,12 +92,11 @@ insert into publisher values ('강한별',9791196797706);
 insert into publisher values ('문학동네',9788954655972);
 insert into publisher values ('마음의숲',9791187119845);
 insert into publisher values ('지혜',9791157280293);
-  
+insert into publisher values ('민음사', 9791159036514); 
+insert into publisher values ('사이언스북스', 9788983711892);  
+insert into publisher values ('김영사', 9788934972464);  
   
   commit;
-  
-  
-  
   
   create table genreid
 (g_genreid varchar2(10) not null,
@@ -135,5 +138,6 @@ add (p_publisherid number(3));
 
 alter table publisher
 add constraint publisher_p_publisherid_fk foreign key(p_publisherid) references publisherid(p_publisherid);
+
 
 
