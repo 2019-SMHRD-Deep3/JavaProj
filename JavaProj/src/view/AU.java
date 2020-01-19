@@ -12,10 +12,12 @@ import javax.swing.SwingConstants;
 public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµð, ÆÐ½º¿öµå, ÀÌ¸§, ÁÖ¹Î¹øÈ£, ÁÖ¼Ò, ¿¬¶ôÃ³)
 	
 	private MemberManagementService service = new MemberManagementService();
+	private Member loginUser;
 	/**
 	 * Create the panel.
 	 */
 	public AU(Member loginUser) {
+		this.loginUser = loginUser;
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
@@ -32,7 +34,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		add(id);
 		id.setText(loginUser.getId());
 		
-		JLabel lblPw = new JLabel("PW");
+		JLabel lblPw = new JLabel("\uC804\uD654\uBC88\uD638");
 		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		lblPw.setBounds(75, 125, 100, 31);
@@ -43,9 +45,9 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		pw.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		pw.setBounds(175, 125, 200, 31);
 		add(pw);
-		pw.setText(loginUser.getName());
+		pw.setText(loginUser.getPw());
 		
-		JLabel label_4 = new JLabel("\uC774\uB984");
+		JLabel label_4 = new JLabel("\uBE44\uBC00\uBC88\uD638");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_4.setBounds(75, 175, 100, 31);
@@ -56,9 +58,9 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		name.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		name.setBounds(175, 175, 200, 31);
 		add(name);
-		name.setText(loginUser.getSocialNumber());
+		name.setText(loginUser.getName());
 		
-		JLabel label_6 = new JLabel("\uC8FC\uBBFC\uB4F1\uB85D\uBC88\uD638");
+		JLabel label_6 = new JLabel("\uC774\uB984");
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
 		label_6.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_6.setBounds(75, 225, 100, 31);
@@ -69,9 +71,9 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		socialNumber.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		socialNumber.setBounds(175, 225, 200, 31);
 		add(socialNumber);
-		socialNumber.setText(loginUser.getPw());
+		socialNumber.setText(loginUser.getSocialNumber());
 		
-		JLabel label_8 = new JLabel("\uC5F0\uB77D\uCC98");
+		JLabel label_8 = new JLabel("\uC8FC\uC18C");
 		label_8.setHorizontalAlignment(SwingConstants.CENTER);
 		label_8.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_8.setBounds(75, 278, 100, 31);
@@ -82,8 +84,9 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		phoneNumber.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		phoneNumber.setBounds(175, 278, 200, 31);
 		add(phoneNumber);
+		phoneNumber.setText(loginUser.getPhone());
 		
-		JLabel label_10 = new JLabel("\uC8FC\uC18C");
+		JLabel label_10 = new JLabel("\uC8FC\uBBFC\uB4F1\uB85D\uBC88\uD638");
 		label_10.setHorizontalAlignment(SwingConstants.CENTER);
 		label_10.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_10.setBounds(75, 328, 100, 31);
@@ -94,6 +97,7 @@ public class AU extends JPanel {	// È¸¿øÁ¤º¸ Áß ÀÚ½ÅÀÇ µ¥ÀÌÅÍ È®ÀÎ¸¸ °¡´É (¾ÆÀÌµ
 		address.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		address.setBounds(175, 328, 200, 31);
 		add(address);
+		address.setText(loginUser.getAddress());
 
 	}
 
