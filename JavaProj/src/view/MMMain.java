@@ -116,13 +116,11 @@ public class MMMain {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (loginUser.getId().equals("admin")) {
+				
 					A aPanel = new A(loginUser);
 					cardPanel.add(aPanel, "a");
-				} else {
-					AU auPanel = new AU(loginUser);
-					cardPanel.add(auPanel, "au");
-				}
+			
+					
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
@@ -148,13 +146,10 @@ public class MMMain {
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (loginUser.getId().equals("admin")) {
+				
 					B bPanel = new B(loginUser);
 					cardPanel.add(bPanel, "b");
-				} else {
-					BU buPanel = new BU(loginUser);
-					cardPanel.add(buPanel, "bu");
-				}
+				
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
@@ -167,13 +162,10 @@ public class MMMain {
 		label_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (loginUser.getId().equals("admin")) {
+			
 					C cPanel = new C();
 					cardPanel.add(cPanel, "c");
-				} else {
-					CU cuPanel = new CU();
-					cardPanel.add(cuPanel, "cu");
-				}
+				
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
