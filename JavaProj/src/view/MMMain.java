@@ -33,7 +33,7 @@ public class MMMain {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(201, 214, 222));
+		frame.getContentPane().setBackground(new Color(240, 245, 249));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,45 +45,13 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 
-
-//      if (loginUser.getId().equals("admin")) {
-		DFirst d1Panel = new DFirst();
-		cardPanel.add(d1Panel, "d1");
-
-		A aPanel = new A(loginUser);
-		cardPanel.add(aPanel, "a");
-
-		B bPanel = new B(loginUser);
-		cardPanel.add(bPanel, "b");
-
-		C cPanel = new C();
-		cardPanel.add(cPanel, "c");
-
-		D dPanel = new D(loginUser);
-		cardPanel.add(dPanel, "d");
-
-//		} else {
-//			DFirst d1Panel = new DFirst();
-//			cardPanel.add(d1Panel, "d1");
-
-		AU auPanel = new AU(loginUser);
-		cardPanel.add(auPanel, "au");
-
-		BU buPanel = new BU();
-		cardPanel.add(buPanel, "bu");
-
-		CU cuPanel = new CU();
-		cardPanel.add(cuPanel, "cu");
-
-//      }
-
-
-		JLabel id = new JLabel("ooo");
-		id.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
-		id.setHorizontalAlignment(SwingConstants.CENTER);
-		id.setBounds(1092, 100, 152, 15);
-		frame.getContentPane().add(id);
-		id.setText(loginUser.getName());
+		
+		JLabel name = new JLabel("ooo");
+		name.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
+		name.setHorizontalAlignment(SwingConstants.CENTER);
+		name.setBounds(1092, 100, 152, 15);
+		frame.getContentPane().add(name);
+		name.setText(loginUser.getSocialNumber());
 
 		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -109,7 +77,13 @@ public class MMMain {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "a");
+				if (loginUser.getId().equals("admin")) {
+					A aPanel = new A(loginUser);
+					cardPanel.add(aPanel, "a");
+				} else {
+					AU auPanel = new AU(loginUser);
+					cardPanel.add(auPanel, "au");
+				}
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon004.png";
@@ -135,7 +109,13 @@ public class MMMain {
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "b");
+				if (loginUser.getId().equals("admin")) {
+					B bPanel = new B(loginUser);
+					cardPanel.add(bPanel, "b");
+				} else {
+					BU buPanel = new BU(loginUser);
+					cardPanel.add(buPanel, "bu");
+				}
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon003.png";
@@ -148,7 +128,13 @@ public class MMMain {
 		label_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cardLayout.show(cardPanel, "c");
+				if (loginUser.getId().equals("admin")) {
+					C cPanel = new C();
+					cardPanel.add(cPanel, "c");
+				} else {
+					CU cuPanel = new CU();
+					cardPanel.add(cuPanel, "cu");
+				}
 			}
 		});
 		imgPath = this.getClass().getResource(".").getPath() + "..//..//img//icon005.png";
