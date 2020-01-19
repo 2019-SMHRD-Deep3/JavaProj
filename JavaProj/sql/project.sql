@@ -136,4 +136,6 @@ add (p_publisherid number(3));
 alter table publisher
 add constraint publisher_p_publisherid_fk foreign key(p_publisherid) references publisherid(p_publisherid);
 
+alter table book
+add (b_isbn number(3));
 
