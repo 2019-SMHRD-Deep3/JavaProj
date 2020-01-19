@@ -110,7 +110,7 @@ public class MemberManagementService {
 	public Book cReturn(Book b) { // 책반납-선진
 		return bdao.returnLoan(b);
 	}
-
+	
 	public Book cExtension(Book b) { // 대출연장-선진
 		return bdao.extensionLoan(b);
 	}
@@ -164,8 +164,8 @@ public class MemberManagementService {
 		}
 	}
 
-	public boolean delBook(Book selectBook) { // 도서 삭제
-		if (bdao.deletebook(selectBook) == 0) {
+	public boolean delBook(Book b) { // 도서 삭제
+		if (bdao.deletebook(b) == 0) {
 			return false;
 		} else {
 			return true;
