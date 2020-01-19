@@ -97,7 +97,7 @@ public class BookLoan {
 				Member m = new Member(infoId);
 				Book b = bdao.updateLoan(selectBook);
 
-				if (MemberBook != null) {
+				if (MemberBook.getText().equals(null)) {
 					JOptionPane.showMessageDialog(frame, "대출 성공");
 				} else {
 					JOptionPane.showMessageDialog(frame, "대출 실패");

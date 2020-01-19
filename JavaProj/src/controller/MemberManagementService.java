@@ -82,7 +82,7 @@ public class MemberManagementService {
 		return bdao.mainALL();
 	}
 
-	public ArrayList<Book> CLookup() { //C에서 첫화면 데이터 출력용
+	public ArrayList<Book> CLookup() { // C에서 첫화면 데이터 출력용
 
 		return bdao.selectAll();
 	}
@@ -107,14 +107,14 @@ public class MemberManagementService {
 		return bdao.selectSome();
 	}
 
-	public Book cReturn(Book b) { //책반납-선진
+	public Book cReturn(Book b) { // 책반납-선진
 		return bdao.returnLoan(b);
 	}
 	
-	public Book cExtension(Book b) { //대출연장-선진
+	public Book cExtension(Book b) { // 대출연장-선진
 		return bdao.extensionLoan(b);
 	}
-	
+
 	public boolean editBook(Book editBook) { // 도서 정보 수정
 
 		if (bdao.updateBook(editBook) == 0) {
@@ -128,11 +128,11 @@ public class MemberManagementService {
 		return dao.selectOneId(id);
 	}
 
-	public ArrayList<Member> bkAllLookup() { //C에서 id 전부 선택 - 선진
+	public ArrayList<Member> bkAllLookup() { // C에서 id 전부 선택 - 선진
 		return dao.selectAllId();
 	}
 
-	public Book loanMember(Book b) { //C에서 책 빌려간 회원 찾기 - 선진
+	public Book loanMember(Book b) { // C에서 책 빌려간 회원 찾기 - 선진
 		return bdao.updateLoan(b);
 	}
 
@@ -141,8 +141,8 @@ public class MemberManagementService {
 		return bdao.selectAllBook(title);
 	}
 
-	public ArrayList<Book> bookChart(String title) {	// Rank5 chart 도식화
-		return bstdao.rankFive(title);	//
+	public ArrayList<Book> bookChart(String title) { // Rank5 chart 도식화
+		return bstdao.rankFive(title); //
 	}
 
 //	public boolean editBook(Book selectBook) { // 회원 정보 수정
@@ -155,22 +155,21 @@ public class MemberManagementService {
 //
 //	}
 
-	public boolean rgstBook() { // 도서 등록
+	public boolean rgstBook(Book b) { // 도서 등록
 
-		if (bdao.insertBook() == 0) {
+		if (bdao.insertBook(b) == 0) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-	
-	public boolean delBook(Book selectBook) { // 도서 삭제
-			if (bdao.deletebook(selectBook) == 0) {
-				return false;
-			} else {
-				return true;
-			}
+
+	public boolean delBook(Book b) { // 도서 삭제
+		if (bdao.deletebook(b) == 0) {
+			return false;
+		} else {
+			return true;
 		}
-	
+	}
 
 }

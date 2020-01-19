@@ -45,6 +45,7 @@ public class MMMain {
 		cardLayout = new CardLayout(0, 0);
 		cardPanel.setLayout(cardLayout);
 
+
 		
 		JLabel name = new JLabel("ooo");
 		name.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
@@ -52,6 +53,44 @@ public class MMMain {
 		name.setBounds(1092, 100, 152, 15);
 		frame.getContentPane().add(name);
 		name.setText(loginUser.getSocialNumber());
+
+
+//      if (loginUser.getId().equals("admin")) {
+		DFirst d1Panel = new DFirst();
+		cardPanel.add(d1Panel, "d1");
+		
+		JLabel lblNewLabel_4 = new JLabel("Readers Pick!!");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(182, 49, 239, 33);
+		d1Panel.add(lblNewLabel_4);
+
+		A aPanel = new A(loginUser);
+		cardPanel.add(aPanel, "a");
+
+		B bPanel = new B(loginUser);
+		cardPanel.add(bPanel, "b");
+
+		C cPanel = new C();
+		cardPanel.add(cPanel, "c");
+
+		D dPanel = new D(loginUser);
+		cardPanel.add(dPanel, "d");
+
+//		} else {
+//			DFirst d1Panel = new DFirst();
+//			cardPanel.add(d1Panel, "d1");
+
+		AU auPanel = new AU(loginUser);
+		cardPanel.add(auPanel, "au");
+
+		BU buPanel = new BU(loginUser);
+		cardPanel.add(buPanel, "bu");
+
+		CU cuPanel = new CU();
+		cardPanel.add(cuPanel, "cu");
+
+//      }
+
 
 		JLabel lblNewLabel_2 = new JLabel("\uB2D8 \uD658\uC601\uD569\uB2C8\uB2E4.");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -183,7 +222,7 @@ public class MMMain {
 		lblBook.setBounds(601, 120, 100, 15);
 		frame.getContentPane().add(lblBook);
 
-		JLabel label_2 = new JLabel("\uB300\uC5EC.\uC5F0\uCCB4.\uC5F0\uC7A5");
+		JLabel label_2 = new JLabel("\uB300\uCD9C.\uC5F0\uCCB4.\uC5F0\uC7A5");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 12));
 		label_2.setBounds(731, 120, 100, 15);

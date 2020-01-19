@@ -40,7 +40,7 @@ public class DFirst extends JPanel {
 		panel.setLayout(null);
 		panel.add(labelImage);
 
-		JLabel label = new JLabel("\uB3C4\uC11C\uBA85");
+		JLabel label = new JLabel("\uC81C\uBAA9");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label.setBounds(500, 150, 100, 31);
@@ -52,7 +52,7 @@ public class DFirst extends JPanel {
 		label_1.setBounds(600, 150, 200, 31);
 		add(label_1);
 
-		JLabel label_2 = new JLabel("\uC800   \uC790");
+		JLabel label_2 = new JLabel("\uC791\uAC00");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("¸¼Àº °íµñ Semilight", Font.PLAIN, 15));
 		label_2.setBounds(500, 200, 100, 31);
