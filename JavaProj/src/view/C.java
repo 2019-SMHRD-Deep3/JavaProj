@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import controller.MemberManagementService;
@@ -32,6 +33,7 @@ public class C extends JPanel { // 연체관리
 	private JTable table;
 	private Book b;
 	private BookDAO bdao;
+	private DefaultTableModel defaultTableModel = new DefaultTableModel();
 
 	public C() {
 		setBackground(Color.WHITE);
@@ -53,7 +55,7 @@ public class C extends JPanel { // 연체관리
 		add(button_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(166, 96, 659, 490);
+		scrollPane.setBounds(200, 100, 1014, 490);
 		add(scrollPane);
 
 		String[] columnNames = { "제목", "작가", "대출일", "반납예정일", "연체여부", "ISBN" };
@@ -66,6 +68,10 @@ public class C extends JPanel { // 연체관리
 					b.getIsbn() };
 		}
 		table = new JTable(data, columnNames);
+		scrollPane.setViewportView(table);
+
+		defaultTableModel.setDataVector(data, columnNames);
+		table = new JTable(defaultTableModel);
 		scrollPane.setViewportView(table);
 
 		JButton button_2 = new JButton("\uB300\uCD9C\uD558\uAE30");
@@ -87,7 +93,6 @@ public class C extends JPanel { // 연체관리
 				String author = (String) data.getValueAt(row, 1);
 
 				Book selectBook = new Book(title, author, isbn);
-
 				BookLoan frame = new BookLoan(selectBook);
 
 				try {
@@ -167,15 +172,16 @@ public class C extends JPanel { // 연체관리
 
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
-					if (b.getIsOverdue().equals("y")) {
+					if ("y".equals(b.getIsOverdue())) {
 						cnt++;
+						;
 					}
 				}
 				int j = 0;
 				Object[][] data = new Object[cnt][5];
 				for (int i = 0; i < list.size(); i++) {
 					b = list.get(i);
-					if (b.getIsOverdue().equals("y")) {
+					if ("y".equals(b.getIsOverdue())) {
 						data[j] = new Object[] { b.getTitle(), b.getAuthor(), b.getLoanDate(), b.getReturnDate(),
 								b.getIsOverdue() };
 						j++;
@@ -183,6 +189,10 @@ public class C extends JPanel { // 연체관리
 				}
 
 				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
+
+				defaultTableModel.setDataVector(data, columnNames);
+				table = new JTable(defaultTableModel);
 				scrollPane.setViewportView(table);
 
 			}
@@ -283,6 +293,10 @@ public class C extends JPanel { // 연체관리
 				}
 
 				table = new JTable(data, columnNames);
+				scrollPane.setViewportView(table);
+
+				defaultTableModel.setDataVector(data, columnNames);
+				table = new JTable(defaultTableModel);
 				scrollPane.setViewportView(table);
 			}
 		});

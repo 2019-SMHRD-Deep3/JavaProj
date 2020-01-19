@@ -106,7 +106,7 @@ public class BookAdd {
 				String genre = textField_4.getText();
 
 				Book book = new Book(title, author, isbn, publisher, genre);
-				boolean result = service.rgstBook();
+				boolean result = service.rgstBook(book);
 				if (result) {
 					JOptionPane.showMessageDialog(frame, "등록 성공");
 					frame.dispose();
