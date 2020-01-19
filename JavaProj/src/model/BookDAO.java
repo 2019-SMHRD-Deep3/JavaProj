@@ -363,7 +363,7 @@ public class BookDAO {
 		return rows;
 	}
 
-	public int deletebook(Book selectBook) { // 도서 삭제
+	public int deletebook(Book b) { // 도서 삭제
 		int rows = 0;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
@@ -373,35 +373,28 @@ public class BookDAO {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql2 = "DELETE FROM publisher WHERE b_isbn = ? ";
+			psmt = conn.prepareStatement(sql2);		
+			psmt.setLong(1, b.getIsbn());
+			rows = psmt.executeUpdate();
 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql3 = "DELETE FROM genre WHERE b_isbn = ? ";
+			psmt = conn.prepareStatement(sql3);
+			psmt.setLong(1, b.getIsbn());
+			rows = psmt.executeUpdate();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "DELETE FROM book b_title = ?, b_author = ? WHERE b_isbn = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, selectBook.getTitle());
-			psmt.setString(2, selectBook.getAuthor());
-			psmt.setLong(3, selectBook.getIsbn());
-			System.out.println(selectBook.getTitle());
-			System.out.println(selectBook.getAuthor());
-			rows = psmt.executeUpdate();
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password);
-			String sql2 = "DELETE FROM book p_publisher = ? WHERE b_isbn = ?";
-			psmt = conn.prepareStatement(sql2);
-			psmt.setString(1, selectBook.getPublisher());
-			psmt.setLong(2, selectBook.getIsbn());
-			System.out.println(selectBook.getPublisher());
-			System.out.println(selectBook.getIsbn());
-			rows = psmt.executeUpdate();
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password);
-			String sql3 = "DELETE FROM book g_genre = ? WHERE b_isbn = ?";
-			psmt = conn.prepareStatement(sql3);
-			psmt.setString(1, selectBook.getGenre());
-			psmt.setLong(2, selectBook.getIsbn());
-			System.out.println(selectBook.getGenre());
-			System.out.println(selectBook.getIsbn());
+			psmt.setString(1, b.getTitle());
+			psmt.setString(2, b.getAuthor());
+			psmt.setLong(3, b.getIsbn());
+			System.out.println(b.getTitle());
+			System.out.println(b.getAuthor());
 			rows = psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {

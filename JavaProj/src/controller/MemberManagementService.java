@@ -164,8 +164,8 @@ public class MemberManagementService {
 		}
 	}
 
-	public boolean delBook(Book selectBook) { // 도서 삭제
-		if (bdao.deletebook(selectBook) == 0) {
+	public boolean delBook(Book b) { // 도서 삭제
+		if (bdao.deletebook(b) == 0) {
 			return false;
 		} else {
 			return true;
